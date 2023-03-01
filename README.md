@@ -296,17 +296,310 @@ You should now have a better understanding of Instana observability, how to use 
 
 ### Overview of Turbonomic Application Resource Management 
 
+Turbonomic is IBM's solution for Application Resource Management (ARM) of cloud and on-premises environments.
+
+Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
+
+To perform Application Resource Management, Turbonomic represents environments holistically as a supply chain of resource buyers and sellers, all working together to meet application demand. By empowering buyers (VMs, instances, containers, and services) with a budget to seek the resources that applications need to perform, and sellers to price their available resources (CPU, memory, storage, network) based on utilization in real-time, Turbonomic keeps environments within the desired state. Turbonomic enables environments to achieve the following conflicting goals at the same time:
+
+- Assured application performance
+        
+    Prevent bottlenecks, upsize containers/VMs, prioritize workload, and reduce storage latency.
+
+- Efficient use of resources
+    
+    Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.
+
+Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign services running on your network to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.7.5?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
+
+[Source and more information](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-product-overview)
+
 ### Navigating the Turbonomic Dashboard
+
+#### Homepage
+
+43. **Navigate to the Turbonomic platform home page.**
+
+    When you first log into Turbonomic, you are taken to this home page. Because you are logged in as a user with "Advisor" credentials, you can see everything that Turbonomic is managing, but you cannot take actions against the target environments or modify the Turbonomic server itself. You could set up more users either locally on the Turbonomic server or with an authentication such as LDAP. These new users can have their access scoped to certain environments, applications, or specific entities on the Turbonomic server so people can only access what they need to.
+
+    ![turbo-supply-chain](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-supply-chain.png)
+
+    The first thing to notice is the supply chain on the left side of the page. As discussed in the previous section, Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM zSystems cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machine running our cluster's combined compute/control plane node. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
+
+    ![turbo-business-applications](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-business-applications.png)
+
+    On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept, not an OpenShift one. Business Applications can be defined in Turbonomic as a group of related objects of your choosing. In the case of this demonstration, our Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
+
+    Using Instana alongside Turbonomic in this way brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and the Turbonomic capabilities would be more limited.
+
+    ![turbo-pending-actions-home](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-pending-actions-home.png)
+
+    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take against the OCP on IBM zSystems cluster to make sure our applications get the resources they need but aren't over-provisioned. You will learn more about actions later in this tutorial.
+
+    Let's start looking around the other pages in the Turbonomic console.
+
+#### Search
+
+44. **In the left side menu, select the Search option.** 
+
+    On the search page, we can filter down to specific types of entities that Turbonomic has identified. For example, if we look at Namespaces, it will return all the namespaces, or projects in OpenShift nomenclature, in our target cluster.
+
+45. **Select the Namespaces option in the list.**
+
+    ![turbo-search-namespaces](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces.png)
+
+    Let's dig into the namespace that contains the Robot Shop sample application.
+
+46. **Select the `robot-shop` namespace.**
+
+    ![turbo-search-namespaces-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces-2.png)
+
+    We now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, and more. We are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
+
+47. **Scroll through this page looking at the provided charts and tables.**
+
+#### Plan
+
+48. **In the left side menu, select the Plan option.**
+
+    Turbonomic Plans allow you to run "what if" scenarios that explore the potential impact that actions would have on your target environments. For example, if you added a new compute node to the OpenShift on IBM zSystems cluster, changed the memory and CPU resources for certain Robot Shop pods, and moved certain pods from one node to another, how would that impact your overall resource consumption? What would the impact be to cost? Would it help you meet your SLOs?
+
+    Plans are a powerful tool to understand the impacts of actions you may take. Let's see what happens when we create one now.
+
+49. **Click the New Plan button.**
+
+    Turbonomic automatically recognized that we have a container cluster (OpenShift) as a target, so it offers us the pre-built "Optimize Container Cluster" plan.
+
+50. **Click the "Optimize Container Cluster" option.**
+
+51. **Select the Kubernetes-<clustern_name> option, then click the "Next: Optimization Settings" at the bottom of the page.**
+
+    `<cluster_name>` will depend on the name of your target OpenShift cluster.
+
+    ![turbo-plan-options](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-plan-options.png)
+
+    We're given three default options for how to optimize the OpenShift on IBM zSystems cluster. The option we choose will depend on the environment we have and what types of options are authorized for each individual.
+
+52. **Select the Optimize Cluster Resources, Placement and Nodes option and then Run Plan.**
+
+    ![turbo-optimize](images/turbo-optimize.png)
+
+    After the plan runs, we're told what our configuration parameters were - which settings were enabled or disabled - and the summary of the impact that the plan actions would have on the cluster. We can scroll through this page to see more details about the individual actions and before-and-after scenarios for different cluster metrics.
+
+53. **Scroll through this page looking at the different tables and charts.**
+
+We've seen actions on a few different pages in the Turbonomic platform so far, and we'll come back to these in more detail after making our way through the dashboard.
+
+#### Dashboard
+
+55. **In the left side menu, select the Dashboard option.**
+
+    Turbonomic Dashboards provide views of the target environments based on certain personas or environment types. These are particularly helpful when there are many different types of targets being managed, because the global scope from the Turbonomic homepage can provide too much information that might not be relevant to everyone. There are a few built-in dashboards that comes pre-installed, or you can create your own custom dashboards that display specific information you pick.
+
+56. **Select the Container Platform Dashboard option.**
+
+    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing (only the one IBM zSystems cluster in this demonstration) and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
+
+    ![turbo-container-dashboard](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-container-dashboard.png)
+
+#### Settings (for information only)
+
+**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
+
+57. **In the left side menu, select the Settings option.**
+
+    The settings page is where administrators can manage the Turbonomic platform itself, including adding new targets, creating groups of resources, editing policies to suit your organization, creating new users or integrating with LDAP, and more. Let's take a look at the Policies.
+
+58. **Select the Policies option in the top row.**
+
+    Here we see all the default policies for each entity type that Turbonomic can manage. These policies are what determine what actions are generated, what thresholds must be met for the actions to be generated, and more. The policies are specific to each entity type, let's take Virtual Machines as an example.
+
+59. **Select the Virtual Machines Defaults option in the list.**
+
+    ![turbo-policy-1](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-policy-1.png)
+
+    The first thing we see is the Action Acceptance settings for each potential action. The three action "Modes" are Recommend, Manual, or Automatic. Recommended actions simply recommend the action for users to take. Users then would need to go into OpenShift, the Linux guest, the application, or the hypervisor and perform the action through the appropriate means on the platform. Manual actions are quite similar in that they recommend an action to take, but they also provide an option to execute that action through the Turbonomic user interface. Automatic actions execute the actions automatically, without waiting for any intervention or confirmation from users. You can also disable an action type completely if you don't want them to be considered by Turbonomic or offered to users.
+
+    ![turbo-policy-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-policy-2.png)
+
+    Further down in the options, we see the constraints that can be modified for actions against virtual machines. These are used to set minimum and maximum bounds for VPU and memory values, target utilization, and more. Each entity type has its own policy with different configurable options that determine how Turbonomic acts.
+
+#### Groups (for information only)
+
+**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
+
+60. **Navigate back to Settings and then select Groups.**
+
+    ![turbo-groups](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-groups.png)
+
+    Looking in the Groups option in the Settings you can see that we have a Group named "Robot Shop Container Pod Group". This is a custom group we set up ahead of time that is made up of all pods in namespaces called `robot-shop`. This is a very simplistic example of a group - you could make it more targeted, for example by specific clusters (if we had more than one), or you could create a group made up of multiple entity types, such as containers on OpenShift clusters as well as databases on Virtual Machines.
+
+#### Application Topology (for information only)
+
+**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
+
+61. **Navigate back to Settings and then select Application Topology.**
+
+    ![turbo-application-topology](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-application-topology.png)
+
+    You can see that a custom Business Application can be defined by the custom Group we just looked at. Again, this is a simplistic example, and we could make it more targeted or more inclusive of other entity types if we wished.
+
+    We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started).
+
+    Next, we'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM zSystems cluster.
 
 ### Turbonomic Actions
 
 #### What are Actions?
 
+After you deploy your targets, Turbonomic starts to perform market analysis as part of its Application Resource Management process. This holistic analysis identifies problems in your environment and the actions you can take to resolve and avoid these problems. Turbonomic then generates a set of actions for that particular analysis and displays it in the Pending Actions charts for you to investigate.
+
+[Source and more information](https://www.ibm.com/docs/en/tarm/8.7.5?topic=started-turbonomic-actions)
+
 #### What Actions are Available for OpenShift on IBM zSystems Targets?
+
+There are different action types for different target environments, and not all of them apply to OpenShift on IBM zSystems. For example, Turbonomic can generate actions to scale cloud VMs to instance types that have discounted rates to reduce cloud consumption costs. This type of action is simply out of scope for an OpenShift cluster running on-premises, as is the case with most IBM zSystems clients.
+
+For OpenShift on IBM zSystems, Turbonomic can generate the following actions:
+
+- Vertically Scale Containers - resize container spec sizes
+
+    If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is just as important - if a container is overprovisioned - if it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
+
+    This is the action that we will be demonstrating later in this section.
+
+- Horizontally Scale Containers - Scale up the number of pods for a microservice
+
+    If there is a Service Level Objective (SLO) configured for a containerized application, Turbonomic can scale the number of pods up or down in order to meet the demand at any given moment.
+
+    An APM solution such as Instana is required for this action type. Turbonomic needs metric data from the APM about response time and transactions speeds in order to enforce SLOs.
+
+- Pod Moves - move a pod from one node to another where more resources are available.
+
+    One of the fundamental functionality gaps in Kubernetes (and therefore OpenShift), is the lack of pod rescheduling based on node resources. The Kubernetes scheduler decides where to place pods only at the time they are initially deployed. Pods will then stay on that same node for their lifecycle, no matter what changes on the node, what else is deployed afterwards, or how much the applications resource usage changes over time. Kubernetes will only move pods to new nodes at the point where it starts evicting pods due to severe lack of resources - there is no proactive movement, and the pod eviction results in application downtime until the new pod is spun up elsewhere.
+    
+    Turbonomic addresses this gap by continuously moving pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
+
+    There are some caveats here as it relates to RWO persistentVolumes and statefulSets, and can read more information in the KubeTurbo wiki [here](https://github.com/turbonomic/kubeturbo/wiki/Action-Details#pod-move-actions-that-assure-availability).
+
+- Cluster Scaling - Provisioning or Suspending OpenShift Nodes
+
+    Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes), performance (avoiding node congestion), and the node selection policies configured in the Turbonomic settings. Similar to vertical container scaling, cluster scaling can certainly impact cost (more or less hardware and resources being used), and performance (more or less resources available to applications).
+
+    When it comes to OpenShift on IBM zSystems, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM zSystems. Therefore, if a node provision/suspension action is generated for an IBM zSystems cluster, administrators will need to perform that action themselves with traditional, manual methods, and then Turbonomic will see that change and reflect it.
+
+    Turbonomic does, however, support using actions to create calls to third party workflow orchestrators such as Ansible, Terraform, or ServiceNow, if you are so inclined.
 
 #### Manually Executing Actions
 
-#### Automatically Executing Actions
+As we saw throughout the tour of the Turbonomic platform, we have some pending actions related to the Robot Shop sample application running on the IBM zSystems cluster.
+
+62. **Navigate to the home page and notice the pending actions.**
+
+    Because we're looking at the home page right now, this represents the pending actions for the global environment. That means that these actions could be targeting workloads in the cluster other than the Robot Shop application. Fortunately, we know that we have a Business Application configured that will scope our view down to just Robot Shop.
+
+63. **Click the Robot Shop Microservices Business Application.**
+
+    Now we'll only see the pending actions that we're currently interested in. 
+
+64. **Click the Pending Actions just to the right of the supply chain chart.**
+
+    ![turbo-scaling-actions](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-pending-actions.png)
+
+    As you can see, all of the actions here are related to the robot shop microservices. Some are related to CPU resizing, and some are related to memory resizing, but all of them want us to increase their allotted resources for the sake of application performance. Let's look at one for example.
+
+65. **Click the details button to far right of the action to drop down more details. Pick one that calls for both CPU and memory changes, like in the image below. `shipping` is usually a good one to look at.**
+
+    ![turbo-scaling-actions-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-2.png)
+
+    Here we see more details about exactly what Turbonomic is recommending we do via the action. It includes resizing both CPU and memory limits for the pod, and we can see the result that Turbonomic expects in terms of CPU throttling and resource utilization as a percentage of CPU and memory limits.
+
+    ![turbo-scaling-actions-3](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-3.png)
+
+    And because this is a Manual action, as opposed to Recommended, we are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
+
+    Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions like Turbonomic is to *automate* as many of these processes as possible. In the next section, we'll see a few of the ways to put Turbonomic on autopilot and let it automatically execute actions.
+
+#### Automatically Executing Actions (for information only)
+
+**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
+
+In an ideal AIOps strategy, Turbonomic will automatically execute as many actions as possible. Automation results in quicker improvement for application performance as well as reduced time that operations teams must spend manually reviewing and executing actions.
+
+However, the decision between automating and manually executing actions is not just "on" or "off". Decisions to automate will be made by action type, by environment, and by application. Automation decisions will be different for each IBM zSystems client, as well as individuals or groups within the client organization who maintain an environment or application. Furthermore, some action types do not support automation, so Manual or Recommended actions are required.
+
+Turbonomic allows very granular specification of which actions to automate, and to which degree. In this section, we will explore some of the possibilities.
+
+Let's navigate back to the Policies page we looked at previously.
+
+66. **Navigate to Settings -> Policies.**
+
+    The Default policies listed on this page are global - they determine the behavior of *all* actions of the same type that Turbonomic generates. For example, if you allow Turbonomic to automate Container Spec Resizing, it will automatically resize all container entities that Turbonomic manages - no matter which cluster, application, or geography.
+
+    Let's see what this looks like, without actually making the change.
+
+67. **Select the Workload Controller Defaults option, and then click the edit button associated with "Resize".**
+
+68. **Select the "Action Acceptance" setting, which is currently set to "Manual".**
+
+    Here we see that we could change "Manual" to "Automatic" to allow Turbonomic to automatically resize all Pods at its own will.
+
+    Changing this global configuration may not always make sense - especially in Turbonomic instances that manage various environments with different needs and priorities. Next, we'll look at how we can create our own Automation Policies that apply to scoped subsets of entities managed by Turbonomic.
+
+69. **Close out of the global Policy configuration without submitting.**
+
+    We'll create a new Automation Policy to resize OpenShift containers in the user interface. Resizing is controlled by Workload Controllers, so we'll first create a group of all the Robot Shop Workload Controllers.
+
+70. **Navigate to Settings -> Groups -> New Group -> Workload Controller.**
+
+71. **Fill the form as follows.**
+
+    - Group Name: `Robot Shop Workload Controller Group`
+    - Type: `Dynamic`
+    - Add Filter -> Namespace: `robot-shop`
+
+    ![robot-shop-workload-controller-group](https://raw.githubusercontent.com/mmondics/media/main/images/robot-shop-workload-controller-group.png)
+
+72. **Then save the group.**
+
+    Now we can create a new Automation Policy that will only affect these workload controllers.
+
+73. **Navigate to Settings -> Policies.**
+
+74. **Click New Automation Policy and then select Workload Controller.**
+
+    Let's fill out the form to create a new automation policy scoped for the Robot Shop application.
+
+75. **Fill out the fields as follows.**
+
+    - Name: `Robot Shop Automation Policy`
+    - Scope: Select Add Workload Controller Groups -> `Robot Shop Workload Controller Group` -> Select.
+    - Policy Schedule: Select Attach Schedule -> New Schedule, create a new schedule as follows.
+
+        - Schedule Name: `Robot Shop Automation Schedule`
+        - Recurrence: `Daily`
+        - Repeat Every: `1 Day`
+
+        ![turbo-schedule](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-schedule.png)
+
+    - Automation and Orchestration: Add Action -> Fill out form as follows.
+      
+      - Action Type: `Resize`
+      - Action Acceptance: `Automatic`
+
+76. **Then click Submit.**
+
+77. **After reviewing the policy, click Save Policy.**
+
+    ![turbo-robot-shop-policy](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-robot-shop-policy.png)
+
+    At this point, the Robot Shop application containers will be resized once daily. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  
+
+    *With automation configured, OpenShift developer and administrators should continue to monitor the actions that Turbonomic takes over time and adjust the custom policy if needed, but they should have the peace of mind knowing that their application resources are right-sized and will adjust as they need to in the future.*
+
+### Turbonomic Wrap-up
+
+In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM zSystems cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
 
 ## IBM Cloud Pak for Watson AIOps
 
