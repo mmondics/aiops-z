@@ -59,7 +59,7 @@ This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager a
    
     You can register a new user, explore the catalog of purchasable robots, give them ratings, and simulate a purchase.
 
-    Notice that from the OpenShift and Robot Shop perspectives, you don't get much of a sense of how the various microservice applications are plumbed together, how they are performing, if they have the correct amount of resources, or if any issues are affecting the application currently or in the near future. In other words, there is a lack of *observability*, *application performance management*, and *proactive problem remediation*.
+    Notice that from the OpenShift and Robot Shop perspectives, you don't get much of a sense of how the various microservice applications are plumbed together, how they are performing, if they have the correct number of resources, or if any issues are affecting the application currently or in the near future. In other words, there is a lack of *observability*, *application performance management*, and *proactive problem remediation*.
 
 ## Instana
 
@@ -296,7 +296,7 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     ![instana-analytics-6](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-6.png)
 
-    And again, we confirm that the payment service in OpenShift is the root cause of these Incidents. At this point we would want to look at our Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, we know that the error is caused by an intentional bug built into the load generator which is attempting to access an payment endpoint that does not exist.
+    And again, we confirm that the payment service in OpenShift is the root cause of these Incidents. At this point we would want to look at our Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, we know that the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
 
 ### Instana Wrap-up
 
@@ -645,9 +645,9 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     On this page, we see visualizations of two of the main goals of CP4WAIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
 
-    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business critical applications, downtime of just a few minutes can mean thousands or millions of dollars worth of lost revenue. IBM Cloud Pak for Watson AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
+    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for Watson AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
 
-    **Noise Reduction** is the concept of reducting the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
+    **Noise Reduction** is the concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
 
     In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 stories. These stories are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation if stories are repeating.
 
@@ -735,7 +735,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     Depending on what alerts are triggered at the time you go through the tutorial, the current stories will look different.
 
-    Stories are where the IT Operators and administrators should focus their attention to either manually close stories as they are generated, or build actions and runbooks in order to remediate stories automatically as they appear. 
+    Stories are where the IT Operators and administrators should focus their attention to either manually close stories as they are generated or build actions and runbooks in order to remediate stories automatically as they appear. 
 
 91. **If there is a story created for "Erroneous call rate is too high", click it to open that specific story. If it is not available at the time, you can select any other story to see similar information.**
 
@@ -754,7 +754,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 Earlier in the tutorial, you saw that Slack is configured as a ChatOps endpoint for this CP4WAIOps instance. 
 
-**ChatOps** is used to provided a messaging-based interface for quickly reporting incidents to the relevant IT Operations teams who are responsible for remediating the issue. This helps to improve MTTR by getting the relevant incidents in front of the correct people in near-real time.
+**ChatOps** is used to provid a messaging-based interface for quickly reporting incidents to the relevant IT Operations teams who are responsible for remediating the issue. This helps to improve MTTR by getting the relevant incidents in front of the correct people in near-real time.
 
 Slack or Microsoft Teams can be used as ChatOps endpoints, so organizations can use their pre-existing tooling rather than needing to adopt and learn a new messaging platform.
 
@@ -790,13 +790,13 @@ We encourage you to look through the references below and reach out to this [tut
 
 ## References
 
-[Instana Product Page](https://www.ibm.com/products/instana)
-[Turbonomic Product Page](https://www.ibm.com/products/turbonomic)
-[IBM Cloud Pak for Watson AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-watson-aiops)
+- [Instana Product Page](https://www.ibm.com/products/instana)
+- [Turbonomic Product Page](https://www.ibm.com/products/turbonomic)
+- [IBM Cloud Pak for Watson AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-watson-aiops)
 
-[Instana Documentation](https://www.ibm.com/docs/en/instana-observability/current)
-[Turbonomic Documentation](https://www.ibm.com/docs/en/tarm)
-[IBM Cloud Pak for Watson AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
+- [Instana Documentation](https://www.ibm.com/docs/en/instana-observability/current)
+- [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm)
+- [IBM Cloud Pak for Watson AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
 
-[Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=supported-technologies)
-[IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
+- [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=supported-technologies)
+- [IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
