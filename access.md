@@ -5,8 +5,7 @@
 
 ## Accessing OpenShift
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
-2. Select the `ldap-ats-wscdmz-wfwsldapcl01` option (**not** `kube:admin`)
-3. Use your credentials in the table below. 
+2. Use your credentials in the table below. 
 
 ## Links to platforms
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
