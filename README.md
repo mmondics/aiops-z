@@ -6,7 +6,7 @@ In this tutorial, you will walk become familiar with IBM's three strategic AIOps
 
 IBM Cloud Pak for Watson AIOps is composed of an AI Manager and optional Event Manager component, with additional optional add-ons and extensions available for both. IBM Cloud Pak for Watson AIOps can be installed with just the AI Manager features, or with both the AI Manager and Event Manager features. If you require only Event Manager features, you can install a fully containerized, hybrid, or on-premises deployment of Event Manager. Fully containerized and hybrid deployments of Event Manager have advanced event management capabilities.
 
-One of the optional add-ons is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which were available with IBM Cloud Pak for Multicloud Management:
+One of the optional add-ons is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
 
  - **Infrastructure management**, previously called IBM Red Hat CloudForms.
  - **Managed services**, previously called Terraform & Service Automation or IBM Cloud Automation Manager.
@@ -17,7 +17,9 @@ One of the optional add-ons is **Infrastructure Automation**. This Infrastructur
 
 Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM zSystems. AI Manager and Event Manager currently only run on x86-based clusters.
 
-This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager and Infrastructur eautomation are not included.
+For more information, see the [IBM Cloud Pak for Watson AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/3.6.2?topic=overview-architecture)
+
+This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager and Infrastructure automation are not included.
 
 ## Environment Overview
 
@@ -55,8 +57,6 @@ This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager a
 
 6. Explore the website and its functionalities from the left side menu.
    
-    Note: don't skip past this step - navigating through the website will generate some pretty cool insights in the Instana website monitoring section.
-
     You can register a new user, explore the catalog of purchasable robots, give them ratings, and simulate a purchase.
 
     Notice that from the OpenShift and Robot Shop perspectives, you don't get much of a sense of how the various microservice applications are plumbed together, how they are performing, if they have the correct amount of resources, or if any issues are affecting the application currently or in the near future. In other words, there is a lack of *observability*, *application performance management*, and *proactive problem remediation*.
@@ -75,7 +75,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-agent-daemonset](images/instana-agent-daemonset.png)
 
-    This is the Instana agent that is collection all the information about OpenShift and the containerized applications running on it and then sending that information over to the Instana server.
+    This is the Instana agent that is collecting all the information about OpenShift and the containerized applications running on it and then sending that information over to the Instana server.
     
     The agent is deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node they run on.
 
@@ -124,9 +124,11 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu.png)
 
-    Next, you will go through each section in the menu, starting with Websites & Mobile Apps.
+    Next, you will go through each section in the menu.
 
 13. Click the Websites & Mobile Apps option.
+
+    **Note: website monitoring is currently not configured for this tutorial. This step and the following were left in for completeness.**
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
@@ -180,7 +182,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu-kubernetes](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-kubernetes.png)
 
-24. Click the openshift-z (cluster) hyperlink.
+24. Click the openshift (cluster) hyperlink.
 
     OpenShift and other Kubernetes clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed into it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
 
@@ -256,7 +258,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 ### Using Instana to Identify an Issue
 
-    As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, we will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
+As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, we will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
 
 37. Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.
 
