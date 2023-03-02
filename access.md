@@ -9,10 +9,10 @@
 3. Use your credentials in the table below. 
 
 ## Links to platforms
-OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
-Instana URL: <https://lcsins01.dmz/#/home>
-Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
-IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
+- OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
+- Instana URL: <https://lcsins01.dmz/#/home>
+- Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
+- IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
 
 Usernames and passwords are the same for all of the platforms used in this tutorial.
 
