@@ -42,6 +42,6 @@ Usernames and passwords are the same for all of the platforms used in this tutor
 | Scott Simons        | 21 | user21             | p@ssw0rd           |
 | Bosheng Song   | 22 | user22             | p@ssw0rd           |
 | Sunny Talwar       | 23 | user23             | p@ssw0rd           |
-| Theak Pel       | 24 | user23             | p@ssw0rd           |
-| Timothy Sax       | 25 | user23             | p@ssw0rd           |
-| Wayne M Kimble       | 26 | user23             | p@ssw0rd           |
+| Theak Pel       | 24 | user24             | p@ssw0rd           |
+| Timothy Sax       | 25 | user25             | p@ssw0rd           |
+| Wayne M Kimble       | 26 | user26             | p@ssw0rd           |
