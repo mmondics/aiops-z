@@ -39,13 +39,13 @@ This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager a
 
 3. **Log in with your OpenShift credentials.**
 
-4. Under the developer perspective, navigate to the Topology page for the `robot-shop` project.
+4. **Under the developer perspective, navigate to the Topology page for the `robot-shop` project.**
 
     ![robot-shop-topology](images/robot-shop-topology.png)
 
     Robot Shop is a simulated online store where you can purchase robots and AI solutions. Robot Shop is a polyglot - meaning it is made up of many different microservices that were written in different programming languages. There are 12 different microservices written in languages including NodeJS, Python, Spring Boot, and Go, along with containerized databases including MongoDB, MySQL, and Redis. Each icon in the Topology represents an OpenShift deployment for a specific microservice. Each microservice is responsible for a single function of the Robot Shop application that you will see in the following steps.
 
-5. Open the Robot Shop web application by clicking the small button in the top right of the `web` icon.
+5. **Open the Robot Shop web application by clicking the small button in the top right of the `web` icon.**
 
     This is simply a hyperlink that will take you to the Robot Shop application homepage.
 
@@ -55,7 +55,7 @@ This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager a
 
     ![robot-shop-1](images/robot-shop-1.png)
 
-6. Explore the website and its functionalities from the left side menu.
+6. **Explore the website and its functionalities from the left side menu.**
    
     You can register a new user, explore the catalog of purchasable robots, give them ratings, and simulate a purchase.
 
@@ -71,7 +71,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 ### Viewing the Instana Agent on OpenShift
 
-7. In the OpenShift cluster, navigate to the `instana-agent` project then click the circular icon in the Topology page.
+7. In the OpenShift cluster, **navigate to the `instana-agent` project then click the circular icon in the Topology page.**
 
     ![instana-agent-daemonset](images/instana-agent-daemonset.png)
 
@@ -79,7 +79,7 @@ For this tutorial, we have set up an environment that includes Instana running o
     
     The agent is deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node they run on.
 
-8. Click the `view logs` hyperlink next to one of the pods in the right-side menu.
+8. **Click the `view logs` hyperlink next to one of the pods in the right-side menu.**
 
     ```text
     2023-03-01T17:13:46.589+00:00 | INFO | stana-agent-scheduler-thread-9-1 | turesManagerImpl | com.instana.agent-bootstrap - 1.2.25 | Installed instana-kubernetes-sensor
@@ -106,27 +106,27 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 ### Navigating the Instana Dashboard
 
-9. In a web browser, navigate to your Instana server. Reach out to your Instana administrator if you do not have this address.
+9. **In a web browser, navigate to your Instana server. Reach out to your Instana administrator if you do not have this address.**
 
-10. Log in with your Instana credentials.
+10. **Log in with your Instana credentials.**
 
     When you first log into Instana, you will be taken to the Home Page. This is a customizable summary page that shows the key metrics for any component of your environment in the timeframe specified in the top right of the screen.
 
     ![instana-timeframe](https://raw.githubusercontent.com/mmondics/media/main/images/instana-timeframe.png)
 
-11. Set the time frame to Last Hour and click the Live button.
+11. **Set the time frame to Last Hour and click the Live button.**
 
     You are now seeing metrics for our environment over the previous hour, and it is updating in real time.
 
     The next thing to notice is the menu on the left side of the page. If you hover over the left side panel, you will see a menu of links that will let you dive into different sections of the Instana dashboard, rather than seeing every option.
 
-12. Click the left side panel so the menu appears.
+12. **Click the left side panel so the menu appears.**
 
     ![instana-menu](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu.png)
 
     Next, you will go through each section in the menu.
 
-13. Click the Websites & Mobile Apps option.
+13. **Click the Websites & Mobile Apps option.**
 
     **Note: website monitoring is currently not configured for this tutorial. This step and the following were left in for completeness.**
 
@@ -134,7 +134,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     You can see that Instana is monitoring one website named Robot Shop Website. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM zSystems. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
-14. Click the Robot Shop Website hyperlink.
+14. **Click the Robot Shop Website hyperlink.**
 
     ![instana-website-metrics](https://raw.githubusercontent.com/mmondics/media/main/images/instana-website-metrics.png)
 
@@ -142,97 +142,97 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     After interacting with the webpages, we now see metrics for page loads and transitions, loading times, any errors, and many more performance indicators. Within this website, there are all kinds of filters and tabs with more information.
 
-15. Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.
+15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
     What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM zSystems is running.
 
-16. Click the Applications option in the left side menu.
+16. **Click the Applications option in the left side menu.**
 
     ![instana-menu-applications](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-applications.png)
 
-17. Click the Robot Shop Z Application hyperlink.
+17. **Click the Robot Shop Z Application hyperlink.**
 
     An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Z application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`. Because all of our containerized microservices are running in an OpenShift namespace named `robot-shop`, they all appear in this application perspective. This is a very simple example of a tag, and it works because we only have one Kubernetes (OpenShift) cluster, so only one namespace named `robot-shop`. If we had another cluster with a namespace of the same name, we might want to add another tag to select the Kubernetes cluster's zone or name.
 
     Alongside the Robot Shop application running in OpenShift, there is a container running a Python application that generates load to each microservice. The metrics you see now in the application perspective are coming from that load generator. At the top of the page, you can see the total number of calls, the number of erroneous calls, and the mean latency for each call over the past hour. Based on the number of total calls, you can see that Instana is able to monitor an incredible amount of data in real time and provide actionable insights against it. Each chart can be interacted with in various ways. For example, the total calls graph can be filtered by return code.
 
-18. Click to hide each return code other than `500`.
+18. **Click to hide each return code other than `500`.**
 
     ![instana-application-codes](https://raw.githubusercontent.com/mmondics/media/main/images/instana-application-codes.png)
 
     As with the Websites & Mobile Applications section, the Application perspective has various tabs that contain different information. When it comes to microservices, one of the most helpful tabs in the Application perspective is the Dependency graph.
 
-19. Click the Dependencies tab.
+19. **Click the Dependencies tab.**
 
     ![instana-dependencies](https://raw.githubusercontent.com/mmondics/media/main/images/instana-dependencies.png)
 
-20. The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and also some visual representations of errors, high latency, or erroneous calls. You can select these options in the top left of the graph.
+    The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and also some visual representations of errors, high latency, or erroneous calls. You can select these options in the top left of the graph.
 
-21. Click the dropdown labeled None and select Max Latency.
+20. **Click the dropdown labeled None and select Max Latency.**
 
     ![instana-dependency-graph](https://raw.githubusercontent.com/mmondics/media/main/gifs/instana-dependency-graph.gif)
 
     You can now see that the cities microservice is the largest contributor to application latency. There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag we specified, and options to configure the Application perspective.
 
-22. Click through each of the tabs.
+21. **Click through each of the tabs.**
 
     If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, but we'll get to that in a later section.
 
-23. Click the Platforms -> Kubernetes option in the left side menu.
+22. **Click the Platforms -> Kubernetes option in the left side menu.**
 
     ![instana-menu-kubernetes](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-kubernetes.png)
 
-24. Click the openshift (cluster) hyperlink.
+23. **Click the openshift (cluster) hyperlink.**
 
     OpenShift and other Kubernetes clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed into it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
 
     The Summary page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Pods" show potential hotspots which you might want to have a look at.
 
-25. Click the Details tab.
+24. **Click the Details tab.**
 
     The Details tab displays information about the health of critical components of the Kubernetes cluster, such as the controller, scheduler, and etcd.
 
-26. Click the Events tab.
+25. **Click the Events tab.**
 
     The Events tab shows all of the Kubernetes events in the cluster in real time. It also provides links to the related objects for quick access. The remaining tabs are all Kubernetes objects in the cluster and the metrics displayed depend on the object type.
 
-27. Click through the tabs to show various objects and their metrics.
+26. **Click through the tabs to show various objects and their metrics.**
 
     Instana also supports monitoring of Cloud Foundry and VMWare Tanzu clusters, but that is outside the scope of this demonstration.
 
-28. Click the Infrastructure option in the left side menu.
+27. **Click the Infrastructure option in the left side menu.**
 
     ![instana-menu-infrastructure](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-infrastructure.png)
 
     You will be taken to the Infrastructure map. The Infrastructure map provides an overview of all monitored systems, which are initially grouped by options of your choice. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system and will change color to reflect the component's health.
 
-29. With the filters in the bottom right of the page, select the Host Perspective and OS architecture for Grouping.
+28. **With the filters in the bottom right of the page, select the Host Perspective and OS architecture for Grouping.**
 
     ![instana-infrastructure-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-infrastructure-1.png)
 
     Now we are looking at the three monitored systems grouped by architecture. Each block within the pillars is a single process or microservice. Let's take a different look at the OpenShift cluster.
 
-30. Select the Container Perspective and Grouping by Kubernetes Namespace.
+29. **Select the Container Perspective and Grouping by Kubernetes Namespace.**
 
     ![instana-infrastructure-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-infrastructure-2.png)
 
     This is a better view of the containerized processes running in our monitored environment. As you might be able to tell by the color coding of the different processes or microservices, we have a few errors with the Robot Shop application. We'll come back to this page in a later section to debug.
 
-31. Click the Analytics option in the left side menu.
+30. **Click the Analytics option in the left side menu.**
 
     Instana includes a very powerful AI-driven analytics solution out of the box. These analytics are integrated into each of the panels we've looked at so far, but you can also directly access them from the menu.
 
     ![instana-menu-analytics](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-analytics.png)
 
-32. By default, we're taken to a built-in dashboard for analytics related to Application calls. We can filter by using the left side options, or by creating our own filters at the top.
+    By default, we're taken to a built-in dashboard for analytics related to Application calls. We can filter by using the left side options, or by creating our own filters at the top.
 
-33. Expand the left side options and select Only Erroneous and the Robot Shop Z application.
+31. **Expand the left side options and select Only Erroneous and the Robot Shop Z application.**
 
     ![instana-analytics-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-1.png)
 
     The source of some of our payment errors is starting to become apparent.
 
-34. Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.
+32. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
 
     ![instana-menu-events](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-events.png)
 
@@ -242,13 +242,13 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     Right now we're looking at Incidents that Instana has identified during our timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
-35. **Navigate back to the Events page and select the Issues tab.**
+33. **Navigate back to the Events page and select the Issues tab.**
 
     ![instana-events-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-events-1.png)
 
     An issue is an event that is triggered if something out of the ordinary happens. You can think of Incidents as Issues that Instana has correlated with each other to form a cohesive event. Let's take a look at a single Issue.
 
-36. **Navigate back to the Events page and select the Changes tab.**
+34. **Navigate back to the Events page and select the Changes tab.**
 
     ![instana-events-3](https://raw.githubusercontent.com/mmondics/media/main/images/instana-events-3.png)
 
@@ -332,17 +332,17 @@ Turbonomic is a containerized, microservices architected application running in 
 
     When you first log into Turbonomic, you are taken to this home page. Because you are logged in as a user with "Advisor" credentials, you can see everything that Turbonomic is managing, but you cannot take actions against the target environments or modify the Turbonomic server itself. You could set up more users either locally on the Turbonomic server or with an authentication such as LDAP. These new users can have their access scoped to certain environments, applications, or specific entities on the Turbonomic server so people can only access what they need to.
 
-    ![turbo-supply-chain](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-supply-chain.png)
+    ![turbo-supply-chain](images/turbo-supply-chain.png)
 
     The first thing to notice is the supply chain on the left side of the page. As discussed in the previous section, Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM zSystems cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machine running our cluster's combined compute/control plane node. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
 
-    ![turbo-business-applications](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-business-applications.png)
+    ![turbo-business-applications](images/turbo-business-applications.png)
 
     On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept, not an OpenShift one. Business Applications can be defined in Turbonomic as a group of related objects of your choosing. In the case of this demonstration, our Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
 
     Using Instana alongside Turbonomic in this way brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and the Turbonomic capabilities would be more limited.
 
-    ![turbo-pending-actions-home](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-pending-actions-home.png)
+    ![turbo-pending-actions-home](images/turbo-pending-actions-home.png)
 
     Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take against the OCP on IBM zSystems cluster to make sure our applications get the resources they need but aren't over-provisioned. You will learn more about actions later in this tutorial.
 
@@ -382,7 +382,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
 50. **Click the "Optimize Container Cluster" option.**
 
-51. **Select the Kubernetes-<clustern_name> option, then click the "Next: Optimization Settings" at the bottom of the page.**
+51. **Select the Kubernetes-<cluster_name> option, then click the "Next: Optimization Settings" at the bottom of the page.**
 
     `<cluster_name>` will depend on the name of your target OpenShift cluster.
 
@@ -514,7 +514,7 @@ As we saw throughout the tour of the Turbonomic platform, we have some pending a
 
 64. **Click the Pending Actions just to the right of the supply chain chart.**
 
-    ![turbo-scaling-actions](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-pending-actions.png)
+    ![turbo-scaling-actions](images/turbo-scaling-actions.png)
 
     As you can see, all of the actions here are related to the robot shop microservices. Some are related to CPU resizing, and some are related to memory resizing, but all of them want us to increase their allotted resources for the sake of application performance. Let's look at one for example.
 
@@ -625,11 +625,11 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 ### Exploring the AI Manager Console
 
-78. Navigate to your IBM Cloud Pak for Watson AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.
+78. **Navigate to your IBM Cloud Pak for Watson AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.**
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
-79. In the dropdown for `Log in with`, make sure you have OpenShift Authentication selected, and then log in with your OpenShift credentials.
+79. **In the dropdown for `Log in with`, make sure you have OpenShift Authentication selected, and then log in with your OpenShift credentials.**
 
     ![cp4waiops-homepage](images/cp4waiops-homepage.png)
 
@@ -639,7 +639,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 #### AIOps Insights
 
-81. Expand the menu by clicking the button in the top-left corner of the page, then navigate to the AIOps Insights page.
+81. **Expand the menu by clicking the button in the top-left corner of the page, then navigate to the AIOps Insights page.**
 
     ![aiops-insights](images/aiops-insights.png)
 
@@ -665,7 +665,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 #### Data and Tool Connections
 
-82. From the left-side menu, navigate to Data and Tool Connections.
+82. **From the left-side menu, navigate to Data and Tool Connections.**
 
     ![data-tool-connections](images/data-tool-connections.png)
 
@@ -675,13 +675,13 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 #### Resource Management
 
-83. From the left-side menu, navigate to Resource Management.
+83. **From the left-side menu, navigate to Resource Management.**
 
     ![resource-management](images/resource-management.png)
 
     Similar to Turbonomic, you will see that CP4WAIOps integrated the Instana Application Perspectives.
 
-84. Click the link for the Robot Shop Microservices Application.
+84. **Click the link for the Robot Shop Microservices Application.**
 
     ![resource-management-2](images/resource-management-2.png)
 
@@ -691,7 +691,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 #### Automations
 
-85. From the left-side menu, navigate to Automations. If there are any filters applied, click the Clear Filters button to see all of the Policies.
+85. **From the left-side menu, navigate to Automations**. If there are any filters applied, click the Clear Filters button to see all of the Policies.
 
     ![automations-policies](images/automations-policies.png)
 
@@ -699,13 +699,13 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     **Policies** are rules that contain multiple condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into a story, and assign runbooks to remediate alerts.
 
-86. For example, find the Policy named "Disk Pressure", and click on it. In the new page that opens, click the "Specification" tab.
+86. **For example, find the Policy named "Disk Pressure", and click on it. In the new page that opens, click the "Specification" tab.**
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `KubeletHasDiskPressure`, or `Value of:alert.summary` contains `You will run out of disk space`. Alerts with either of these tags indicate that an OpenShift node is running out of ephemeral storage and will soon begin evicting pods.
 
     The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to a story that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4WAIOps.
 
-87. Navigate to the "Runbooks" tab on the Automations page.
+87. **Navigate to the "Runbooks" tab on the Automations page.**
 
     ![automations-runbooks](images/automations-runbooks.png)
 
@@ -713,11 +713,11 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     You can also switch to the "Activities" tab to see all of the previous runbook usage.
 
-88. Navigate to the "Actions" tab on the Automations page.
+88. **Navigate to the "Actions" tab on the Automations page.**
 
     **Actions** in runbooks are the collection of manual steps grouped into a single automated entity. An action improves runbook efficiency by automatically performing procedures and operations.
 
-89. For example, click the "Turn off payment erroneous calls" action and then click the "Content" tab of the new window that pops up.
+89. **For example, click the "Turn off payment erroneous calls" action and then click the "Content" tab of the new window that pops up.**
 
     ![policy-erroneous](images/policy-erroneous.png)
 
@@ -729,7 +729,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
 #### Stories and Alerts
 
-90. In the left-side menu, navigate to "Stories and Alerts"
+90. **In the left-side menu, navigate to "Stories and Alerts".**
 
     ![stories](images/stories.png)
 
@@ -737,7 +737,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     Stories are where the IT Operators and administrators should focus their attention to either manually close stories as they are generated, or build actions and runbooks in order to remediate stories automatically as they appear. 
 
-91. If there is a story created for "Erroneous call rate is too high", click it to open that specific story. If it is not available at the time, you can select any other story to see similar information.
+91. **If there is a story created for "Erroneous call rate is too high", click it to open that specific story. If it is not available at the time, you can select any other story to see similar information.**
 
     ![erroneous-story](images/erroneous-story.png)
 
