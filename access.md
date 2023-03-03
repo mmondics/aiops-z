@@ -1,3 +1,6 @@
+# Accessing the Environment
+The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
+
 ## Accessing your Virtual Machine
 1. Go here: <https://techzone.ibm.com/my/workshops/student/63fcce8ab8e43200194a2201>
 2. Log in with your IBM ID and enter the workshop password: `p@ssw0rd` (that's a zero)
@@ -13,9 +16,13 @@
 - Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
 - IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
 
-Usernames and passwords are the same for all of the platforms used in this tutorial.
+If you cannot access the webpage for any of the platforms above, check that the VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the administrator know.
+
+Please do not reboot the Virtual Machine, as that will disconnect the VPN.
 
 ## OpenShift, Instana, Turbonomic, and Cp4WAIOps credentials:
+
+Usernames and passwords are the same for all of the platforms used in this tutorial.
 
 | Name                 | NN | Username | Password |
 |----------------------|----|--------------------|--------------------|
