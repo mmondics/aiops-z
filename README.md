@@ -4,7 +4,7 @@ In this tutorial, you will walk become familiar with IBM's three strategic AIOps
 
 ## AIOps Overview
 
-IBM Cloud Pak for Watson AIOps is composed of an AI Manager and optional Event Manager component, with additional optional add-ons and extensions available for both. IBM Cloud Pak for Watson AIOps can be installed with just the AI Manager features, or with both the AI Manager and Event Manager features. If you require only Event Manager features, you can install a fully containerized, hybrid, or on-premises deployment of Event Manager. Fully containerized and hybrid deployments of Event Manager have advanced event management capabilities.
+IBM Cloud Pak for Watson AIOps is composed of an **AI Manager** and optional **Event Manager** component, with additional optional add-ons and extensions available for both. IBM Cloud Pak for Watson AIOps can be installed with just the AI Manager features, or with both the AI Manager and Event Manager features. If you require only Event Manager features, you can install a fully containerized, hybrid, or on-premises deployment of Event Manager. Fully containerized and hybrid deployments of Event Manager have advanced event management capabilities.
 
 One of the optional add-ons is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
 
