@@ -4,9 +4,11 @@ In this tutorial, you will walk become familiar with IBM's three strategic AIOps
 
 ## AIOps Overview
 
-IBM Cloud Pak for Watson AIOps is composed of an **AI Manager** and optional **Event Manager** component, with additional optional add-ons and extensions available for both. IBM Cloud Pak for Watson AIOps can be installed with just the AI Manager features, or with both the AI Manager and Event Manager features. If you require only Event Manager features, you can install a fully containerized, hybrid, or on-premises deployment of Event Manager. Fully containerized and hybrid deployments of Event Manager have advanced event management capabilities.
+*IBM Cloud Pak for Watson AIOps* (CP4WAIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4WAIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
 
-One of the optional add-ons is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
+The core functions of IBM Cloud Pak for Watson AIOps can be categorized into five capabilities: *event management, incident detection and resolution, entity extraction, and insight delivery*. These capabilities are supported by a network of connections that gather data. It also offers all facets of the AIOps lifecycle from model training to execution.
+
+One optional add-on is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
 
  - **Infrastructure management**, previously called IBM Red Hat CloudForms.
  - **Managed services**, previously called Terraform & Service Automation or IBM Cloud Automation Manager.
@@ -15,15 +17,19 @@ One of the optional add-ons is **Infrastructure Automation**. This Infrastructur
 
 *Managed services* provide you with the capability to automate provisioning of infrastructure and virtual machine applications across multiple cloud environments with optional workflow orchestration.
 
-Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM zSystems. AI Manager and Event Manager currently only run on x86-based clusters.
+Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM zSystems. The base CP4AIOps platform runs on x86 only.
 
-For more information, see the [IBM Cloud Pak for Watson AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/3.6.2?topic=overview-architecture)
+For more information, see the [IBM Cloud Pak for Watson AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/4.1.1?topic=overview-architecture)
 
-This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager and Infrastructure automation are not included.
+This tutorial focuses on the base component of CP4WAIOps - Infrastructure automation is not covered.
 
 ## Environment Overview
 
-![aiops-arch](aiops-arch.drawio.svg)
+![aiops-arch](aiops-arch-AIOps-share6.drawio.png)
+
+## Connecting to the Lab Environment
+
+Connection instructions with platform URLs and credentials are listed in the [access file](/access.md).
 
 ## Exploring the Robot Shop Sample Application
 
@@ -31,7 +37,7 @@ This tutorial focuses on the AI Manager component of CP4WAIOps - Event Manager a
 
 2. In the browser, **navigate to your OpenShift console.** 
 
-    The OpenShift console typically begins with `https://console-openshift-console-`. Reach out to your OpenShift administrator if you do not have this address.
+    The OpenShift console typically begins with `https://console-openshift-console-`. You can find this in the [access file](/access.md). Reach out to your OpenShift administrator if you do not have this address.
 
     You will now see the OpenShift console login page.
 
@@ -128,7 +134,9 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 13. **Click the Websites & Mobile Apps option.**
 
-    **Note: website monitoring is currently not configured for this tutorial. This step and the following were left in for completeness.**
+    ![attention](images/attention2.png)
+
+    ***Note: website monitoring is currently not configured for this tutorial. This step and the following were left in for completeness.***
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
@@ -145,6 +153,10 @@ For this tutorial, we have set up an environment that includes Instana running o
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
     What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM zSystems is running.
+
+    ![attention](images/attention2.png)
+
+    ***Note: The remainder of the lab should work in the live environment as it does in the documentation.***
 
 16. **Click the Applications option in the left side menu.**
 
@@ -615,7 +627,7 @@ In this demonstration, you have seen some of the capabilities of Turbonomic Appl
 
 ### Overview of IBM Cloud Pak for Watson AIOps
 
-IBM Cloud Pak® for Watson AIOps is an AIOps platform that deploys advanced, explainable AI using the IT Operations (ITOps) toolchain data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads.
+IBM Cloud Pak for Watson AIOps is an AIOps platform that deploys advanced, explainable AI using the IT Operations (ITOps) toolchain data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads.
 
 With this Cloud Pak, you can increase your customer satisfaction by **proactively avoiding incidents and accelerating your time to resolution**.
 
@@ -623,13 +635,13 @@ With this Cloud Pak, you can increase your customer satisfaction by **proactivel
 
 IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. The Cloud Pak **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
 
-### Exploring the AI Manager Console
+### Exploring the CP4AIOps Console
 
 78. **Navigate to your IBM Cloud Pak for Watson AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.**
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
-79. **In the dropdown for `Log in with`, make sure you have OpenShift Authentication selected, and then log in with your OpenShift credentials.**
+79. **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials.** Do not select the `kube:admin` option.
 
     ![cp4waiops-homepage](images/cp4waiops-homepage.png)
 
@@ -649,7 +661,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     **Noise Reduction** is the concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
 
-    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 stories. These stories are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation if stories are repeating.
+    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation if incidents are repeating.
 
     Some terminology:
 
@@ -659,7 +671,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     - **Alerts** represent an ongoing anomalous condition against a single managed entity. Unlike events, alerts might evolve over time as the condition changes. Alerts have a start and an end time. The creation and evolution of alerts are informed by events.
 
-    - **Stories** represent the context around an issue that is currently severely impacting operations. A story includes all alerts that are related to the issue and information about how the affected resources are related. The creation and evolution of stories are informed by alerts.
+    - **Incidents** represent the context around an issue that is currently severely impacting operations. An incident includes all alerts that are related to the issue and information about how the affected resources are related. The creation and evolution of incidents are informed by alerts.
 
     Next, you will take a look at where all of these events are coming from.
 
@@ -687,7 +699,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     You now have a scoped view of just the resources associated with the Robot Shop Microservices Application - all of the Kubernetes objects such as pods, services, and routes, but also the individual application components within the containers such as `.jar` files and even the API calls made to each endpoint. 
 
-    You also might also see some *stories* in this view if they are associate with the application. We will look more at these later on.
+    You also might also see some *incidents* in this view if they are associate with the application. We will look more at these later on.
 
 #### Automations
 
@@ -697,13 +709,13 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     The automation tools - policies, runbooks, and actions - help you resolve incidents quickly by setting up and enabling an automatic response as situations arise. Starting up additional capacity or restarting a failed service can happen before your team knows there is an issue.
 
-    **Policies** are rules that contain multiple condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into a story, and assign runbooks to remediate alerts.
+    **Policies** are rules that contain multiple condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
 86. **For example, find the Policy named "Disk Pressure", and click on it. In the new page that opens, click the "Specification" tab.**
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `KubeletHasDiskPressure`, or `Value of:alert.summary` contains `You will run out of disk space`. Alerts with either of these tags indicate that an OpenShift node is running out of ephemeral storage and will soon begin evicting pods.
 
-    The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to a story that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4WAIOps.
+    The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4WAIOps.
 
 87. **Navigate to the "Runbooks" tab on the Automations page.**
 
@@ -725,30 +737,30 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     There are other alternatives to `ssh` - HTTP API calls or Ansible automation playbooks, for example.
 
-    Runbook and actions can be associated with Stories as well, so that whenever a story is created that meets certain criteria, a runbook can automatically kick off problem remediation.
+    Runbook and actions can be associated with incidents as well, so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
 
-#### Stories and Alerts
+#### Incidents and Alerts
 
-90. **In the left-side menu, navigate to "Stories and Alerts".**
+1.  **In the left-side menu, navigate to "Incidents".**
 
     ![stories](images/stories.png)
 
-    Depending on what alerts are triggered at the time you go through the tutorial, the current stories will look different.
+    Depending on what alerts are triggered at the time you go through the tutorial, the current incidents will look different.
 
-    Stories are where the IT Operators and administrators should focus their attention to either manually close stories as they are generated or build actions and runbooks in order to remediate stories automatically as they appear. 
+    Incidents are where the IT Operators and administrators should focus their attention to either manually close incidents as they are generated or build actions and runbooks in order to remediate incidents automatically as they appear. 
 
-91. **If there is a story created for "Erroneous call rate is too high", click it to open that specific story. If it is not available at the time, you can select any other story to see similar information.**
+2.  **If there is an incident created for "Erroneous call rate is too high", click it to open that specific incident. If it is not available at the time, you can select any other incident to see similar information.**
 
     ![erroneous-story](images/erroneous-story.png)
 
-    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4WAIOps integrating well together - Instana observability identified the error and its root cause, and CP4WAIOps has not generated a story that can be used to remediate the problem in an automated way.
+    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4WAIOps integrating well together - Instana observability identified the error and its root cause, and CP4WAIOps has not generated an incident that can be used to remediate the problem in an automated way.
 
-    The story contains many pieces of information that can be used to more quickly remediate issues.
+    The incident contains many pieces of information that can be used to more quickly remediate issues.
 
     - Probable cause alerts - CP4WAIOps attempts to derives the root fault component, and the full scope of components that are affected by an incident.
     - Topology - provides a view of the affected components so IT Operators can see the incident in context.
-    - Assignees - you can either manually assign stories to team members to resolve, or CP4WAIOps can assign people or teams automatically if a policy is configured to do so.
-    - Recommended runbooks - if CP4WAIOps correlates the story with others from the past that were resolved with certain playbooks, they will be recommended.
+    - Assignees - you can either manually assign incidents to team members to resolve, or CP4WAIOps can assign people or teams automatically if a policy is configured to do so.
+    - Recommended runbooks - if CP4WAIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended.
   
 #### ChatOps
 
@@ -774,7 +786,7 @@ Throughout this tutorial, you may have been asking yourself, "Where's the AI in 
 
     This page allows you to train the pre-loaded AI models to hone their ability to derive insights from your incoming data connections (Instana in this tutorial). 
 
-    For example, the *Temporal grouping* AI model groups alerts which co-occur over time. When a problem arises, there are typically multiple parts of a system or environment that are impacted. When alerts in different areas co-occur, it makes sense to look at them together and treat them as one problem to try and determine what might have happened. This is one of the ways that noise is reduced from the hundreds of thousands of events all the way down to a few hundred stories.
+    For example, the *Temporal grouping* AI model groups alerts which co-occur over time. When a problem arises, there are typically multiple parts of a system or environment that are impacted. When alerts in different areas co-occur, it makes sense to look at them together and treat them as one problem to try and determine what might have happened. This is one of the ways that noise is reduced from the hundreds of thousands of events all the way down to a few hundred incidents.
 
 93. Click the "Temporal grouping" tile.
 
@@ -798,5 +810,5 @@ We encourage you to look through the references below and reach out to this [tut
 - [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm)
 - [IBM Cloud Pak for Watson AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
 
-- [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=supported-technologies)
+- [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies)
 - [IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
