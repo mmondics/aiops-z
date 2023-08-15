@@ -2,9 +2,11 @@
 The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
 
 ## Accessing your Virtual Machine
-1. Go here: <https://techzone.ibm.com/my/workshops/student/<TBD>>
-2. Log in with your IBM ID and enter the workshop password: `password`
-3. Log into the RHEL virtual machine as workshop-user with password: `p@ssw0rd` (that's a zero)
+1. Go here: <https://techzone.ibm.com/my/workshops/student/64d5549a529e2300174bd2b3>
+2. Log in with your IBM ID.
+   1. If you don't already have an IBM ID, you will need to create one [here](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3Db9977aed-1e6b-4321-9b43-ee4365544452%26client_id%3DODllMDk4YzItMjgxOC00)
+3. When prompted, enter the workshop password: `password`
+4. Log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You will need to send the `Ctrl+Alt+Del` command to open the password prompt. There is a red button at the top of the Virtual Machine window to do so.
 
 ## Accessing OpenShift
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
@@ -18,7 +20,7 @@ The virtual machines seem to work best in a Firefox browser on your local workst
 
 If you cannot access the webpage for any of the platforms above, check that the Cisco Secure Client VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the lab administrator know.
 
-Please do not reboot the Virtual Machine, as that will disconnect the VPN.
+Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.
 
 ## OpenShift, Instana, Turbonomic, and Cp4WAIOps credentials:
 
