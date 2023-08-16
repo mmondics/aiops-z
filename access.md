@@ -8,9 +8,11 @@ The virtual machines seem to work best in a Firefox browser on your local workst
 3. When prompted, enter the workshop password: `password`
 4. If prompted, log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You may already be logged in when first accessing the VM.
 
+<!---
 ## Accessing OpenShift
 1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
 2. Use your credentials in the table below. 
+--->
 
 ## Links to platforms
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
