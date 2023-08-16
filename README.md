@@ -71,7 +71,7 @@ Connection instructions with platform URLs and credentials are listed in the [ac
 
 ### Overview of Instana Observability
 
-Instana is an enterprise observability solution that offers application performance management - no matter where the application or infrastructure resides. Instana can monitor both containerized and traditional applications, various infrastructure types including OpenShift, public clouds & other containerization platforms, native Linux, z/OS, websites, databases, and more. The current list of supported technologies can be found [in the Instana documentation](https://www.ibm.com/docs/en/obi/current?topic=supported-technologies).
+Instana is an enterprise observability solution that offers application performance management - no matter where the application or infrastructure resides. Instana can monitor both containerized and traditional applications, various infrastructure types including OpenShift, public clouds & other containerization platforms, native Linux, z/OS, websites, databases, and more. The current list of supported technologies can be found [in the Instana documentation](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies).
 
 For this tutorial, we have set up an environment that includes Instana running on a Linux server which is monitoring an OpenShift on an IBM zSystems cluster through an Instana agent which you will look at in the next section.
 
@@ -136,7 +136,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![attention](images/attention2.png)
 
-    ***Note: website monitoring is currently not configured for this tutorial. This step and the following were left in for completeness.***
+    ***Note: website monitoring is currently not configured for this tutorial. This section was left in for reference.***
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
