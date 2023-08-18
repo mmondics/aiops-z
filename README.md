@@ -134,10 +134,6 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 13. **Click the Websites & Mobile Apps option.**
 
-    ![attention](images/attention2.png)
-
-    ***Note: website monitoring is currently not configured for this tutorial. This section was left in for reference.***
-
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
     You can see that Instana is monitoring one website named Robot Shop Website. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM zSystems. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
@@ -153,10 +149,6 @@ For this tutorial, we have set up an environment that includes Instana running o
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
     What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM zSystems is running.
-
-    ![attention](images/attention2.png)
-
-    ***Note: The remainder of the lab should work in the live environment as it does in the documentation.***
 
 16. **Click the Applications option in the left side menu.**
 
