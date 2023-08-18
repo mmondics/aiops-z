@@ -194,7 +194,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu-kubernetes](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-kubernetes.png)
 
-23. **Click the openshift (cluster) hyperlink.**
+23. **Click the atsocpd1 (cluster) hyperlink.**
 
     OpenShift and other Kubernetes clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed into it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
 
