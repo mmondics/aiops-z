@@ -1,6 +1,6 @@
-# AIOps with OpenShift on IBM zSystems and LinuxONE
+# AIOps with OpenShift on IBM Z and LinuxONE
 
-In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps - and the capabilities they have to monitor and manage OpenShift on IBM zSystems.
+In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps - and the capabilities they have to monitor and manage OpenShift on IBM Z.
 
 ## AIOps Overview
 
@@ -17,7 +17,7 @@ One optional add-on is **Infrastructure Automation**. This Infrastructure automa
 
 *Managed services* provide you with the capability to automate provisioning of infrastructure and virtual machine applications across multiple cloud environments with optional workflow orchestration.
 
-Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM zSystems. The base CP4AIOps platform runs on x86 only.
+Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM Z. The base CP4AIOps platform runs on x86 only.
 
 For more information, see the [IBM Cloud Pak for Watson AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/4.1.1?topic=overview-architecture)
 
@@ -73,7 +73,7 @@ Connection instructions with platform URLs and credentials are listed in the [ac
 
 Instana is an enterprise observability solution that offers application performance management - no matter where the application or infrastructure resides. Instana can monitor both containerized and traditional applications, various infrastructure types including OpenShift, public clouds & other containerization platforms, native Linux, z/OS, websites, databases, and more. The current list of supported technologies can be found [in the Instana documentation](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies).
 
-For this tutorial, we have set up an environment that includes Instana running on a Linux server which is monitoring an OpenShift on an IBM zSystems cluster through an Instana agent which you will look at in the next section.
+For this tutorial, we have set up an environment that includes Instana running on a Linux server which is monitoring an OpenShift on an IBM Z cluster through an Instana agent which you will look at in the next section.
 
 ### Viewing the Instana Agent on OpenShift
 
@@ -136,7 +136,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
-    You can see that Instana is monitoring one website named Robot Shop Website. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM zSystems. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
+    You can see that Instana is monitoring one website named Robot Shop Website. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
 14. **Click the Robot Shop Website hyperlink.**
 
@@ -148,7 +148,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
-    What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM zSystems is running.
+    What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM Z is running.
 
 16. **Click the Applications option in the left side menu.**
 
@@ -304,7 +304,7 @@ As you looked through the various sections of the Instana dashboard, a few error
 
 ### Instana Wrap-up
 
-You should now have a better understanding of Instana observability, how to use the platform, and the OpenShift on IBM zSystems data and metrics it can observe. The deep and broad observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
+You should now have a better understanding of Instana observability, how to use the platform, and the OpenShift on IBM Z data and metrics it can observe. The deep and broad observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
 
 ## Turbonomic
 
@@ -338,7 +338,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-supply-chain](images/turbo-supply-chain.png)
 
-    The first thing to notice is the supply chain on the left side of the page. As discussed in the previous section, Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM zSystems cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machine running our cluster's combined compute/control plane node. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
+    The first thing to notice is the supply chain on the left side of the page. As discussed in the previous section, Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machine running our cluster's combined compute/control plane node. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
 
     ![turbo-business-applications](images/turbo-business-applications.png)
 
@@ -348,7 +348,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-pending-actions-home](images/turbo-pending-actions-home.png)
 
-    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take against the OCP on IBM zSystems cluster to make sure our applications get the resources they need but aren't over-provisioned. You will learn more about actions later in this tutorial.
+    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take against the OCP on IBM Z cluster to make sure our applications get the resources they need but aren't over-provisioned. You will learn more about actions later in this tutorial.
 
     Let's start looking around the other pages in the Turbonomic console.
 
@@ -376,7 +376,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
 48. **In the left side menu, select the Plan option.**
 
-    Turbonomic Plans allow you to run "what if" scenarios that explore the potential impact that actions would have on your target environments. For example, if you added a new compute node to the OpenShift on IBM zSystems cluster, changed the memory and CPU resources for certain Robot Shop pods, and moved certain pods from one node to another, how would that impact your overall resource consumption? What would the impact be to cost? Would it help you meet your SLOs?
+    Turbonomic Plans allow you to run "what if" scenarios that explore the potential impact that actions would have on your target environments. For example, if you added a new compute node to the OpenShift on IBM Z cluster, changed the memory and CPU resources for certain Robot Shop pods, and moved certain pods from one node to another, how would that impact your overall resource consumption? What would the impact be to cost? Would it help you meet your SLOs?
 
     Plans are a powerful tool to understand the impacts of actions you may take. Let's see what happens when we create one now.
 
@@ -392,7 +392,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-plan-options](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-plan-options.png)
 
-    We're given three default options for how to optimize the OpenShift on IBM zSystems cluster. The option we choose will depend on the environment we have and what types of options are authorized for each individual.
+    We're given three default options for how to optimize the OpenShift on IBM Z cluster. The option we choose will depend on the environment we have and what types of options are authorized for each individual.
 
 52. **Select the Optimize Cluster Resources, Placement and Nodes option and then Run Plan.**
 
@@ -412,7 +412,7 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
 56. **Select the Container Platform Dashboard option.**
 
-    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing (only the one IBM zSystems cluster in this demonstration) and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
+    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing (only the one IBM Z cluster in this demonstration) and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
 
     ![turbo-container-dashboard](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-container-dashboard.png)
 
@@ -460,7 +460,7 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
     We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started).
 
-    Next, we'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM zSystems cluster.
+    Next, we'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM Z cluster.
 
 ### Turbonomic Actions
 
@@ -470,11 +470,11 @@ After you deploy your targets, Turbonomic starts to perform market analysis as p
 
 [Source and more information](https://www.ibm.com/docs/en/tarm/8.7.5?topic=started-turbonomic-actions)
 
-#### What Actions are Available for OpenShift on IBM zSystems Targets?
+#### What Actions are Available for OpenShift on IBM Z Targets?
 
-There are different action types for different target environments, and not all of them apply to OpenShift on IBM zSystems. For example, Turbonomic can generate actions to scale cloud VMs to instance types that have discounted rates to reduce cloud consumption costs. This type of action is simply out of scope for an OpenShift cluster running on-premises, as is the case with most IBM zSystems clients.
+There are different action types for different target environments, and not all of them apply to OpenShift on IBM Z. For example, Turbonomic can generate actions to scale cloud VMs to instance types that have discounted rates to reduce cloud consumption costs. This type of action is simply out of scope for an OpenShift cluster running on-premises, as is the case with most IBM Z clients.
 
-For OpenShift on IBM zSystems, Turbonomic can generate the following actions:
+For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
 - Vertically Scale Containers - resize container spec sizes
 
@@ -500,13 +500,13 @@ For OpenShift on IBM zSystems, Turbonomic can generate the following actions:
 
     Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes), performance (avoiding node congestion), and the node selection policies configured in the Turbonomic settings. Similar to vertical container scaling, cluster scaling can certainly impact cost (more or less hardware and resources being used), and performance (more or less resources available to applications).
 
-    When it comes to OpenShift on IBM zSystems, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM zSystems. Therefore, if a node provision/suspension action is generated for an IBM zSystems cluster, administrators will need to perform that action themselves with traditional, manual methods, and then Turbonomic will see that change and reflect it.
+    When it comes to OpenShift on IBM Z, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM Z. Therefore, if a node provision/suspension action is generated for an IBM Z cluster, administrators will need to perform that action themselves with traditional, manual methods, and then Turbonomic will see that change and reflect it.
 
     Turbonomic does, however, support using actions to create calls to third party workflow orchestrators such as Ansible, Terraform, or ServiceNow, if you are so inclined.
 
 #### Manually Executing Actions
 
-As we saw throughout the tour of the Turbonomic platform, we have some pending actions related to the Robot Shop sample application running on the IBM zSystems cluster.
+As we saw throughout the tour of the Turbonomic platform, we have some pending actions related to the Robot Shop sample application running on the IBM Z cluster.
 
 62. **Navigate to the home page and notice the pending actions.**
 
@@ -540,7 +540,7 @@ As we saw throughout the tour of the Turbonomic platform, we have some pending a
 
 In an ideal AIOps strategy, Turbonomic will automatically execute as many actions as possible. Automation results in quicker improvement for application performance as well as reduced time that operations teams must spend manually reviewing and executing actions.
 
-However, the decision between automating and manually executing actions is not just "on" or "off". Decisions to automate will be made by action type, by environment, and by application. Automation decisions will be different for each IBM zSystems client, as well as individuals or groups within the client organization who maintain an environment or application. Furthermore, some action types do not support automation, so Manual or Recommended actions are required.
+However, the decision between automating and manually executing actions is not just "on" or "off". Decisions to automate will be made by action type, by environment, and by application. Automation decisions will be different for each IBM Z client, as well as individuals or groups within the client organization who maintain an environment or application. Furthermore, some action types do not support automation, so Manual or Recommended actions are required.
 
 Turbonomic allows very granular specification of which actions to automate, and to which degree. In this section, we will explore some of the possibilities.
 
@@ -613,7 +613,7 @@ Let's navigate back to the Policies page we looked at previously.
 
 ### Turbonomic Wrap-up
 
-In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM zSystems cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
+In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
 
 ## IBM Cloud Pak for Watson AIOps
 
@@ -788,7 +788,7 @@ Throughout this tutorial, you may have been asking yourself, "Where's the AI in 
 
 ## Wrapping Up
 
-In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage OpenShift on IBM zSystems application. This tutorial only touched the surface of the capabilities of Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps. Each of these solutions can do much more than was covered in this tutorial, and they also support many more technologies than just OpenShift and containerized applications.
+In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage OpenShift on IBM Z application. This tutorial only touched the surface of the capabilities of Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps. Each of these solutions can do much more than was covered in this tutorial, and they also support many more technologies than just OpenShift and containerized applications.
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 
