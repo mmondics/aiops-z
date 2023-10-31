@@ -19,7 +19,7 @@ One optional add-on is **Infrastructure Automation**. This Infrastructure automa
 
 Infrastructure Automation is the one component of IBM Cloud Pak for AIOps that is supported to run on OpenShift on IBM Z. The base CP4AIOps platform runs on x86 only.
 
-For more information, see the [IBM Cloud Pak for AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/4.1.1?topic=overview-architecture)
+For more information, see the [IBM Cloud Pak for AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops/4.2.1?topic=overview-architecture)
 
 This tutorial focuses on the base component of CP4WAIOps - Infrastructure automation is not covered.
 
@@ -324,9 +324,9 @@ To perform Application Resource Management, Turbonomic represents environments h
     
     Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.
 
-Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign services running on your network to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.7.5?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
+Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign services running on your network to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
 
-[Source and more information](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-product-overview)
+[Source and more information](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-product-overview)
 
 ### Navigating the Turbonomic Dashboard
 
@@ -458,7 +458,7 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
     You can see that a custom Business Application can be defined by the custom Group we just looked at. Again, this is a simplistic example, and we could make it more targeted or more inclusive of other entity types if we wished.
 
-    We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started).
+    We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started).
 
     Next, we'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM Z cluster.
 
@@ -468,7 +468,7 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
 After you deploy your targets, Turbonomic starts to perform market analysis as part of its Application Resource Management process. This holistic analysis identifies problems in your environment and the actions you can take to resolve and avoid these problems. Turbonomic then generates a set of actions for that particular analysis and displays it in the Pending Actions charts for you to investigate.
 
-[Source and more information](https://www.ibm.com/docs/en/tarm/8.7.5?topic=started-turbonomic-actions)
+[Source and more information](https://www.ibm.com/docs/en/tarm/8.10.3?topic=started-turbonomic-actions)
 
 #### What Actions are Available for OpenShift on IBM Z Targets?
 
@@ -613,7 +613,7 @@ Let's navigate back to the Policies page we looked at previously.
 
 ### Turbonomic Wrap-up
 
-In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
+In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
 
 ## IBM Cloud Pak for AIOps
 
