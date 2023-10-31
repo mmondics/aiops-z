@@ -1,4 +1,4 @@
-# AIOps with OpenShift on IBM Z and LinuxONE
+# AIOps with IBM Z and LinuxONE
 
 In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
 
@@ -283,7 +283,7 @@ As you looked through the various sections of the Instana dashboard, a few error
 
 ### Instana Wrap-up
 
-You should now have a better understanding of Instana observability, how to use the platform, and the OpenShift on IBM Z data and metrics it can observe. The deep and broad observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
+You should now have a better understanding of Instana observability, how to use the platform, and the IBM Z data and metrics it can observe. The deep and broad observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
 
 ## Turbonomic
 
@@ -767,7 +767,7 @@ Throughout this tutorial, you may have been asking yourself, "Where's the AI in 
 
 ## Wrapping Up
 
-In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage OpenShift on IBM Z application. This tutorial only touched the surface of the capabilities of Instana, Turbonomic, and IBM Cloud Pak for AIOps. Each of these solutions can do much more than was covered in this tutorial, and they also support many more technologies than just OpenShift and containerized applications.
+In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage IBM Z applications and infrastructure.
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 
