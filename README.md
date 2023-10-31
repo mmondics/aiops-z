@@ -25,7 +25,7 @@ This tutorial focuses on the base component of CP4WAIOps - Infrastructure automa
 
 ## Environment Overview
 
-![aiops-arch](aiops-arch-AIOps-workshop.drawio.svg)
+![aiops-arch](aiops-arch-AIOps-workshop.drawio.png)
 
 ## Connecting to the Lab Environment
 
