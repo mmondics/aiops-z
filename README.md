@@ -2,27 +2,6 @@
 
 In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
 
-## AIOps Overview
-
-*IBM Cloud Pak for AIOps* (CP4AIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4AIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
-
-The core functions of IBM Cloud Pak for AIOps can be categorized into five capabilities: *event management, incident detection and resolution, entity extraction, and insight delivery*. These capabilities are supported by a network of connections that gather data. It also offers all facets of the AIOps lifecycle from model training to execution.
-
-One optional add-on is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
-
- - **Infrastructure management**, previously called IBM Red Hat CloudForms.
- - **Managed services**, previously called Terraform & Service Automation or IBM Cloud Automation Manager.
-
-*Infrastructure management* delivers the insight, control, and automation enterprises need to address the challenges of managing virtual environments, which are far more complex than physical ones. This technology enables enterprises with existing virtual infrastructures to improve visibility and control, and those just starting virtualization deployments to build and operate a well-managed virtual infrastructure.
-
-*Managed services* provide you with the capability to automate provisioning of infrastructure and virtual machine applications across multiple cloud environments with optional workflow orchestration.
-
-Infrastructure Automation is the one component of IBM Cloud Pak for AIOps that is supported to run on OpenShift on IBM Z. The base CP4AIOps platform runs on x86 only.
-
-For more information, see the [IBM Cloud Pak for AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops/4.2.1?topic=overview-architecture)
-
-This tutorial focuses on the base component of CP4AIOps - Infrastructure automation is not covered.
-
 ## Environment Overview
 
 ![aiops-arch](aiops-arch-AIOps-workshop.drawio.png)
@@ -314,7 +293,7 @@ Turbonomic is IBM's solution for Application Resource Management (ARM) of cloud 
 
 Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
 
-To perform Application Resource Management, Turbonomic represents environments holistically as a supply chain of resource buyers and sellers, all working together to meet application demand. By empowering buyers (VMs, instances, containers, and services) with a budget to seek the resources that applications need to perform, and sellers to price their available resources (CPU, memory, storage, network) based on utilization in real-time, Turbonomic keeps environments within the desired state. Turbonomic enables environments to achieve the following conflicting goals at the same time:
+Turbonomic enables environments to achieve the following conflicting goals at the same time:
 
 - Assured application performance
         
