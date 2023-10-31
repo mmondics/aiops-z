@@ -24,7 +24,7 @@ If you cannot access the webpage for any of the platforms above, check that the 
 
 Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.
 
-## OpenShift, Instana, Turbonomic, and Cp4WAIOps credentials:
+## OpenShift, Instana, Turbonomic, and CP4AIOps credentials:
 
 ## OpenShift credentials
 

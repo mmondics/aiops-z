@@ -1,10 +1,10 @@
 # AIOps with OpenShift on IBM Z and LinuxONE
 
-In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage OpenShift on IBM Z.
+In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
 
 ## AIOps Overview
 
-*IBM Cloud Pak for AIOps* (CP4WAIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4WAIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
+*IBM Cloud Pak for AIOps* (CP4AIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4AIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
 
 The core functions of IBM Cloud Pak for AIOps can be categorized into five capabilities: *event management, incident detection and resolution, entity extraction, and insight delivery*. These capabilities are supported by a network of connections that gather data. It also offers all facets of the AIOps lifecycle from model training to execution.
 
@@ -21,7 +21,7 @@ Infrastructure Automation is the one component of IBM Cloud Pak for AIOps that i
 
 For more information, see the [IBM Cloud Pak for AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops/4.2.1?topic=overview-architecture)
 
-This tutorial focuses on the base component of CP4WAIOps - Infrastructure automation is not covered.
+This tutorial focuses on the base component of CP4AIOps - Infrastructure automation is not covered.
 
 ## Environment Overview
 
@@ -629,7 +629,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 ### Exploring the CP4AIOps Console
 
-78. **Navigate to your IBM Cloud Pak for AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.**
+78. **Navigate to your IBM Cloud Pak for AIOps dashboard. If you do not have the address for this, reach out to your CP4AIOps administrator.**
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
@@ -637,7 +637,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![cp4waiops-homepage](images/cp4waiops-homepage.png)
 
-    When you first open CP4WAIOps, you are taken to the homepage that displays the most important information that you have access to. Depending on your credentials, different "widgets" will appear for you to see and act on.
+    When you first open CP4AIOps, you are taken to the homepage that displays the most important information that you have access to. Depending on your credentials, different "widgets" will appear for you to see and act on.
 
     The terms and concepts on this homepage may seem foreign at first, but they will become clear throughout the rest of this tutorial. A good place to start is on the AIOps Insights page where you can see a good overview of the CP4AIOps benefits.
 
@@ -647,7 +647,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![aiops-insights](images/aiops-insights.png)
 
-    On this page, we see visualizations of two of the main goals of CP4WAIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
+    On this page, we see visualizations of two of the main goals of CP4AIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
 
     **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
 
@@ -673,7 +673,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![data-tool-connections](images/data-tool-connections.png)
 
-    While there are three connections configured, only the `Instana` connection is a source of data into the cluster. All of the data, events, and metrics you will see in CP4WAIOps is coming from the Instana server you explored earlier in this tutorial. `Slack` and `SSH` are both connections where CP4WAIOps sends information, notifications, and commands which will be discussed in a later section. 
+    While there are three connections configured, only the `Instana` connection is a source of data into the cluster. All of the data, events, and metrics you will see in CP4AIOps is coming from the Instana server you explored earlier in this tutorial. `Slack` and `SSH` are both connections where CP4AIOps sends information, notifications, and commands which will be discussed in a later section. 
 
     Therefore over the course of one week, over 300,000 events have come from only one data source and logs are not even enabled. This is an extremely vast quantity, but pales in comparison to what would be generated by enterprise business applications running in multiple systems with logs enabled.
 
@@ -683,7 +683,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![resource-management](images/resource-management.png)
 
-    Similar to Turbonomic, you will see that CP4WAIOps integrated the Instana Application Perspectives.
+    Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives.
 
 84. **Click the link for the Robot Shop Microservices Application.**
 
@@ -707,7 +707,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `KubeletHasDiskPressure`, or `Value of:alert.summary` contains `You will run out of disk space`. Alerts with either of these tags indicate that an OpenShift node is running out of ephemeral storage and will soon begin evicting pods.
 
-    The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4WAIOps.
+    The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
 
 87. **Navigate to the "Runbooks" tab on the Automations page.**
 
@@ -725,7 +725,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![policy-erroneous](images/policy-erroneous.png)
 
-    This action enables CP4WAIOps to `ssh` to a target server and run the `oc` commands that would be possible if you were to `ssh` there yourself. This action takes advantage of the `SSH` Data connection that we saw in an [earlier section](#data-and-tool-connections).
+    This action enables CP4AIOps to `ssh` to a target server and run the `oc` commands that would be possible if you were to `ssh` there yourself. This action takes advantage of the `SSH` Data connection that we saw in an [earlier section](#data-and-tool-connections).
 
     There are other alternatives to `ssh` - HTTP API calls or Ansible automation playbooks, for example.
 
@@ -745,18 +745,18 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![erroneous-story](images/erroneous-story.png)
 
-    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4WAIOps integrating well together - Instana observability identified the error and its root cause, and CP4WAIOps has not generated an incident that can be used to remediate the problem in an automated way.
+    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has not generated an incident that can be used to remediate the problem in an automated way.
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
-    - Probable cause alerts - CP4WAIOps attempts to derives the root fault component, and the full scope of components that are affected by an incident.
+    - Probable cause alerts - CP4AIOps attempts to derives the root fault component, and the full scope of components that are affected by an incident.
     - Topology - provides a view of the affected components so IT Operators can see the incident in context.
-    - Assignees - you can either manually assign incidents to team members to resolve, or CP4WAIOps can assign people or teams automatically if a policy is configured to do so.
-    - Recommended runbooks - if CP4WAIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended.
+    - Assignees - you can either manually assign incidents to team members to resolve, or CP4AIOps can assign people or teams automatically if a policy is configured to do so.
+    - Recommended runbooks - if CP4AIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended.
   
 #### ChatOps
 
-Earlier in the tutorial, you saw that Slack is configured as a ChatOps endpoint for this CP4WAIOps instance. 
+Earlier in the tutorial, you saw that Slack is configured as a ChatOps endpoint for this CP4AIOps instance. 
 
 **ChatOps** is used to provid a messaging-based interface for quickly reporting incidents to the relevant IT Operations teams who are responsible for remediating the issue. This helps to improve MTTR by getting the relevant incidents in front of the correct people in near-real time.
 
@@ -770,7 +770,7 @@ See the example ChatOps notification below.
 
 #### AI Model Management
 
-Throughout this tutorial, you may have been asking yourself, "Where's the AI in IBM Cloud Pak for AIOps?" This section will show you the AI models that come pre-loaded with CP4WAIOps and the benefits they provide.
+Throughout this tutorial, you may have been asking yourself, "Where's the AI in IBM Cloud Pak for AIOps?" This section will show you the AI models that come pre-loaded with CP4AIOps and the benefits they provide.
 
 92. From the left-side menu, navigate to "AI Model Management".
 
