@@ -18,7 +18,7 @@ The virtual machines seem to work best in a Firefox browser on your local workst
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
 - Instana URL: <https://lcsins01.dmz/#/home>
 - Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/>
-- IBM Cloud Pak for Watson AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
+- IBM Cloud Pak for AIOps URL: <https://cpd-cp4waiops.apps.x2pn.dmz/zen/#/homepage>
 
 If you cannot access the webpage for any of the platforms above, check that the Cisco Secure Client VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the lab administrator know.
 

@@ -1,12 +1,12 @@
 # AIOps with OpenShift on IBM Z and LinuxONE
 
-In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps - and the capabilities they have to monitor and manage OpenShift on IBM Z.
+In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage OpenShift on IBM Z.
 
 ## AIOps Overview
 
-*IBM Cloud Pak for Watson AIOps* (CP4WAIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4WAIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
+*IBM Cloud Pak for AIOps* (CP4WAIOps) integrates **infrastructure and operations management** into a single coherent structure across business applications, virtualized servers, network devices and protocols, and security and storage devices. CP4WAIOps enables CIOs, site reliability engineers (SREs) and IT Operators by uncovering hidden insights from multiple sources of data (like logs, metrics, and events). It delivers those insights directly in to the tools that teams work with (like Slack, Microsoft Teams, and ServiceNow) in near real-time, and also presents them in a web-based user interface.
 
-The core functions of IBM Cloud Pak for Watson AIOps can be categorized into five capabilities: *event management, incident detection and resolution, entity extraction, and insight delivery*. These capabilities are supported by a network of connections that gather data. It also offers all facets of the AIOps lifecycle from model training to execution.
+The core functions of IBM Cloud Pak for AIOps can be categorized into five capabilities: *event management, incident detection and resolution, entity extraction, and insight delivery*. These capabilities are supported by a network of connections that gather data. It also offers all facets of the AIOps lifecycle from model training to execution.
 
 One optional add-on is **Infrastructure Automation**. This Infrastructure automation component consists of the following components, which previously were available with IBM Cloud Pak for Multicloud Management:
 
@@ -17,9 +17,9 @@ One optional add-on is **Infrastructure Automation**. This Infrastructure automa
 
 *Managed services* provide you with the capability to automate provisioning of infrastructure and virtual machine applications across multiple cloud environments with optional workflow orchestration.
 
-Infrastructure Automation is the one component of IBM Cloud Pak for Watson AIOps that is supported to run on OpenShift on IBM Z. The base CP4AIOps platform runs on x86 only.
+Infrastructure Automation is the one component of IBM Cloud Pak for AIOps that is supported to run on OpenShift on IBM Z. The base CP4AIOps platform runs on x86 only.
 
-For more information, see the [IBM Cloud Pak for Watson AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/4.1.1?topic=overview-architecture)
+For more information, see the [IBM Cloud Pak for AIOps Architecture page](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops/4.1.1?topic=overview-architecture)
 
 This tutorial focuses on the base component of CP4WAIOps - Infrastructure automation is not covered.
 
@@ -242,7 +242,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-analytics-2-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-2.png)
 
-    Instana can parse all of the requests, calls, traces, and other information it knows about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, Watson AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
+    Instana can parse all of the requests, calls, traces, and other information it knows about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
 
     Right now we're looking at Incidents that Instana has identified during our timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
@@ -615,21 +615,21 @@ Let's navigate back to the Policies page we looked at previously.
 
 In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.7.5?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
 
-## IBM Cloud Pak for Watson AIOps
+## IBM Cloud Pak for AIOps
 
-### Overview of IBM Cloud Pak for Watson AIOps
+### Overview of IBM Cloud Pak for AIOps
 
-IBM Cloud Pak for Watson AIOps is an AIOps platform that deploys advanced, explainable AI using the IT Operations (ITOps) toolchain data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads.
+IBM Cloud Pak for AIOps is an AIOps platform that deploys advanced, explainable AI using the IT Operations (ITOps) toolchain data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads.
 
 With this Cloud Pak, you can increase your customer satisfaction by **proactively avoiding incidents and accelerating your time to resolution**.
 
 **The scale of IT systems and their complexity is continually increasing** over the last few years because of digital transformation, containerization, and hybrid cloud adoption. IT teams are being inundated with routine maintenance activities and expanding cloud services, leaving them little or no time to contribute toward innovation. To accelerate business automation, reduce complexity, save costs, and automate regular tasks, companies must use the power of AI.
 
-IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. The Cloud Pak **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
+IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. The Cloud Pak **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
 
 ### Exploring the CP4AIOps Console
 
-78. **Navigate to your IBM Cloud Pak for Watson AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.**
+78. **Navigate to your IBM Cloud Pak for AIOps dashboard. If you do not have the address for this, reach out to your CP4WAIOps administrator.**
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
@@ -649,7 +649,7 @@ IBM Cloud Pak for Watson AIOps helps you **uncover hidden insights from multiple
 
     On this page, we see visualizations of two of the main goals of CP4WAIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
 
-    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for Watson AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
+    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
 
     **Noise Reduction** is the concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
 
@@ -788,7 +788,7 @@ Throughout this tutorial, you may have been asking yourself, "Where's the AI in 
 
 ## Wrapping Up
 
-In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage OpenShift on IBM Z application. This tutorial only touched the surface of the capabilities of Instana, Turbonomic, and IBM Cloud Pak for Watson AIOps. Each of these solutions can do much more than was covered in this tutorial, and they also support many more technologies than just OpenShift and containerized applications.
+In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage OpenShift on IBM Z application. This tutorial only touched the surface of the capabilities of Instana, Turbonomic, and IBM Cloud Pak for AIOps. Each of these solutions can do much more than was covered in this tutorial, and they also support many more technologies than just OpenShift and containerized applications.
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 
@@ -796,11 +796,11 @@ We encourage you to look through the references below and reach out to this [tut
 
 - [Instana Product Page](https://www.ibm.com/products/instana)
 - [Turbonomic Product Page](https://www.ibm.com/products/turbonomic)
-- [IBM Cloud Pak for Watson AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-watson-aiops)
+- [IBM Cloud Pak for AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-watson-aiops)
 
 - [Instana Documentation](https://www.ibm.com/docs/en/instana-observability/current)
 - [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm)
-- [IBM Cloud Pak for Watson AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
+- [IBM Cloud Pak for AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
 
 - [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies)
 - [IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
