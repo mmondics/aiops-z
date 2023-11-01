@@ -99,7 +99,7 @@ Instana is an enterprise observability solution that offers application performa
 
 11. **Set the time frame to Last Hour and click the Live button.**
 
-    You are now seeing metrics for our environment over the previous hour, and it is updating in real time with up to 1 second granularity and no sampling.
+    You are now seeing metrics for the environment over the previous hour, and it is updating in real time with up to 1 second granularity and no sampling.
 
     The next thing to notice is the menu on the left side of the page. If you hover over the left side panel, you will see a menu of links that will let you dive into different sections of the Instana dashboard, rather than seeing every option.
 
@@ -113,7 +113,7 @@ Instana is an enterprise observability solution that offers application performa
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
-    You can see that Instana is monitoring one website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
+    You can see that Instana is monitoring one website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application that is deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
 14. **Click the Robot Shop Website hyperlink.**
 
@@ -121,11 +121,11 @@ Instana is an enterprise observability solution that offers application performa
 
     If the page is empty, navigate back to the Robot Shop website from the OpenShift topology page and click around the site to generate data.
 
-    After interacting with the webpages, we now see metrics for page loads and transitions, loading times, any errors, and many more performance indicators. Within this website, there are all kinds of filters and tabs with more information.
+    After interacting with the webpages, you now see metrics for page loads and transitions, loading times, any errors, and many more performance indicators. Within this website, there are all kinds of filters and tabs with more information.
 
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
-    What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application on OpenShift on IBM Z is running.
+    What you've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, you will dig into how the application on OpenShift on IBM Z is running.
 
 16. **Click the Applications option in the left side menu.**
 
@@ -153,11 +153,11 @@ Instana is an enterprise observability solution that offers application performa
 
     ![instana-dependency-graph](https://raw.githubusercontent.com/mmondics/media/main/gifs/instana-dependency-graph.gif)
 
-    You can now see that the cities microservice is the largest contributor to application latency. There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag we specified, and options to configure the Application perspective.
+    You can now see that the cities microservice is the largest contributor to application latency. There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag, and options to configure the Application perspective.
 
 21. **Click through each of the tabs.**
 
-    If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, but we'll get to that in a later section.
+    If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, but you'll get to that in a later section.
 
 22. **Click the Platforms -> Kubernetes option in the left side menu.**
 
@@ -197,21 +197,21 @@ Instana is an enterprise observability solution that offers application performa
 
     ![instana-infrastructure-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-infrastructure-2.png)
 
-    This is a better view of the containerized processes running in our monitored environment. As you might be able to tell by the color coding of the different processes or microservices, we have a few errors with the Robot Shop application. We'll come back to this page in a later section to debug.
+    This is a better view of the containerized processes running in the monitored environment. As you might be able to tell by the color coding of the different processes or microservices, there are a few errors with the Robot Shop application. You'll come back to this page in a later section to debug.
 
 30. **Click the Analytics option in the left side menu.**
 
-    Instana analytics are integrated into each of the panels we've looked at so far, but you can also directly access them from the menu.
+    Instana analytics are integrated into each of the panels you've looked at so far, but you can also directly access them from the menu.
 
     ![instana-menu-analytics](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-analytics.png)
 
-    By default, we're taken to a built-in dashboard for analytics related to Application calls. We can filter by using the left side options, or by creating our own filters at the top.
+    By default, you're taken to a built-in dashboard for analytics related to Application calls. You can filter by using the left side options, or by creating filters at the top.
 
 31. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
 
     ![instana-analytics-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-1.png)
 
-    The source of some of our payment errors is starting to become apparent.
+    The source of some of the payment errors is starting to become apparent.
 
 32. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
 
@@ -221,7 +221,7 @@ Instana is an enterprise observability solution that offers application performa
 
     Instana can parse all of the requests, calls, traces, and other information about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
 
-    Right now we're looking at Incidents that Instana has identified during our timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
+    Right nowyou're looking at Incidents that Instana has identified during the timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
 33. **Navigate back to the Events page and select the Issues tab.**
 
@@ -235,17 +235,17 @@ Instana is an enterprise observability solution that offers application performa
 
     A Change is an Event where Instana recognizes a change in configuration or status of a component it is monitoring, such as a deployment, pod, node, or server. Changes can be correlated with Issues under the umbrella of an Incident.
 
-    This is the end of the navigation portion of this demonstration, so next we will start to put this knowledge to use. We just looked through a small portion of what Instana offers, but you now have a general sense of the capabilities Instana offers and how each is tied to one another through AI-driven algorithms and rules.
+    This is the end of the navigation portion of this demonstration, so next you will start to put this knowledge to use. You now have a general sense of the capabilities Instana offers and how each is tied to one another through AI-driven algorithms and rules.
 
 ### Using Instana to Identify an Issue
 
-As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, we will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
+As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, you will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
 
 37. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
 
     ![instana-menu-events](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-events.png)
 
-    Instana has identified Incidents for us to look into.
+    Instana has identified Incidents to look into.
 
 38. **Click one of the Incidents titled "Erroneous call rate is too high".**
 
@@ -257,27 +257,27 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     ![instana-analytics-3](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-3.png)
 
-    Instana automatically displays a relevant dynamic graph. In our case, this is the erroneous call rate for the payment service. Instana also provides a link to the analysis page for these calls.
+    Instana automatically displays a relevant dynamic graph. In this case, it is the erroneous call rate for the payment service. Instana also provides a link to the analysis page for these calls.
 
 40. **Click the "Analyze Calls" button.**
 
-    Now we're back on the Analysis page we looked at previously, but with the correct filters automatically applied. We can see that the POST /pay/{id} endpoint has 100% erroneous calls. Click to expand that dropdown.
+    Now you're back on the Analysis page you looked at previously, but with the correct filters automatically applied. You can see that the `POST /pay/{id}` endpoint has 100% erroneous calls. Click to expand that dropdown.
 
     ![instana-analytics-4](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-4.png)
 
-    Notice how we see the same information about the erroneous calls for `POST /pay/partner-57` as we did previously, but Instana did all of the filtering for us. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided us with links to the specific calls that failed.
+    Notice how the same information about the erroneous calls for `POST /pay/partner-57` is displayed as it was previously, but Instana did all of the filtering. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided links to the specific calls that failed.
 
 41. **Click one of the "POST /pay/partner-57" links.**
 
     ![instana-analytics-5](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-5.png)
 
-    On the call page, we see how many instances of the erroneous call there are, a trace of the call and at which point the error occurred, the status code and error messages received, and more. From reading through the information on this page, we learn that the source of the error is the payment service in Kubernetes. The related endpoints and infrastructure such as the external MongoDB and the user service look healthy.
+    On the call page, you see how many instances of the erroneous call there are, a trace of the call and at which point the error occurred, the status code and error messages received, and more. From reading through the information on this page, it's apparent that the source of the error is the `payment` service in Kubernetes. The related endpoints and infrastructure such as the external MongoDB and the user service look healthy.
 
 42. **Click the "payment" link under "Service Endpoint List".**
 
     ![instana-analytics-6](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-6.png)
 
-    Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point we would want to look at our Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, we know that the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
+    Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point you would want to look at the Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
 
 ### Instana Wrap-up
 
@@ -315,17 +315,17 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-supply-chain](images/turbo-supply-chain.png)
 
-    The first thing to notice is the supply chain on the left side of the page. Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machines running the OpenShift nodes. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
+    The first thing to notice is the supply chain on the left side of the page. Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because an OpenShift cluster is being monitored, you can see application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machines running the OpenShift nodes. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
 
     ![turbo-business-applications](images/turbo-business-applications.png)
 
-    On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept defined by a group of related objects of your choosing. In the case of this demonstration, our Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
+    On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept defined by a group of related objects of your choosing. In the case of this demonstration, Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
 
     Instana working alongside Turbonomic brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and this Turbonomic functionality would be inaccessible.
 
     ![turbo-pending-actions-home](images/turbo-pending-actions-home.png)
 
-    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take to make sure our applications get the resources they need without over-provisioning. You will learn more about actions later in this tutorial.
+    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending you take to make sure applications get the resources they need without over-provisioning. You will learn more about actions later in this tutorial.
 
     Let's start looking around the other pages in the Turbonomic console.
 
@@ -333,19 +333,19 @@ Turbonomic is a containerized, microservices architected application running in 
 
 44. **In the left side menu, select the Search option.** 
 
-    On the search page, we can filter down to specific types of entities that Turbonomic has identified. For example, if we look at Namespaces, it will return all the namespaces, or projects in OpenShift nomenclature, in our target cluster.
+    On the search page, you can filter down to specific types of entities that Turbonomic has identified. For example, if you look at Namespaces, it will return all the namespaces, or projects in OpenShift nomenclature, in the target cluster.
 
 45. **Select the Namespaces option in the list.**
 
     ![turbo-search-namespaces](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces.png)
 
-    Let's dig into the namespace that contains the Robot Shop sample application.
+    Next you will dig into the namespace that contains the Robot Shop sample application.
 
 46. **Select the `robot-shop` namespace.**
 
     ![turbo-search-namespaces-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces-2.png)
 
-    We now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, etc. We are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
+    You now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, etc. You are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
 
 47. **Scroll through this page looking at the provided charts and tables.**
 
@@ -357,7 +357,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
 49. **Click the New Plan button.**
 
-    Turbonomic automatically recognized that we have a container cluster (OpenShift) as a target, so it offers us the pre-built "Optimize Container Cluster" plan.
+    Turbonomic automatically recognized that you have a container cluster (OpenShift) as a target, so it offers the pre-built "Optimize Container Cluster" plan.
 
 50. **Click the "Optimize Container Cluster" option.**
 
@@ -367,7 +367,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-plan-options](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-plan-options.png)
 
-    We're given three default options for how to optimize the OpenShift on IBM Z cluster.
+    You're given three default options for how to optimize the OpenShift on IBM Z cluster.
 
 52. **Select the Optimize Cluster Resources, Placement and Nodes option and then Run Plan.**
 
@@ -377,7 +377,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
 53. **Scroll through this page looking at the different tables and charts.**
 
-We've seen actions on a few different pages in the Turbonomic platform so far, and we'll come back to these in more detail after making our way through the dashboard.
+You've seen actions on a few different pages in the Turbonomic platform so far, and you'll come back to these in more detail after exploring the dashboard.
 
 #### Dashboard
 
@@ -387,13 +387,13 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
 56. **Select the Container Platform Dashboard option.**
 
-    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
+    On the default Container Platform Dashboard, you have views of all the clusters Turbonomic is managing and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
 
     ![turbo-container-dashboard](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-container-dashboard.png)
 
-    We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started).
+    You've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started).
 
-    Next, we'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM Z cluster.
+    Next, you'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM Z cluster.
 
 ### Turbonomic Actions
 
@@ -413,7 +413,7 @@ For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
     If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is also important - if a container is overprovisioned - it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
 
-    This is the action that we will be demonstrating later in this section.
+    This is the action that will be demonstrated later in this section.
 
 - Horizontally Scale Containers - Scale up the number of pods for a microservice
 
@@ -437,15 +437,15 @@ For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
 #### Manually Executing Actions
 
-As we saw throughout the tour of the Turbonomic platform, we have some pending actions related to the Robot Shop sample application running on the IBM Z cluster.
+As you saw throughout the tour of the Turbonomic platform, you have some pending actions related to the Robot Shop sample application running on the IBM Z cluster.
 
 62. **Navigate to the home page and notice the pending actions.**
 
-    Because we're looking at the home page right now, this represents the pending actions for the global environment. That means that these actions could be targeting workloads in the cluster other than the Robot Shop application. Fortunately, we know that we have a Business Application configured that will scope our view down to just Robot Shop.
+    Because you're looking at the home page right now, this represents the pending actions for the global environment. That means that these actions could be targeting workloads in the cluster other than the Robot Shop application. Fortunately, you know that there is a Business Application configured that will scope the view down to just Robot Shop.
 
 63. **Click the Robot Shop Microservices Business Application.**
 
-    Now we'll only see the pending actions that we're interested in. 
+    Now you'll only see the pending actions that you're interested in. 
 
 64. **Click the Pending Actions just to the right of the supply chain chart.**
 
@@ -457,11 +457,11 @@ As we saw throughout the tour of the Turbonomic platform, we have some pending a
 
     ![turbo-scaling-actions-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-2.png)
 
-    Here we see more details about exactly what Turbonomic is recommending we do via the action. It includes resizing both CPU and memory limits for the pod, and we can see the result that Turbonomic expects in terms of CPU throttling and resource utilization as a percentage of CPU and memory limits.
+    Here you see more details about exactly what Turbonomic is recommending you do via the action. It includes resizing both CPU and memory limits for the pod, and you can see the result that Turbonomic expects in terms of CPU throttling and resource utilization as a percentage of CPU and memory limits.
 
     ![turbo-scaling-actions-3](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-3.png)
 
-    Because this is a manual action (rather than Recommended) we are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
+    Because this is a manual action (rather than Recommended) you are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
 
     Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions is to *automate* as many of these processes as possible. Turbonomic supports automatic executiion of actions.
 
@@ -499,7 +499,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![aiops-insights](images/aiops-insights.png)
 
-    On this page, we see visualizations of two of the main goals of CP4AIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
+    On this page, you see visualizations of two of the main goals of CP4AIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
 
     **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to resolution. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
 
@@ -539,7 +539,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     You now have a scoped view of just the resources associated with the Robot Shop Microservices Application - all of the Kubernetes objects such as pods, services, and routes, but also the individual application components within the containers such as `.jar` files and even the API calls made to each endpoint. 
 
-    You also might also see some *incidents* in this view if they are associate with the application. We will look more at these later on.
+    You also might also see some *incidents* in this view if they are associate with the application. You will look more at these later on.
 
 #### Automations
 
@@ -573,7 +573,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![policy-erroneous](images/policy-erroneous.png)
 
-    This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue. This action takes advantage of the `SSH` Data connection that we saw in an [earlier section](#data-and-tool-connections).
+    This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue. This action takes advantage of the `SSH` Data connection that you saw in an [earlier section](#data-and-tool-connections).
 
     There are other alternatives to `ssh` - HTTP API calls or Ansible automation playbooks, for example.
 
@@ -593,7 +593,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![erroneous-story](images/erroneous-story.png)
 
-    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has generated an incident that can be used to remediate the problem in an automated way.
+    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now you can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has generated an incident that can be used to remediate the problem in an automated way.
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
