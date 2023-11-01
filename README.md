@@ -28,7 +28,7 @@ Connection instructions with platform URLs and credentials are listed in the [ac
 
     ![robot-shop-topology](images/robot-shop-topology.png)
 
-    Robot Shop is a simulated online store where you can purchase robots and AI solutions. Robot Shop is a polyglot - meaning it is made up of many different microservices that were written in different programming languages. There are 12 different microservices written in languages including NodeJS, Python, Spring Boot, and Go, along with containerized databases including MongoDB, MySQL, and Redis. Each icon in the Topology represents an OpenShift deployment for a specific microservice. Each microservice is responsible for a single function of the Robot Shop application that you will see in the following steps.
+    Robot Shop is a simulated online store where you can purchase robots and AI solutions. Robot Shop is made up of many different microservices that are written in different programming languages. There are 12 different microservices written in languages including NodeJS, Python, Spring Boot, and Go, along with containerized databases including MongoDB, MySQL, and Redis. Each icon in the Topology represents an OpenShift deployment for a specific microservice. Each microservice is responsible for a single function of the Robot Shop application that you will see in the following steps.
 
 5. **Open the Robot Shop web application by clicking the small button in the top right of the `web` icon.**
 
@@ -44,7 +44,7 @@ Connection instructions with platform URLs and credentials are listed in the [ac
    
     You can register a new user, explore the catalog of purchasable robots, give them ratings, and simulate a purchase.
 
-    Notice that from the OpenShift and Robot Shop perspectives, you don't get much of a sense of how the various microservice applications are plumbed together, how they are performing, if they have the correct number of resources, or if any issues are affecting the application currently or in the near future. In other words, there is a lack of *observability*, *application performance management*, and *proactive problem remediation*.
+    Notice that from the OpenShift and Robot Shop perspectives, you don't get much of a sense of how the various microservice applications are plumbed together, how they are performing, if they have the correct amount of resources, or if any issues are affecting the application currently. In other words, there is a lack of *observability*, *application performance management*, and *proactive problem remediation*.
 
 ## Instana
 
@@ -52,17 +52,15 @@ Connection instructions with platform URLs and credentials are listed in the [ac
 
 Instana is an enterprise observability solution that offers application performance management - no matter where the application or infrastructure resides. Instana can monitor both containerized and traditional applications, various infrastructure types including OpenShift, public clouds & other containerization platforms, native Linux, z/OS, websites, databases, and more. The current list of supported technologies can be found [in the Instana documentation](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies).
 
-For this tutorial, we have set up an environment that includes Instana running on a Linux server which is monitoring an OpenShift on an IBM Z cluster through an Instana agent which you will look at in the next section.
-
 ### Viewing the Instana Agent on OpenShift
 
 7. In the OpenShift cluster, **navigate to the `instana-agent` project then click the circular icon in the Topology page.**
 
     ![instana-agent-daemonset](images/instana-agent-daemonset.png)
 
-    This is the Instana agent that is collecting all the information about OpenShift and the containerized applications running on it and then sending that information over to the Instana server.
+    This is the Instana agent that is collecting all the information about OpenShift and the containerized applications running on it and sending that information to the Instana server.
     
-    The agent is deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node they run on.
+    The agent is deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node it runs on.
 
 8. **Click the `view logs` hyperlink next to one of the pods in the right-side menu.**
 
@@ -101,7 +99,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 11. **Set the time frame to Last Hour and click the Live button.**
 
-    You are now seeing metrics for our environment over the previous hour, and it is updating in real time.
+    You are now seeing metrics for our environment over the previous hour, and it is updating in real time with up to 1 second granularity and no sampling.
 
     The next thing to notice is the menu on the left side of the page. If you hover over the left side panel, you will see a menu of links that will let you dive into different sections of the Instana dashboard, rather than seeing every option.
 
@@ -115,7 +113,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
 
-    You can see that Instana is monitoring one website named Robot Shop Website. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
+    You can see that Instana is monitoring one website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application we have deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing actual browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
 14. **Click the Robot Shop Website hyperlink.**
 
@@ -127,7 +125,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
-    What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application running on OpenShift on IBM Z is running.
+    What we've seen so far is all related to the *website* metrics, not the *application* itself. In the next section, we will dig into how the application on OpenShift on IBM Z is running.
 
 16. **Click the Applications option in the left side menu.**
 
@@ -135,9 +133,9 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 17. **Click the Robot Shop Microservices Application hyperlink.**
 
-    An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Microservices application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`. Because all of our containerized microservices are running in an OpenShift namespace named `robot-shop`, they all appear in this application perspective. This is a very simple example of a tag, and it works because we only have one Kubernetes (OpenShift) cluster, so only one namespace named `robot-shop`. If we had another cluster with a namespace of the same name, we might want to add another tag to select the Kubernetes cluster's zone or name.
+    An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Microservices application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`.
 
-    Alongside the Robot Shop application running in OpenShift, there is a container running a Python application that generates load to each microservice. The metrics you see now in the application perspective are coming from that load generator. At the top of the page, you can see the total number of calls, the number of erroneous calls, and the mean latency for each call over the past hour. Based on the number of total calls, you can see that Instana is able to monitor an incredible amount of data in real time and provide actionable insights against it. Each chart can be interacted with in various ways. For example, the total calls graph can be filtered by return code.
+    Alongside the Robot Shop application running in OpenShift, there is a container running a Python application that generates load to each microservice. The metrics you see now in the application perspective are coming from that load generator. At the top of the page, you can see the total number of calls, the number of erroneous calls, and the mean latency for each call over the past hour. Each chart can be interacted with in various ways. For example, the total calls graph can be filtered by return code.
 
 18. **Click to hide each return code other than `500`.**
 
@@ -149,7 +147,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-dependencies](https://raw.githubusercontent.com/mmondics/media/main/images/instana-dependencies.png)
 
-    The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and also some visual representations of errors, high latency, or erroneous calls. You can select these options in the top left of the graph.
+    The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and visual representations of errors, high latency, or erroneous calls. You can select these options in the top left of the graph.
 
 20. **Click the dropdown labeled None and select Max Latency.**
 
@@ -167,7 +165,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 23. **Click the atsocpd1 (cluster) hyperlink.**
 
-    OpenShift and other Kubernetes clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed into it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
+    OpenShift clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed on it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
 
     The Summary page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Pods" show potential hotspots which you might want to have a look at.
 
@@ -177,7 +175,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 25. **Click the Events tab.**
 
-    The Events tab shows all of the Kubernetes events in the cluster in real time. It also provides links to the related objects for quick access. The remaining tabs are all Kubernetes objects in the cluster and the metrics displayed depend on the object type.
+    The Events tab shows all of the Kubernetes events in the cluster in real time. It also provides links to the related objects for quick access. The remaining tabs are Kubernetes objects in the cluster and the metrics displayed depend on the object type.
 
 26. **Click through the tabs to show various objects and their metrics.**
 
@@ -187,13 +185,13 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-menu-infrastructure](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-infrastructure.png)
 
-    You will be taken to the Infrastructure map. The Infrastructure map provides an overview of all monitored systems, which are initially grouped by options of your choice. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system and will change color to reflect the component's health.
+    The Infrastructure map provides an overview of all monitored systems, which are initially grouped by options of your choice. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system.
 
 28. **With the filters in the bottom right of the page, select the Host Perspective and OS architecture for Grouping.**
 
     ![instana-infrastructure-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-infrastructure-1.png)
 
-    Now we are looking at the three monitored systems grouped by architecture. Each block within the pillars is a single process or microservice. Let's take a different look at the OpenShift cluster.
+    Now you are looking at the three monitored systems grouped by architecture. Each block within the pillars is a single process or microservice. Let's take a different look at the OpenShift cluster.
 
 29. **Select the Container Perspective and Grouping by Kubernetes Namespace.**
 
@@ -203,7 +201,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 30. **Click the Analytics option in the left side menu.**
 
-    Instana includes a very powerful AI-driven analytics solution out of the box. These analytics are integrated into each of the panels we've looked at so far, but you can also directly access them from the menu.
+    Instana analytics are integrated into each of the panels we've looked at so far, but you can also directly access them from the menu.
 
     ![instana-menu-analytics](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-analytics.png)
 
@@ -221,7 +219,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
     ![instana-analytics-2-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-2.png)
 
-    Instana can parse all of the requests, calls, traces, and other information it knows about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
+    Instana can parse all of the requests, calls, traces, and other information about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
 
     Right now we're looking at Incidents that Instana has identified during our timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
@@ -243,7 +241,7 @@ For this tutorial, we have set up an environment that includes Instana running o
 
 As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, we will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
 
-37. Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.
+37. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
 
     ![instana-menu-events](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-events.png)
 
@@ -267,7 +265,7 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     ![instana-analytics-4](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-4.png)
 
-    Notice how we see the same information about the erroneous calls for POST /pay/partner-57 as we did previously, but Instana did all of the thinking and filtering for us. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided us with links to the specific calls that failed.
+    Notice how we see the same information about the erroneous calls for `POST /pay/partner-57` as we did previously, but Instana did all of the filtering for us. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided us with links to the specific calls that failed.
 
 41. **Click one of the "POST /pay/partner-57" links.**
 
@@ -279,17 +277,17 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     ![instana-analytics-6](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-6.png)
 
-    And again, we confirm that the payment service in OpenShift is the root cause of these Incidents. At this point we would want to look at our Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, we know that the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
+    Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point we would want to look at our Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, we know that the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
 
 ### Instana Wrap-up
 
-You should now have a better understanding of Instana observability, how to use the platform, and the IBM Z data and metrics it can observe. The deep and broad observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
+You should now have a better understanding of Instana observability, how to use the platform, and the IBM Z data and metrics it can observe. The observability provided by Instana set the stage for other IBM solutions to **use that data** to make AI-driven insights around application performance and problem remediation.
 
 ## Turbonomic
 
 ### Overview of Turbonomic Application Resource Management 
 
-Turbonomic is IBM's solution for Application Resource Management (ARM) of cloud and on-premises environments.
+Turbonomic is IBM's solution for Application Resource Management (ARM) for both cloud and on-premises environments.
 
 Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
 
@@ -303,7 +301,7 @@ Turbonomic enables environments to achieve the following conflicting goals at th
     
     Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.
 
-Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign services running on your network to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
+Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign environments to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
 
 [Source and more information](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-product-overview)
 
@@ -317,17 +315,17 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-supply-chain](images/turbo-supply-chain.png)
 
-    The first thing to notice is the supply chain on the left side of the page. As discussed in the previous section, Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machine running our cluster's combined compute/control plane node. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
+    The first thing to notice is the supply chain on the left side of the page. Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because we are monitoring an OpenShift cluster, we can see our application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machines running the OpenShift nodes. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.
 
     ![turbo-business-applications](images/turbo-business-applications.png)
 
-    On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept, not an OpenShift one. Business Applications can be defined in Turbonomic as a group of related objects of your choosing. In the case of this demonstration, our Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
+    On the right side of the page, you can see there is a "Business Application" listed with the name `Robot Shop Microservices Application`. A Business Application is a Turbonomic concept defined by a group of related objects of your choosing. In the case of this demonstration, our Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.
 
-    Using Instana alongside Turbonomic in this way brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and the Turbonomic capabilities would be more limited.
+    Instana working alongside Turbonomic brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and this Turbonomic functionality would be inaccessible.
 
     ![turbo-pending-actions-home](images/turbo-pending-actions-home.png)
 
-    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take against the OCP on IBM Z cluster to make sure our applications get the resources they need but aren't over-provisioned. You will learn more about actions later in this tutorial.
+    Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending we take to make sure our applications get the resources they need without over-provisioning. You will learn more about actions later in this tutorial.
 
     Let's start looking around the other pages in the Turbonomic console.
 
@@ -347,7 +345,7 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-search-namespaces-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces-2.png)
 
-    We now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, and more. We are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
+    We now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, etc. We are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
 
 47. **Scroll through this page looking at the provided charts and tables.**
 
@@ -356,8 +354,6 @@ Turbonomic is a containerized, microservices architected application running in 
 48. **In the left side menu, select the Plan option.**
 
     Turbonomic Plans allow you to run "what if" scenarios that explore the potential impact that actions would have on your target environments. For example, if you added a new compute node to the OpenShift on IBM Z cluster, changed the memory and CPU resources for certain Robot Shop pods, and moved certain pods from one node to another, how would that impact your overall resource consumption? What would the impact be to cost? Would it help you meet your SLOs?
-
-    Plans are a powerful tool to understand the impacts of actions you may take. Let's see what happens when we create one now.
 
 49. **Click the New Plan button.**
 
@@ -371,13 +367,13 @@ Turbonomic is a containerized, microservices architected application running in 
 
     ![turbo-plan-options](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-plan-options.png)
 
-    We're given three default options for how to optimize the OpenShift on IBM Z cluster. The option we choose will depend on the environment we have and what types of options are authorized for each individual.
+    We're given three default options for how to optimize the OpenShift on IBM Z cluster.
 
 52. **Select the Optimize Cluster Resources, Placement and Nodes option and then Run Plan.**
 
     ![turbo-optimize](images/turbo-optimize.png)
 
-    After the plan runs, we're told what our configuration parameters were - which settings were enabled or disabled - and the summary of the impact that the plan actions would have on the cluster. We can scroll through this page to see more details about the individual actions and before-and-after scenarios for different cluster metrics.
+    After the plan runs, you see the summary of the impact that the plan actions would have on the cluster. You can scroll through this page to see details about the individual actions and before-and-after scenarios for different cluster metrics.
 
 53. **Scroll through this page looking at the different tables and charts.**
 
@@ -387,55 +383,13 @@ We've seen actions on a few different pages in the Turbonomic platform so far, a
 
 55. **In the left side menu, select the Dashboard option.**
 
-    Turbonomic Dashboards provide views of the target environments based on certain personas or environment types. These are particularly helpful when there are many different types of targets being managed, because the global scope from the Turbonomic homepage can provide too much information that might not be relevant to everyone. There are a few built-in dashboards that comes pre-installed, or you can create your own custom dashboards that display specific information you pick.
+    Turbonomic Dashboards provide views of the target environments based on certain personas or environment types. These are particularly helpful when there are many different types of targets being managed, because the global scope from the Turbonomic homepage can provide too much information that might not be relevant to everyone. There are a few built-in dashboards that comes pre-installed, or you can create your own custom dashboards that display specific information of your choosing.
 
 56. **Select the Container Platform Dashboard option.**
 
-    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing (only the one IBM Z cluster in this demonstration) and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
+    On the default Container Platform Dashboard, we have views of all the clusters Turbonomic is managing and the top namespaces and services by resource usage, along with any actions correlated with entities within those namespaces.
 
     ![turbo-container-dashboard](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-container-dashboard.png)
-
-#### Settings (for information only)
-
-**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
-
-57. **In the left side menu, select the Settings option.**
-
-    The settings page is where administrators can manage the Turbonomic platform itself, including adding new targets, creating groups of resources, editing policies to suit your organization, creating new users or integrating with LDAP, and more. Let's take a look at the Policies.
-
-58. **Select the Policies option in the top row.**
-
-    Here we see all the default policies for each entity type that Turbonomic can manage. These policies are what determine what actions are generated, what thresholds must be met for the actions to be generated, and more. The policies are specific to each entity type, let's take Virtual Machines as an example.
-
-59. **Select the Virtual Machines Defaults option in the list.**
-
-    ![turbo-policy-1](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-policy-1.png)
-
-    The first thing we see is the Action Acceptance settings for each potential action. The three action "Modes" are Recommend, Manual, or Automatic. Recommended actions simply recommend the action for users to take. Users then would need to go into OpenShift, the Linux guest, the application, or the hypervisor and perform the action through the appropriate means on the platform. Manual actions are quite similar in that they recommend an action to take, but they also provide an option to execute that action through the Turbonomic user interface. Automatic actions execute the actions automatically, without waiting for any intervention or confirmation from users. You can also disable an action type completely if you don't want them to be considered by Turbonomic or offered to users.
-
-    ![turbo-policy-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-policy-2.png)
-
-    Further down in the options, we see the constraints that can be modified for actions against virtual machines. These are used to set minimum and maximum bounds for VPU and memory values, target utilization, and more. Each entity type has its own policy with different configurable options that determine how Turbonomic acts.
-
-#### Groups (for information only)
-
-**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
-
-60. **Navigate back to Settings and then select Groups.**
-
-    ![turbo-groups](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-groups.png)
-
-    Looking in the Groups option in the Settings you can see that we have a Group named "Robot Shop Container Pod Group". This is a custom group we set up ahead of time that is made up of all pods in namespaces called `robot-shop`. This is a very simplistic example of a group - you could make it more targeted, for example by specific clusters (if we had more than one), or you could create a group made up of multiple entity types, such as containers on OpenShift clusters as well as databases on Virtual Machines.
-
-#### Application Topology (for information only)
-
-**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
-
-61. **Navigate back to Settings and then select Application Topology.**
-
-    ![turbo-application-topology](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-application-topology.png)
-
-    You can see that a custom Business Application can be defined by the custom Group we just looked at. Again, this is a simplistic example, and we could make it more targeted or more inclusive of other entity types if we wished.
 
     We've reached the end of the Turbonomic Platform mini tour. If you'd like more details about any of these capabilities, there is much* more information included in the "Getting Started" pages of the [Turbonomic documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started).
 
@@ -451,13 +405,13 @@ After you deploy your targets, Turbonomic starts to perform market analysis as p
 
 #### What Actions are Available for OpenShift on IBM Z Targets?
 
-There are different action types for different target environments, and not all of them apply to OpenShift on IBM Z. For example, Turbonomic can generate actions to scale cloud VMs to instance types that have discounted rates to reduce cloud consumption costs. This type of action is simply out of scope for an OpenShift cluster running on-premises, as is the case with most IBM Z clients.
+There are different action types for different target environments, and not all of them apply to OpenShift on IBM Z. For example, Turbonomic can generate actions to scale cloud VMs to instance types that have discounted rates to reduce cloud consumption costs. This type of action is typically out of scope for an OpenShift on IBM Z cluster running on-premises.
 
 For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
 - Vertically Scale Containers - resize container spec sizes
 
-    If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is just as important - if a container is overprovisioned - if it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
+    If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is also important - if a container is overprovisioned - it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
 
     This is the action that we will be demonstrating later in this section.
 
@@ -468,20 +422,18 @@ For OpenShift on IBM Z, Turbonomic can generate the following actions:
     An APM solution such as Instana is required for this action type. Turbonomic needs metric data from the APM about response time and transactions speeds in order to enforce SLOs.
 
 - Pod Moves - move a pod from one node to another where more resources are available.
-
-    One of the fundamental functionality gaps in Kubernetes (and therefore OpenShift), is the lack of pod rescheduling based on node resources. The Kubernetes scheduler decides where to place pods only at the time they are initially deployed. Pods will then stay on that same node for their lifecycle, no matter what changes on the node, what else is deployed afterwards, or how much the applications resource usage changes over time. Kubernetes will only move pods to new nodes at the point where it starts evicting pods due to severe lack of resources - there is no proactive movement, and the pod eviction results in application downtime until the new pod is spun up elsewhere.
     
-    Turbonomic addresses this gap by continuously moving pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
+    Turbonomic continuously moves pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
 
     There are some caveats here as it relates to RWO persistentVolumes and statefulSets, and can read more information in the KubeTurbo wiki [here](https://github.com/turbonomic/kubeturbo/wiki/Action-Details#pod-move-actions-that-assure-availability).
 
 - Cluster Scaling - Provisioning or Suspending OpenShift Nodes
 
-    Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes), performance (avoiding node congestion), and the node selection policies configured in the Turbonomic settings. Similar to vertical container scaling, cluster scaling can certainly impact cost (more or less hardware and resources being used), and performance (more or less resources available to applications).
+    Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes), performance (avoiding node congestion), and the node selection policies configured in the Turbonomic settings.
 
-    When it comes to OpenShift on IBM Z, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM Z. Therefore, if a node provision/suspension action is generated for an IBM Z cluster, administrators will need to perform that action themselves with traditional, manual methods, and then Turbonomic will see that change and reflect it.
+    For OpenShift on IBM Z, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM Z. Therefore, if a node provision/suspension action is generated for an IBM Z cluster, administrators will need to perform that action themselves with manual methods and then Turbonomic will see that change.
 
-    Turbonomic does, however, support using actions to create calls to third party workflow orchestrators such as Ansible, Terraform, or ServiceNow, if you are so inclined.
+    Turbonomic does, however, support using actions to create calls to third party workflow orchestrators such as [Ansible](https://www.redhat.com/en/technologies/management/ansible) which does have the ability to add a node to an OpenShift cluster.
 
 #### Manually Executing Actions
 
@@ -493,15 +445,15 @@ As we saw throughout the tour of the Turbonomic platform, we have some pending a
 
 63. **Click the Robot Shop Microservices Business Application.**
 
-    Now we'll only see the pending actions that we're currently interested in. 
+    Now we'll only see the pending actions that we're interested in. 
 
 64. **Click the Pending Actions just to the right of the supply chain chart.**
 
     ![turbo-scaling-actions](images/turbo-scaling-actions.png)
 
-    As you can see, all of the actions here are related to the robot shop microservices. Some are related to CPU resizing, and some are related to memory resizing, but all of them want us to increase their allotted resources for the sake of application performance. Let's look at one for example.
+    All the actions here are related to the robot shop microservices. Some are related to CPU resizing and some are related to memory resizing. Let's look at one for example.
 
-65. **Click the details button to far right of the action to drop down more details. Pick one that calls for both CPU and memory changes, like in the image below. `shipping` is usually a good one to look at.**
+65. **Click the details button to far right of the action to drop down more details. `shipping` is usually a good one to look at.**
 
     ![turbo-scaling-actions-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-2.png)
 
@@ -509,100 +461,21 @@ As we saw throughout the tour of the Turbonomic platform, we have some pending a
 
     ![turbo-scaling-actions-3](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-3.png)
 
-    And because this is a Manual action, as opposed to Recommended, we are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
+    Because this is a manual action (rather than Recommended) we are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
 
-    Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions like Turbonomic is to *automate* as many of these processes as possible. In the next section, we'll see a few of the ways to put Turbonomic on autopilot and let it automatically execute actions.
+    Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions is to *automate* as many of these processes as possible. Turbonomic supports automatic executiion of actions.
 
-#### Automatically Executing Actions (for information only)
-
-**This section cannot be completed by users with an "Advisor" credential. They are left in this tutorial for education and completeness.**
-
-In an ideal AIOps strategy, Turbonomic will automatically execute as many actions as possible. Automation results in quicker improvement for application performance as well as reduced time that operations teams must spend manually reviewing and executing actions.
-
-However, the decision between automating and manually executing actions is not just "on" or "off". Decisions to automate will be made by action type, by environment, and by application. Automation decisions will be different for each IBM Z client, as well as individuals or groups within the client organization who maintain an environment or application. Furthermore, some action types do not support automation, so Manual or Recommended actions are required.
-
-Turbonomic allows very granular specification of which actions to automate, and to which degree. In this section, we will explore some of the possibilities.
-
-Let's navigate back to the Policies page we looked at previously.
-
-66. **Navigate to Settings -> Policies.**
-
-    The Default policies listed on this page are global - they determine the behavior of *all* actions of the same type that Turbonomic generates. For example, if you allow Turbonomic to automate Container Spec Resizing, it will automatically resize all container entities that Turbonomic manages - no matter which cluster, application, or geography.
-
-    Let's see what this looks like, without actually making the change.
-
-67. **Select the Workload Controller Defaults option, and then click the edit button associated with "Resize".**
-
-68. **Select the "Action Acceptance" setting, which is currently set to "Manual".**
-
-    Here we see that we could change "Manual" to "Automatic" to allow Turbonomic to automatically resize all Pods at its own will.
-
-    Changing this global configuration may not always make sense - especially in Turbonomic instances that manage various environments with different needs and priorities. Next, we'll look at how we can create our own Automation Policies that apply to scoped subsets of entities managed by Turbonomic.
-
-69. **Close out of the global Policy configuration without submitting.**
-
-    We'll create a new Automation Policy to resize OpenShift containers in the user interface. Resizing is controlled by Workload Controllers, so we'll first create a group of all the Robot Shop Workload Controllers.
-
-70. **Navigate to Settings -> Groups -> New Group -> Workload Controller.**
-
-71. **Fill the form as follows.**
-
-    - Group Name: `Robot Shop Workload Controller Group`
-    - Type: `Dynamic`
-    - Add Filter -> Namespace: `robot-shop`
-
-    ![robot-shop-workload-controller-group](https://raw.githubusercontent.com/mmondics/media/main/images/robot-shop-workload-controller-group.png)
-
-72. **Then save the group.**
-
-    Now we can create a new Automation Policy that will only affect these workload controllers.
-
-73. **Navigate to Settings -> Policies.**
-
-74. **Click New Automation Policy and then select Workload Controller.**
-
-    Let's fill out the form to create a new automation policy scoped for the Robot Shop application.
-
-75. **Fill out the fields as follows.**
-
-    - Name: `Robot Shop Automation Policy`
-    - Scope: Select Add Workload Controller Groups -> `Robot Shop Workload Controller Group` -> Select.
-    - Policy Schedule: Select Attach Schedule -> New Schedule, create a new schedule as follows.
-
-        - Schedule Name: `Robot Shop Automation Schedule`
-        - Recurrence: `Daily`
-        - Repeat Every: `1 Day`
-
-        ![turbo-schedule](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-schedule.png)
-
-    - Automation and Orchestration: Add Action -> Fill out form as follows.
-      
-      - Action Type: `Resize`
-      - Action Acceptance: `Automatic`
-
-76. **Then click Submit.**
-
-77. **After reviewing the policy, click Save Policy.**
-
-    ![turbo-robot-shop-policy](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-robot-shop-policy.png)
-
-    At this point, the Robot Shop application containers will be resized once daily. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  
-
-    *With automation configured, OpenShift developer and administrators should continue to monitor the actions that Turbonomic takes over time and adjust the custom policy if needed, but they should have the peace of mind knowing that their application resources are right-sized and will adjust as they need to in the future.*
+    For example, the Robot Shop application containers could be daily or hourly as determined by an operations team. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  
 
 ### Turbonomic Wrap-up
 
-In this demonstration, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
+In this section, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started) as well as in this [IBM article](https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/).
 
 ## IBM Cloud Pak for AIOps
 
 ### Overview of IBM Cloud Pak for AIOps
 
-IBM Cloud Pak for AIOps is an AIOps platform that deploys advanced, explainable AI using the IT Operations (ITOps) toolchain data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads.
-
-With this Cloud Pak, you can increase your customer satisfaction by **proactively avoiding incidents and accelerating your time to resolution**.
-
-**The scale of IT systems and their complexity is continually increasing** over the last few years because of digital transformation, containerization, and hybrid cloud adoption. IT teams are being inundated with routine maintenance activities and expanding cloud services, leaving them little or no time to contribute toward innovation. To accelerate business automation, reduce complexity, save costs, and automate regular tasks, companies must use the power of AI.
+IBM Cloud Pak for AIOps is an AIOps platform that deploys advanced, explainable AI using your organization's data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads and **proactively avoid incidents and accerlate your time to resolution**.
 
 IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. The Cloud Pak **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
 
@@ -628,17 +501,15 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     On this page, we see visualizations of two of the main goals of CP4AIOps - Improved Mean Time to Restore (MTTR) and Reduction of Noise.
 
-    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to when the failure resolves and operations resume. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
+    **Mean Time to Resolution (MTTR)** is the total time period from the start of a failure to resolution. For business-critical applications, downtime of just a few minutes can mean thousands or millions of dollars' worth of lost revenue. IBM Cloud Pak for AIOps reduces MTTR by using AI-driven insights to recommend actions and runbooks to solve the issue more quickly.
 
     **Noise Reduction** is the concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
 
-    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation if incidents are repeating.
+    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation for repeating incidents.
 
     Some terminology:
 
     - **Events** are a record containing structured data that summarizes key attributes of an occurrence on a managed entity, which might be a network resource, some part of that resource, or other key element associated with your network, services, or applications.
-
-        An event might or might not indicate something anomalous and is a point-in-time, immutable statement about the entity in question.
 
     - **Alerts** represent an ongoing anomalous condition against a single managed entity. Unlike events, alerts might evolve over time as the condition changes. Alerts have a start and an end time. The creation and evolution of alerts are informed by events.
 
@@ -652,9 +523,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![data-tool-connections](images/data-tool-connections.png)
 
-    While there are three connections configured, only the `Instana` connection is a source of data into the cluster. All of the data, events, and metrics you will see in CP4AIOps is coming from the Instana server you explored earlier in this tutorial. `Slack` and `SSH` are both connections where CP4AIOps sends information, notifications, and commands which will be discussed in a later section. 
-
-    Therefore over the course of one week, over 300,000 events have come from only one data source and logs are not even enabled. This is an extremely vast quantity, but pales in comparison to what would be generated by enterprise business applications running in multiple systems with logs enabled.
+    All the data, events, and metrics you see in CP4AIOps are coming from the Instana server you explored earlier in this tutorial. `Slack` and `SSH` are both connections where CP4AIOps sends information, notifications, and commands which will be discussed in a later section. 
 
 #### Resource Management
 
@@ -678,7 +547,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![automations-policies](images/automations-policies.png)
 
-    The automation tools - policies, runbooks, and actions - help you resolve incidents quickly by setting up and enabling an automatic response as situations arise. Starting up additional capacity or restarting a failed service can happen before your team knows there is an issue.
+    The automation tools - policies, runbooks, and actions - help you resolve incidents quickly by setting up and enabling an automatic response as situations arise.
 
     **Policies** are rules that contain multiple condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
@@ -686,7 +555,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `KubeletHasDiskPressure`, or `Value of:alert.summary` contains `You will run out of disk space`. Alerts with either of these tags indicate that an OpenShift node is running out of ephemeral storage and will soon begin evicting pods.
 
-    The policy also stats what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
+    The policy also states what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
 
 87. **Navigate to the "Runbooks" tab on the Automations page.**
 
@@ -704,11 +573,11 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![policy-erroneous](images/policy-erroneous.png)
 
-    This action enables CP4AIOps to `ssh` to a target server and run the `oc` commands that would be possible if you were to `ssh` there yourself. This action takes advantage of the `SSH` Data connection that we saw in an [earlier section](#data-and-tool-connections).
+    This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue. This action takes advantage of the `SSH` Data connection that we saw in an [earlier section](#data-and-tool-connections).
 
     There are other alternatives to `ssh` - HTTP API calls or Ansible automation playbooks, for example.
 
-    Runbook and actions can be associated with incidents as well, so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
+    Runbooks and actions can be associated with incidents as well, so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
 
 #### Incidents and Alerts
 
@@ -724,7 +593,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![erroneous-story](images/erroneous-story.png)
 
-    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has not generated an incident that can be used to remediate the problem in an automated way.
+    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now we can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has generated an incident that can be used to remediate the problem in an automated way.
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
