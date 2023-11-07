@@ -1,6 +1,6 @@
 # AIOps with IBM Z and LinuxONE
 
-In this tutorial, you will walk become familiar with IBM's three strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
+In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
 
 ## Environment Overview
 
@@ -287,9 +287,9 @@ You should now have a better understanding of Instana observability, how to use 
 
 ### Overview of Turbonomic Application Resource Management 
 
-Turbonomic is IBM's solution for Application Resource Management (ARM) for both cloud and on-premises environments.
+Turbonomic is IBM's Application Resource Management (ARM) solution for cloud and on-premises environments.
 
-Application Resource Management is a top-down, application-driven approach that continuously analyzes applications' resource needs and generates fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
+Application Resource Management platofrms continuously analyze applications' resource needs and generate fully automatable actions to ensure applications always get what they need to perform. It runs 24/7/365 and scales with the largest, most complex environments.
 
 Turbonomic enables environments to achieve the following conflicting goals at the same time:
 
@@ -301,7 +301,7 @@ Turbonomic enables environments to achieve the following conflicting goals at th
     
     Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.
 
-Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You then assign environments to be [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
+Turbonomic is a containerized, microservices architected application running in a Kubernetes environment. You configure managed environments as [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
 
 [Source and more information](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-product-overview)
 
@@ -437,35 +437,57 @@ For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
 #### Manually Executing Actions
 
-As you saw throughout the tour of the Turbonomic platform, you have some pending actions related to the Robot Shop sample application running on the IBM Z cluster.
+As you saw throughout the tour of the Turbonomic platform, there pending actions related to some sample applications running on the IBM Z cluster.
 
-62. **Navigate to the home page and notice the pending actions.**
+62. **In the OpenShift console, navigate to your `userNN-project`, click the icon for the NodeJS application, click the Actions dropdown, and then select Edit Resource Limits.**
 
-    Because you're looking at the home page right now, this represents the pending actions for the global environment. That means that these actions could be targeting workloads in the cluster other than the Robot Shop application. Fortunately, you know that there is a Business Application configured that will scope the view down to just Robot Shop.
+    ![usernn-resource-limits](images/usernn-resource-limits.png)
 
-63. **Click the Robot Shop Microservices Business Application.**
+    These are the default NodeJS application resources. *Requests* are the amount of CPU and memory a container is guaranteed to get. *Limits* are the maximum amount of resources a container can use before they are restricted.
 
-    Now you'll only see the pending actions that you're interested in. 
+    ![resource-limits-before](images/resource-limits-before.png)
 
-64. **Click the Pending Actions just to the right of the supply chain chart.**
+    The defaults for the NodeJS application are intentionally suboptimal in order to generate recommended actions in Turbonomic.
 
-    ![turbo-scaling-actions](images/turbo-scaling-actions.png)
+63. **In the Turbonomic console, log OUT of your `userNN`` username using the button in the bottom-left corner of the menu.**
+    
+64. **Log back in to Turbonomic with the new username: `userNN-actions` and the same password as before.**
 
-    All the actions here are related to the robot shop microservices. Some are related to CPU resizing and some are related to memory resizing. Let's look at one for example.
+    This username has permissions to execute actions against a sample application in the `userNN-project` namespace. 
 
-65. **Click the details button to far right of the action to drop down more details. `shipping` is usually a good one to look at.**
+    Because this username is scoped to only the `userNN-project` namespace, that is all you can see.
 
-    ![turbo-scaling-actions-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-2.png)
+65. **From the home page, click the userNN-project Business Application.**
+
+66. **Click the Pending Actions just to the right of the supply chain chart.**
+
+    ![turbo-scaling-actions](./images/turbo-scaling-actions.png)
+
+    The action(s) here are related to the microservices in the userNN-project. You should have actions related to CPU and/or memory resizing for the NodeJS frontend application and/or the Postgres backend database.
+
+67. **Click the details button to far right of the `nodejs-postgres-example` action to drop down more details.**
+
+    ![turbo-scaling-actions-2](./images/turbo-scaling-actions-2.png)
 
     Here you see more details about exactly what Turbonomic is recommending you do via the action. It includes resizing both CPU and memory limits for the pod, and you can see the result that Turbonomic expects in terms of CPU throttling and resource utilization as a percentage of CPU and memory limits.
 
-    ![turbo-scaling-actions-3](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-scaling-actions-3.png)
+    ![turbo-scaling-actions-3](./images/turbo-scaling-actions-3.png)
 
-    Because this is a manual action (rather than Recommended) you are provided with a button in the user interface to directly execute the action and make the proposed changes. However, as an advisor, you are not able to click the button to execute the action. Users with proper credentials would be able to.
+    Because this is a manual action (rather than Recommended) you are provided with a button in the user interface to directly execute the action and make the proposed changes. Because you are logged in with credentials scoped to this namespace, you can execute the action. If you were logged in with your `userNN` advisor credential, you would not be able to execute the action.
+
+68. **Click the green Execute Action button.**
+
+    Turbonomic will apply the recommended changes to the NodeJS application running on OpenShift. You can see the executed action in the `userNN-project` business application "All actions" panel.
+
+    ![executed-actions](./images/executed-actions.png)
+
+69. **In the OpenShift console, refresh the page and navigate back to the `nodejs-postgres-example` resource limits to see the new values.**
+
+    ![resource-limits-after](images/resource-limits-after.png)
 
     Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions is to *automate* as many of these processes as possible. Turbonomic supports automatic executiion of actions.
 
-    For example, the Robot Shop application containers could be daily or hourly as determined by an operations team. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  
+    For example, the Robot Shop application containers are resized on a daily basis. The schedule for automated actions can be determined by operations teams. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  
 
 ### Turbonomic Wrap-up
 
