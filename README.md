@@ -16,7 +16,7 @@ Connection instructions with platform URLs and credentials are listed in the [ac
 
 2. In the browser, **navigate to your OpenShift console.** 
 
-    The OpenShift console typically begins with `https://console-openshift-console-`. You can find this in the [access file](/access.md). Reach out to your OpenShift administrator if you do not have this address.
+    The OpenShift console typically begins with `https://console-openshift-console-`. You can find this in the [access file](/access.md).
 
     You will now see the OpenShift console login page.
 
@@ -89,7 +89,7 @@ Instana is an enterprise observability solution that offers application performa
 
 ### Navigating the Instana Dashboard
 
-9. **In a web browser, navigate to your Instana server. Reach out to your Instana administrator if you do not have this address.**
+9. **In a web browser, navigate to your Instana server.** You can find this address in the [access file](access.md).
 
 10. **Log in with your Instana credentials.**
 
@@ -497,23 +497,23 @@ In this section, you have seen some of the capabilities of Turbonomic Applicatio
 
 ### Overview of IBM Cloud Pak for AIOps
 
-IBM Cloud Pak for AIOps is an AIOps platform that deploys advanced, explainable AI using your organization's data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads and **proactively avoid incidents and accerlate your time to resolution**.
+IBM Cloud Pak for AIOps is a platform that deploys advanced, explainable AI using your organization's data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads and **proactively avoid incidents and accerlate your time to resolution**.
 
-IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. The Cloud Pak **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
+IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple sources of data**, such as logs, metrics, and events. It then **delivers those insights directly into the tools that your teams already use**, such as Slack or Microsoft Teams, in near real-time.
 
 ### Exploring the CP4AIOps Console
 
-78. **Navigate to your IBM Cloud Pak for AIOps dashboard. If you do not have the address for this, reach out to your CP4AIOps administrator.**
+78. **Navigate to your IBM Cloud Pak for AIOps dashboard.** You can find this address in the [access file](./access.md).
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
-79. **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials.** Do not select the `kube:admin` option.
+79. **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials (i.e. `userNN`).** Do not select the `kube:admin` option.
 
     ![cp4waiops-homepage](images/cp4waiops-homepage.png)
 
     When you first open CP4AIOps, you are taken to the homepage that displays the most important information that you have access to. Depending on your credentials, different "widgets" will appear for you to see and act on.
 
-    The terms and concepts on this homepage may seem foreign at first, but they will become clear throughout the rest of this tutorial. A good place to start is on the AIOps Insights page where you can see a good overview of the CP4AIOps benefits.
+    The terms and concepts on this homepage may seem foreign at first, but they will become clear throughout the rest of this tutorial. A good place to start is on the AIOps Insights page where you can see an overview of the CP4AIOps benefits.
 
 #### AIOps Insights
 
@@ -529,14 +529,6 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation for repeating incidents.
 
-    Some terminology:
-
-    - **Events** are a record containing structured data that summarizes key attributes of an occurrence on a managed entity, which might be a network resource, some part of that resource, or other key element associated with your network, services, or applications.
-
-    - **Alerts** represent an ongoing anomalous condition against a single managed entity. Unlike events, alerts might evolve over time as the condition changes. Alerts have a start and an end time. The creation and evolution of alerts are informed by events.
-
-    - **Incidents** represent the context around an issue that is currently severely impacting operations. An incident includes all alerts that are related to the issue and information about how the affected resources are related. The creation and evolution of incidents are informed by alerts.
-
     Next, you will take a look at where all of these events are coming from.
 
 #### Data and Tool Connections
@@ -545,7 +537,11 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![data-tool-connections](images/data-tool-connections.png)
 
-    All the data, events, and metrics you see in CP4AIOps are coming from the Instana server you explored earlier in this tutorial. `Slack` and `SSH` are both connections where CP4AIOps sends information, notifications, and commands which will be discussed in a later section. 
+    - All the data, events, and metrics you see in CP4AIOps are coming from the Instana server you explored earlier in this tutorial. 
+    - Logs from select OpenShift applications are being forwarded to an [ELK server](https://www.elastic.co/elastic-stack) which is then ingested by CP4AIOps.
+    - Slack is used for ChatOps to notify operations teams about incidents and ongoing remediation work.
+
+    There are also two connections that you do not have visibility into - one for SSH connections, and one to an [Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible) server. These are both used to take remediation actions against target environments.
 
 #### Resource Management
 
@@ -561,7 +557,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     You now have a scoped view of just the resources associated with the Robot Shop Microservices Application - all of the Kubernetes objects such as pods, services, and routes, but also the individual application components within the containers such as `.jar` files and even the API calls made to each endpoint. 
 
-    You also might also see some *incidents* in this view if they are associate with the application. You will look more at these later on.
+    You also might also see some *incidents* in this view. You will look more at these later on.
 
 #### Automations
 
@@ -571,11 +567,11 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     The automation tools - policies, runbooks, and actions - help you resolve incidents quickly by setting up and enabling an automatic response as situations arise.
 
-    **Policies** are rules that contain multiple condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
+    **Policies** are rules that contain condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
-86. **For example, find the Policy named "Disk Pressure", and click on it. In the new page that opens, click the "Specification" tab.**
+86. **For example, find the Policy named `Robot Shop Erroneous Calls`, and click it. In the new page that opens, click the "Specification" tab.**
 
-    This policy looks for alerts that match the tags `Value of:alert.summary` contains `KubeletHasDiskPressure`, or `Value of:alert.summary` contains `You will run out of disk space`. Alerts with either of these tags indicate that an OpenShift node is running out of ephemeral storage and will soon begin evicting pods.
+    This policy looks for alerts that match the tags `Value of:alert.summary` contains `Erroneous call rate is too high`. An alert matching this tag will be sent from Instana when Instana determines there has been a significant increase in the rate of erroneous calls to the Robot Shop application.
 
     The policy also states what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
 
@@ -591,39 +587,97 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     **Actions** in runbooks are the collection of manual steps grouped into a single automated entity. An action improves runbook efficiency by automatically performing procedures and operations.
 
-89. **For example, click the "Turn off payment erroneous calls" action and then click the "Content" tab of the new window that pops up.**
+89. **For example, click the `Fix load deployment environment variable` action and then click the "Content" tab of the new window that pops up.**
 
     ![policy-erroneous](images/policy-erroneous.png)
 
-    This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue. This action takes advantage of the `SSH` Data connection that you saw in an [earlier section](#data-and-tool-connections).
+    This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue.
 
-    There are other alternatives to `ssh` - HTTP API calls or Ansible automation playbooks, for example.
+    There are other alternatives to `ssh` - for example, HTTP API calls or Ansible automation playbooks which you will explore in a later section.
 
-    Runbooks and actions can be associated with incidents as well, so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
+    Runbooks and actions can be associated with incidents so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
 
 #### Incidents and Alerts
 
 1.  **In the left-side menu, navigate to "Incidents".**
 
-    ![stories](images/stories.png)
+    ![incident-new](TODO: update image)
 
     Depending on what alerts are triggered at the time you go through the tutorial, the current incidents will look different.
 
     Incidents are where the IT Operators and administrators should focus their attention to either manually close incidents as they are generated or build actions and runbooks in order to remediate incidents automatically as they appear. 
 
-2.  **If there is an incident created for "Erroneous call rate is too high", click it to open that specific incident. If it is not available at the time, you can select any other incident to see similar information.**
+2.  **Find the incident that begins with `userNN-project/nodejs-postgresql-example`, where `userNN` is your user number.**
 
-    ![erroneous-story](images/erroneous-story.png)
+    ***Please be careful to select your correct incident. There is nothing stopping you from accidentally selecting another user's incident and closing it in the coming steps.***
 
-    The erroneous calls error is the same issue that you looked it back in the [Instana section](#using-instana-to-identify-an-issue). Now you can see Instana and CP4AIOps integrating well together - Instana observability identified the error and its root cause, and CP4AIOps has generated an incident that can be used to remediate the problem in an automated way.
+    ![erroneous-story](images/incident-new.png) TODO: update image
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
-    - Probable cause alerts - CP4AIOps attempts to derives the root fault component, and the full scope of components that are affected by an incident.
-    - Topology - provides a view of the affected components so IT Operators can see the incident in context.
-    - Assignees - you can either manually assign incidents to team members to resolve, or CP4AIOps can assign people or teams automatically if a policy is configured to do so.
-    - Recommended runbooks - if CP4AIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended.
-  
+    - *Probable cause alerts* - CP4AIOps attempts to derive the root fault component, and the full scope of components that are affected by an incident
+    - *Topology* - provides a view of the affected components so IT Operators can see the incident in context
+    - *Assignees* - you can either manually assign incidents to team members to resolve, or CP4AIOps can assign people or teams automatically if a policy is configured to do so
+    - *Impacted Applications* - any business applications that CP4AIOps identifies as impacted by the incident
+    - *Recommended runbooks* - if CP4AIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended
+
+3. There seems to be a problem with the NodeJS and Postgresql application running in your `userNN-project` OpenShift project. **Navigate to the OpenShift console in the developer perspective and try to access the frontend application with the small hyperlink button on the NodeJS icon.**
+
+    ![app-broken](images/app-broken.png)
+
+    You should receive an error page similar to the following:
+
+    ![app-broken2](images/app-broken2.png)
+
+    Cloud Pak for AIOps has identified this error as an *incident*, and has provided a runbook to fix it.
+
+4. Back in the CP4AIOps incident page in the bottom-left, click the three dots associated with the `Fix userNN postgresql (ssh)` runbook, then select `Run`.
+
+    If the runbook is not present, select a Probable Cause Alert that has the `Runbooks` tag on its tile.
+
+    ![runbook-new](images/runbook-new.png) TODO: update image
+
+    This *runbook* is made up of three separate *actions*. These actions are a mix of bash commands issued through an SSH connection and an Ansible Playbook driven from an Ansible Automation Platform server which is running on IBM LinuxONE.
+
+    - First, the runbook will fix the issue using an Ansible playbook. The remediation for this error is to edit one of the Postgresql deployment's environment variables to the correct database name.
+    - Second, it will log into the OpenShift cluster.
+    - Third, it will check that the environment variable is set properly.
+
+5. Start the runbook by entering the variables for your `user`, `openshift username`, `openshift password`, and `openshift project`.
+
+    - user: `userNN` (where `NN` is your user number)
+    - openshift username: `userNN` (where `NN` is your user number, same as `user`)
+    - openshift password: your OpenShift password found in the [access.md](access.md) file
+    - openshift project: `userNN-project`
+
+6. **After populating the variables, click *Start Runbook* at the bottom of the page.**
+
+    You can now click the smaller *Run* buttons to manually run each step in the runbook.
+
+7. **Click through each step in the runbook**, waiting for each step to show as **completed** before moving on.
+
+    ![runbook-complete](images/runbook-complete.png) TODO: update image
+
+    If the output of step 3 includes the return `POSTGRESQL_DATABASE=my_data`, the application issue should be fixed.
+
+    If you'd like, you can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This will provide feedback to the automation engineers and AI algorithms so that runbooks can continue to improve.
+
+8. **In the OpenShift console, navigate back to your `userNN-project` in the developer view. Access your frontend application by clicking the hyperlink button attached to the NodeJS application.**
+   
+    ![app-working](images/app-working.png)
+
+    Because the NodeJS application can now reach the Postgresql database, the application is accessible and you can enter fruit quantities into the inventory database using the webpage.
+
+    ![app-working2](images/app-working2.png)
+
+    As you interact with the application, you will be able to see the resulting calls and traces in the `userNN-project` Instana application perspective. You should also see that 200 status calls 
+
+    ![instana-working](images/instana-working.png)
+
+    ![instana-working2](images/instana-working2.png)
+
+    You can either manually mark your incident as *resolved*, or you can let CP4AIOps identify that the error has been fixed and it will close the incident automatically.
+
 #### ChatOps
 
 Earlier in the tutorial, you saw that Slack is configured as a ChatOps endpoint for this CP4AIOps instance. 
@@ -659,6 +713,8 @@ Throughout this tutorial, you may have been asking yourself, "Where's the AI in 
 ## Wrapping Up
 
 In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage IBM Z applications and infrastructure.
+
+With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 
