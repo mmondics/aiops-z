@@ -147,7 +147,7 @@ Instana is an enterprise observability solution that offers application performa
 
     There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag, and options to configure the Application perspective.
 
-19.  **Click through each of the tabs.**
+19. **Click through each of the tabs.**
 
     If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, and you could dig into the specific calls to start debugging these errors.
 
@@ -213,7 +213,7 @@ Instana is an enterprise observability solution that offers application performa
 
     ![instana-analytics-2-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-2.png)
 
-    Instana can parse all of the requests, calls, traces, and other information about into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus a generic webhook, or one of many more supported technologies.
+    Instana can parse all of the requests, calls, traces, and other information into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus, a generic webhook, or one of many more supported technologies.
 
     Right now you're looking at Incidents that Instana has identified during the timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
@@ -355,9 +355,7 @@ You configure managed environments as [Turbonomic targets](https://www.ibm.com/d
 
     You're given three default options for how to optimize the OpenShift on IBM Z cluster.
 
-46. **Select the Optimize Cluster Resources, Placement and Nodes option and then Run Plan.**
-
-    ![turbo-optimize](images/turbo-optimize.png)
+46. **Select the "Full Optimization" option and then Run Plan.**
 
     After the plan runs, you see the summary of the impact that the plan actions would have on the cluster. You can scroll through this page to see details about the individual actions and before-and-after scenarios for different cluster metrics.
 
@@ -455,6 +453,30 @@ In this section, you have seen some of the capabilities of Turbonomic Applicatio
 
 ## IBM Cloud Pak for AIOps
 
+### Introduce an Error into your Sample Application
+
+In the following section, you will be using IBM Cloud Pak for AIOps to solve an issue in the NodeJS and Postgresql sample application running in the `userNN-project` OpenShift namespace. In this section, you will introduce the error so you can solve it later.
+
+55. **In the OpenShift console under the developer perspective, navigate to your `userNN-project` namespace topology, click the Postgresql icon, then click the `postgresql` deployment hyperlink.**
+
+    ![ocp-postgresql](images/ocp-postgresql.png)
+
+56. **Under the Environment tab, change the value for `POSTGRESQL_DATABASE` from `my_data` to `my_data-error`. Click save at the bottom of the page.**
+
+    ![ocp-postgresql2](images/ocp-postgresql2.png)
+
+    Your NodeJS pod will shortly become unready as it is no longer able to find the correct Postgresql database.
+
+57. **Try to access the frontend application with the small hyperlink button on the NodeJS icon.**
+
+    ![app-broken](images/app-broken.png)
+
+    You should receive an error page similar to the following:
+
+    ![app-broken2](images/app-broken2.png)
+
+    Once you see this error message, proceed to the next section.
+
 ### Overview of IBM Cloud Pak for AIOps
 
 IBM Cloud Pak for AIOps is a platform that deploys advanced, explainable AI using your organization's data so that you can confidently **assess, diagnose, and resolve incidents** across mission-critical workloads and **proactively avoid incidents and accerlate your time to resolution**.
@@ -463,11 +485,11 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 ### Exploring the CP4AIOps Console
 
-55. **Navigate to your IBM Cloud Pak for AIOps dashboard.** You can find this address in the [access file](./access.md).
+58. **Navigate to your IBM Cloud Pak for AIOps dashboard.** You can find this address in the [access file](./access.md).
 
     ![cp4waiops-login](images/cp4waiops-login.png)
 
-56. **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials (i.e. `userNN`).** Do not select the `kube:admin` option.
+59. **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials (i.e. `userNN`).** Do not select the `kube:admin` option.
 
     ![cp4waiops-homepage](images/cp4waiops-homepage.png)
 
@@ -477,7 +499,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### AIOps Insights
 
-57. **Expand the menu by clicking the button in the top-left corner of the page, then navigate to the AIOps Insights page.**
+60. **Expand the menu by clicking the button in the top-left corner of the page, then navigate to the AIOps Insights page.**
 
     ![aiops-insights](images/aiops-insights.png)
 
@@ -493,7 +515,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### Data and Tool Connections
 
-58. **From the left-side menu, navigate to Data and Tool Connections.**
+61. **From the left-side menu, navigate to Data and Tool Connections.**
 
     ![data-tool-connections](images/data-tool-connections.png)
 
@@ -505,13 +527,13 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### Resource Management
 
-59. **From the left-side menu, navigate to Resource Management.**
+62. **From the left-side menu, navigate to Resource Management.**
 
     ![resource-management](images/resource-management.png)
 
     Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives.
 
-60. **Click the link for the Robot Shop Microservices Application.**
+63. **Click the link for the Robot Shop Microservices Application.**
 
     ![resource-management-2](images/resource-management-2.png)
 
@@ -519,7 +541,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### Automations
 
-61. **From the left-side menu, navigate to Automations**. If there are any filters applied, you can clear them by clicking the filter button and unchecking any that are applied.
+64. **From the left-side menu, navigate to Automations**. If there are any filters applied, you can clear them by clicking the filter button and unchecking any that are applied.
 
     ![automations-policies](images/automations-policies.png)
 
@@ -527,13 +549,13 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     **Policies** are rules that contain condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
-62. **For example, find the Policy named `Robot Shop Erroneous Calls`, and click it. In the new page that opens, click the "Specification" tab.**
+65. **For example, find the Policy named `Robot Shop Erroneous Calls`, and click it. In the new page that opens, click the "Specification" tab.**
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `Erroneous call rate is too high`. An alert matching this tag will be sent from Instana when Instana determines there has been a significant increase in the rate of erroneous calls to the Robot Shop application.
 
     The policy also states what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
 
-63. **Navigate to the "Runbooks" tab on the Automations page.**
+66. **Navigate to the "Runbooks" tab on the Automations page.**
 
     ![automations-runbooks](images/automations-runbooks.png)
 
@@ -541,11 +563,11 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     You can also switch to the "Activities" tab to see all of the previous runbook usage.
 
-64. **Navigate to the "Actions" tab on the Automations page.**
+67. **Navigate to the "Actions" tab on the Automations page.**
 
     **Actions** in runbooks are the collection of manual steps grouped into a single automated entity. An action improves runbook efficiency by automatically performing procedures and operations.
 
-65. **For example, click the `Fix load deployment environment variable` action and then click the "Content" tab of the new window that pops up.**
+68. **For example, click the `Fix load deployment environment variable` action and then click the "Content" tab of the new window that pops up.**
 
     ![policy-erroneous](images/policy-erroneous.png)
 
@@ -557,7 +579,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### Incidents and Alerts
 
-67. **In the left-side menu, navigate to "Incidents".**
+70. **In the left-side menu, navigate to "Incidents".**
 
     ![incident-new](images/incidents.png)
     
@@ -565,7 +587,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     Incidents are where the IT Operators and administrators should focus their attention to either manually close incidents as they are generated or build actions and runbooks in order to remediate incidents automatically as they appear. 
 
-68. **Find the incident that begins with `userNN-project/nodejs-postgresql-example`, where `userNN` is your user number.**
+71. **Find the incident that begins with `userNN-project/nodejs-postgresql-example`, where `userNN` is your user number.**
 
     ***Please be careful to select your correct incident. There is nothing stopping you from accidentally selecting another user's incident and closing it in the coming steps.***
 
@@ -579,7 +601,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
     - *Impacted Applications* - any business applications that CP4AIOps identifies as impacted by the incident
     - *Recommended runbooks* - if CP4AIOps correlates the incident with others from the past that were resolved with certain playbooks, they will be recommended
 
-69. There seems to be a problem with the NodeJS and Postgresql application running in your `userNN-project` OpenShift project. **Navigate to the OpenShift console in the developer perspective and try to access the frontend application with the small hyperlink button on the NodeJS icon.**
+72. There seems to be a problem with the NodeJS and Postgresql application running in your `userNN-project` OpenShift project. **Navigate to the OpenShift console in the developer perspective and try to access the frontend application with the small hyperlink button on the NodeJS icon.**
 
     ![app-broken](images/app-broken.png)
 
@@ -589,7 +611,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     Cloud Pak for AIOps has identified this error as an *incident*, and has provided a runbook to fix it.
 
-70. **Back in the CP4AIOps incident in the bottom of the page, click the three dots associated with the `Fix userNN postgresql (ssh)` runbook, then select `Run`.**
+73. **Back in the CP4AIOps incident in the bottom of the page, click the three dots associated with the `Fix userNN postgresql (ssh)` runbook, then select `Run`.**
 
     ![runbook-new](images/runbook-new.png) TODO: update image
 
@@ -599,18 +621,18 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
     - Second, it will log into the OpenShift cluster.
     - Third, it will check that the environment variable is set properly.
 
-71. **Start the runbook by entering the variables for your `user`, `openshift username`, `openshift password`, and `openshift project`.**
+74. **Start the runbook by entering the variables for your `user`, `openshift username`, `openshift password`, and `openshift project`.**
 
     - user: `userNN` (where `NN` is your user number)
     - openshift username: `userNN` (where `NN` is your user number, same as `user`)
     - openshift password: your OpenShift password found in the [access.md](access.md) file
     - openshift project: `userNN-project`
 
-72. **After populating the variables, click *Start Runbook* at the bottom of the page.**
+75. **After populating the variables, click *Start Runbook* at the bottom of the page.**
 
     You can now click the smaller *Run* buttons to manually run each step in the runbook.
 
-73. **Click through each step in the runbook**, waiting for each step to show as **completed** before moving on.
+76. **Click through each step in the runbook**, waiting for each step to show as **completed** before moving on.
 
     ![runbook-complete](images/runbook-complete.png) TODO: update image
 
@@ -618,7 +640,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     You can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This will provide feedback to the automation engineers and AI algorithms so that runbooks can continue to improve.
 
-74. **In the OpenShift console, navigate back to your `userNN-project` in the developer view. Access your frontend application by clicking the hyperlink button attached to the NodeJS application.**
+77. **In the OpenShift console, navigate back to your `userNN-project` in the developer view. Access your frontend application by clicking the hyperlink button attached to the NodeJS application.**
    
     ![app-working](images/app-working.png)
 
@@ -638,7 +660,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 Throughout this tutorial, you have been interacting with alerts, incidents, and policies that have been generated or influenced by AI algorithms that are running and training in CP4AIOps This section will show you the AI models that come pre-loaded with CP4AIOps and the benefits they provide.
 
-75. **From the left-side menu, navigate to "AI Model Management".**
+78. **From the left-side menu, navigate to "AI Model Management".**
 
     ![ai-model-management](images/ai-model-management.png)
 
@@ -646,7 +668,7 @@ Throughout this tutorial, you have been interacting with alerts, incidents, and 
 
     For example, the *Temporal grouping* AI model groups alerts which co-occur over time. When a problem arises, there are typically multiple parts of a system or environment that are impacted. When alerts in different areas co-occur, it makes sense to look at them together and treat them as one problem to try and determine what might have happened. This is one of the ways that noise is reduced from the hundreds of thousands of events all the way down to a few hundred incidents.
 
-76. **Click the "Temporal grouping" tile.**
+79. **Click the "Temporal grouping" tile.**
 
     ![temporal-grouping](images/temporal-grouping.png)
 
