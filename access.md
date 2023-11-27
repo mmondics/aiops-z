@@ -52,13 +52,3 @@ Usernames and passwords are the same for all of the platforms used in this tutor
 | 18 | 18 | `user18` | `p@ssw0rd` |
 | 19 | 19 | `user19` | `p@ssw0rd` |
 | 20 | 20 | `user20` | `p@ssw0rd` |
-| 21 | 21 | `user21` | `p@ssw0rd` |
-| 22 | 22 | `user22` | `p@ssw0rd` |
-| 23 | 23 | `user23` | `p@ssw0rd` |
-| 24 | 24 | `user24` | `p@ssw0rd` |
-| 25 | 25 | `user25` | `p@ssw0rd` |
-| 26 | 26 | `user26` | `p@ssw0rd` |
-| 27 | 27 | `user27` | `p@ssw0rd` |
-| 28 | 28 | `user28` | `p@ssw0rd` |
-| 29 | 29 | `user29` | `p@ssw0rd` |
-| 30 | 30 | `user30` | `p@ssw0rd` |
