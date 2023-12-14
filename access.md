@@ -5,7 +5,7 @@ The virtual machines seem to work best in a Firefox browser on your local workst
 1. Go here: <https://techzone.ibm.com/my/workshops/student/6571e2d0aca67b0010cc5be6>
 2. Log in with your IBM ID.
    1. If you don't already have an IBM ID, you will need to create one [here](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3Db9977aed-1e6b-4321-9b43-ee4365544452%26client_id%3DODllMDk4YzItMjgxOC00)
-3. When prompted, enter the workshop password: `password`
+3. When prompted, enter the workshop password: `p@ssw0rd` (that's a zero)
 4. If prompted, log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You may already be logged in when first accessing the VM.
 
 <!---
@@ -30,7 +30,7 @@ Please do not log off or reboot the Virtual Machine, as that will disconnect the
 
 Usernames and passwords are the same for all of the platforms used in this tutorial.
 
-| Environment Number | NN | Username | Password |
+| Environment ID | NN | Username | Password |
 |-----|----|--------------------|--------------------|
 | 1 | 01 | `user01` | `p@ssw0rd` |
 | 2 | 02 | `user02` | `p@ssw0rd` |
