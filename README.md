@@ -573,7 +573,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue.
 
-    There are other alternatives to `ssh` - for example, HTTP API calls or Ansible automation playbooks which you will explore in a later section.
+    There are other alternatives to `ssh` - for example, HTTP API calls or Ansible automation playbooks.
 
     Runbooks and actions can be associated with incidents so that whenever an incident is created that meets certain criteria, a runbook can automatically kick off problem remediation.
 
@@ -591,7 +591,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ***Please be careful to select your correct incident. There is nothing stopping you from accidentally selecting another user's incident and closing it in the coming steps.***
 
-    ![erroneous-story](images/incident-new.png) TODO: update image
+    ![erroneous-story](images/incident-new.png)
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
@@ -613,13 +613,13 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 73. **Back in the CP4AIOps incident in the bottom of the page, click the three dots associated with the `Fix userNN postgresql (ssh)` runbook, then select `Run`.**
 
-    ![runbook-new](images/runbook-new.png) TODO: update image
+    ![runbook-new](images/runbook-new.png)
 
-    This *runbook* is made up of three separate *actions*. These actions are a mix of bash commands issued through an SSH connection and an Ansible Playbook driven from an Ansible Automation Platform server which is running on IBM LinuxONE.
+    This *runbook* is made up of three separate *actions*. Each action is a bash command issued through an SSH connection. It is not required that all commands be of the same type. For example, one step could be a bash command while the second could be an Ansible playbook or an API call.
 
-    - First, the runbook will fix the issue using an Ansible playbook. The remediation for this error is to edit one of the Postgresql deployment's environment variables to the correct database name.
-    - Second, it will log into the OpenShift cluster.
-    - Third, it will check that the environment variable is set properly.
+    - First, the runbook will log into the OpenShift cluster from an Ubuntu server via an SSH connection. 
+    - Second, it will remediate the error. The remediation for this error is to edit one of the Postgresql deployment's environment variables to the correct database name of `my_data`, rather than `my_data-error`.
+    - Third, it will print the environment variable so you can check that is set properly.
 
 74. **Start the runbook by entering the variables for your `user`, `openshift username`, `openshift password`, and `openshift project`.**
 
@@ -634,7 +634,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 76. **Click through each step in the runbook**, waiting for each step to show as **completed** before moving on.
 
-    ![runbook-complete](images/runbook-complete.png) TODO: update image
+    ![runbook-complete](images/runbook-complete.png)
 
     If the output of step 3 includes the return `POSTGRESQL_DATABASE=my_data`, the application issue should be fixed.
 
