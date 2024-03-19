@@ -686,11 +686,11 @@ We encourage you to look through the references below and reach out to this [tut
 
 - [Instana Product Page](https://www.ibm.com/products/instana)
 - [Turbonomic Product Page](https://www.ibm.com/products/turbonomic)
-- [IBM Cloud Pak for AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-watson-aiops)
+- [IBM Cloud Pak for AIOps Product Page](https://www.ibm.com/products/cloud-pak-for-aiops)
 
 - [Instana Documentation](https://www.ibm.com/docs/en/instana-observability/current)
 - [Turbonomic Documentation](https://www.ibm.com/docs/en/tarm)
-- [IBM Cloud Pak for AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-watson-aiops)
+- [IBM Cloud Pak for AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops)
 
 - [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies)
 - [IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
