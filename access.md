@@ -2,17 +2,11 @@
 The virtual machines seem to work best in a Firefox browser on your local workstation. Running the VMs in Chrome will sometimes result in an issue where your mouse pointer is not visible.
 
 ## Accessing your Virtual Machine
-1. Go here: <https://techzone.ibm.com/my/workshops/student/6571e2d0aca67b0010cc5be6>
+1. Go here: <https://techzone.ibm.com/my/workshops/student/65ce251c9d8c0d0011f4a447>
 2. Log in with your IBM ID.
    1. If you don't already have an IBM ID, you will need to create one [here](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Flogin.ibm.com%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3FqsId%3Db9977aed-1e6b-4321-9b43-ee4365544452%26client_id%3DODllMDk4YzItMjgxOC00)
 3. When prompted, enter the workshop password: `p@ssw0rd` (that's a zero)
 4. If prompted, log into the Windows virtual machine with password: `IBMDem0s` (that's a zero). You may already be logged in when first accessing the VM.
-
-<!---
-## Accessing OpenShift
-1. Go to the OpenShift Cluster here: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
-2. Use your credentials in the table below. 
---->
 
 ## Links to platforms
 - OpenShift Cluster URL: <https://console-openshift-console.apps.atsocpd1.dmz/dashboards>
@@ -25,8 +19,6 @@ If you cannot access the webpage for any of the platforms above, check that the 
 Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.
 
 ## OpenShift, Instana, Turbonomic, and CP4AIOps credentials:
-
-## OpenShift credentials
 
 Usernames and passwords are the same for all of the platforms used in this tutorial.
 
