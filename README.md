@@ -54,33 +54,25 @@ Instana is an enterprise observability solution that offers application performa
 
 ### Viewing the Instana Agent on OpenShift
 
-7. In the OpenShift cluster, **navigate to the `instana-agent` project then click the circular icon in the Topology page.**
+7. In the OpenShift cluster, **navigate to the `instana-agent` project then click the circular icon on the Topology page that is labeled `instana-agent`.**
 
     ![instana-agent-daemonset](images/instana-agent-daemonset.png)
 
-    This is the Instana agent that is collecting all the information about OpenShift and the containerized applications running on it and sending that information to the Instana server.
+    This is the Instana agent that is collecting all the information about the containerized applications running on OpenShift and sending that information to the Instana server.
     
     The agent is deployed as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node it runs on.
 
-8. **Click the `view logs` hyperlink next to one of the pods in the right-side menu.**
+8. **Click the other circular icon on the Topology page that is labeled `k8sensor`.**
+
+    ![k8sensor-deployment](images/k8sensor-deployment.png)
+
+    The `k8sensor` pods are responsible for gathering information about the OpenShift cluster itself and all of the Kubernetes objects in includes - pods, namespaces, routes, etc., and sending that information to the Instana server. 
+
+9.  **Click the `view logs` hyperlink next to one of the `k8sensor` pods in the right-side menu.**
 
     ```text
-    2023-03-01T17:13:46.589+00:00 | INFO | stana-agent-scheduler-thread-9-1 | turesManagerImpl | com.instana.agent-bootstrap - 1.2.25 | Installed instana-kubernetes-sensor
-    2023-03-01T17:13:46.593+00:00 | WARN | stana-agent-scheduler-thread-9-1 | yDiscoveryTicker | com.instana.agent - 1.1.677 | Discovery for com.instana.plugin.kubernetes took too long (28512 ms)
-    2023-03-01T17:13:46.608+00:00 | INFO | 7c9-865d-446b-8ad9-ada0c5fb7a59) | Kubernetes | com.instana.sensor-kubernetes - 1.2.139 | Activating Kubernetes Sensor
-    2023-03-01T17:13:46.662+00:00 | INFO | 7c9-865d-446b-8ad9-ada0c5fb7a59) | Kubernetes | com.instana.sensor-kubernetes - 1.2.139 | Using master url https://172.30.0.1:443/
-    2023-03-01T17:13:47.152+00:00 | INFO | 7c9-865d-446b-8ad9-ada0c5fb7a59) | Kubernetes | com.instana.sensor-kubernetes - 1.2.139 | Subscribed to leadership events
-    2023-03-01T17:13:47.997+00:00 | INFO | tana-sensor-scheduler-thread-2-2 | ableResourceInfo | com.instana.sensor-kubernetes - 1.2.139 | Start watching pods on node compute-0.atsocpd1.dmz...
-    2023-03-01T17:13:50.950+00:00 | INFO | stana-agent-scheduler-thread-9-1 | turesManagerImpl | com.instana.agent-bootstrap - 1.2.25 | Installed instana-host-sensor
-    2023-03-01T17:13:51.080+00:00 | INFO | 74c-6ecc-49c2-995a-e57f52e12cdb) | Host | com.instana.sensor-host - 1.1.147 | Activated Sensor
-    2023-03-01T17:13:53.975+00:00 | INFO | stana-agent-scheduler-thread-9-1 | turesManagerImpl | com.instana.agent-bootstrap - 1.2.25 | Installed instana-gcp-services-discovery
-    2023-03-01T17:13:53.984+00:00 | WARN | stana-agent-scheduler-thread-9-1 | yDiscoveryTicker | com.instana.agent - 1.1.677 | Discovery time (58652 ms)
-    2023-03-01T17:14:15.061+00:00 | INFO | c66-b1ef-4bc0-bc2a-b810abc8cdd3) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor 7f31b2cbe57b25720a4faf38ca86003fbd940c86d56cf02f78ed752d5e409dcd
-    2023-03-01T17:14:15.105+00:00 | INFO | 8f9-dbcf-4c46-b04d-f396b7f048a2) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor 5aac7fe96187321e5302478dbfc64feda35d108e59b6c3dc0c42f094435ecd7b
-    2023-03-01T17:14:15.110+00:00 | INFO | 61d-5569-47e8-9196-8128bb8944c5) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor 7034d4698290b57385bcc5a85fca3faa4fd0605a24046ac15b4bd6c9a436813a
-    2023-03-01T17:14:15.115+00:00 | INFO | c3b-a47a-4856-acef-c8a8b8d3882a) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor 3dbe00e2b1da3d427deaaa9321ef3ad88ba5fecd6eac47483da89e4a50375ab5
-    2023-03-01T17:14:15.207+00:00 | INFO | 0c7-c787-45c4-912d-dd8f93c24d66) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor e49ed98a6c4cf6271d009488d9292858912602915af4be8772664d24d4f36f68
-    2023-03-01T17:14:15.253+00:00 | INFO | ab0-768f-42e8-a27b-96f4f149b22d) | Crio | com.instana.sensor-crio - 1.0.10 | Activated Sensor 3268dbca7f621f728066d2e0d73bc5cdc803f3ea218e49d997bcb4519f2058df
+    2024/03/19 16:45:53 main.go:365: pod=instana-agent/k8sensor-5b46b459dc-lrz9z shards=[01 04 07 0A 0D 10 13 16]
+    2024/03/19 16:45:53 main.go:365: call=senseLoop PodsCount={285} PodsRunning={282} PodsPending={3} snitch=pod sense.min=0 sense.99.9PCTL=0 sense.max=0 apply.min=2 apply.99.9PCTL=22 apply.max=27 http.do.min=0 http.do.99.9PCTL=97 http.do.max=104 encode.pmin=2.41KB encode.p99.9PCTL=34.34KB encode.pmax=254.29KB encode.tmin=0 encode.t99.9PCTL=45 encode.tmax=97 total.min=5 total.99.9PCTL=110 total.max=132 send.calls=9600 send.errors=0
     ```
 
     If you would like to see what data the agents are collecting or if you need to debug issues with collecting data from certain workloads running on OpenShift, these pod logs are a good first place to look.
@@ -95,7 +87,7 @@ Instana is an enterprise observability solution that offers application performa
 
     When you first log into Instana, you will be taken to the Home Page. This is a customizable summary page that shows the key metrics for any component of your environment in the timeframe specified in the top right of the screen.
 
-    ![instana-timeframe](https://raw.githubusercontent.com/mmondics/media/main/images/instana-timeframe.png)
+    ![instana-timeframe](images/instana-timeframe.png)
 
 11. **Set the time frame to Last Hour and click the Live button.**
 
@@ -105,31 +97,31 @@ Instana is an enterprise observability solution that offers application performa
 
 12. **Click the left side panel so the menu appears.**
 
-    ![instana-menu](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu.png)
+    ![instana-menu](images/instana-menu.png)
 
     Next, you will go through each section in the menu.
 
-13. **Click the Websites & Mobile Apps option.**
+13. **Click the Websites & Mobile Apps option in the left-side menu.**
 
-    ![instana-menu-websites](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-websites.png)
-
-    You can see that Instana is monitoring a website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application that is deployed on OpenShift on IBM Z. Instana supports website monitoring by analyzing browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
+    You can see that Instana is monitoring a website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application that is deployed on OpenShift on IBM Z. Instana supports [website monitoring](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-monitoring-websites) by analyzing browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
 14. **Click the Robot Shop Website hyperlink.**
 
     ![instana-website-metrics](/images/instana-website-metrics.png)
 
-    With website monitoring, there are all kinds of filters and tabs with more information.
+    With website monitoring, there numerous filters and tabs with more information.
 
 15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
-    ![instana-website-metrics-2](/images/instana-website-metrics-2.png)
+    ![instana-website-metrics-2](images/instana-website-metrics-2.png)
 
-    In the next section, you will dig into how the application resources on OpenShift on IBM Z is running.
+    In the next section, you will dig into how the application resources on OpenShift on IBM Z are running.
 
 16. **Click the Applications option in the left side menu.**
 
-    ![instana-menu-applications](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-applications.png)
+    This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the `Robot Shop Microservices Application`.
+
+    You may find it easier to use the search bar to the top right (under the timeframe selection).
 
 17. **Click the Robot Shop Microservices Application hyperlink.**
 
@@ -143,7 +135,7 @@ Instana is an enterprise observability solution that offers application performa
 
     ![instana-dependencies](images/instana-dependencies.png)
 
-    The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and visual representations of errors, high latency, or erroneous calls. You can select these options in the top left of the graph.
+    The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and visual representations of errors, high latency, or erroneous calls.
 
     There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag, and options to configure the Application perspective.
 
@@ -151,41 +143,43 @@ Instana is an enterprise observability solution that offers application performa
 
     If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, and you could dig into the specific calls to start debugging these errors.
 
+    Next, you'll take a look at Instana's Kubernetes monitoring capabilities.
+
 20. **Click the Platforms -> Kubernetes option in the left side menu.**
 
-    ![instana-menu-kubernetes](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-kubernetes.png)
-
 21. **Click the atsocpd1 (cluster) hyperlink.**
+
+    ![instana-openshift](images/instana-openshift.png)
 
     OpenShift clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed on it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.
 
     The Summary page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Pods" show potential hotspots which you might want to have a look at.
 
-22. **Click the Details tab.**
+23. **Click the Nodes tab.**
 
-    The Details tab displays information about the health of critical components of the Kubernetes cluster, such as the controller, scheduler, and etcd.
+    The Nodes tab shows all of the Kubernetes nodes in the cluster in real time.
 
-23. **Click the Events tab.**
+24. **Click the Namespace tab, then search for `robot-shop` and select it.**
 
-    The Events tab shows all of the Kubernetes events in the cluster in real time. It also provides links to the related objects for quick access.
+    ![instana-ocp-ns](images/instana-ocp-ns.png)
 
-24. **Click the Infrastructure option in the left side menu.**
+    In the `robot-shop` namespace page, you can see details for all of the Kubernetes resources that are deployed in the `robot-shop` namespace, including deployments, services, pods, and the relevant metrics for each object.
 
-    ![instana-menu-infrastructure](images/instana-menu-infrastructure.png)
+    In the next section, you will look at infrastructure metrics. In our case, the metrics related to a Linux server with an Oracle Database installed on it.
+
+26. **Click the Infrastructure option in the left side menu.**
 
     ![instana-infrastructure](images/instana-infrastructure.png)
 
     The Infrastructure map provides an overview of all monitored systems. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system.
 
-    Instana is not limited to only website and container monitoring.
-
-25. **In the Infrastructure search bar, enter `oracledb` and select the resulting pillar.**
+27. **In the Infrastructure search bar, enter `oracledb` and select the resulting pillar.**
 
     ![infrastructure-oracledb](images/infrastructure-oracledb.png)
 
     You can now see information about the Oracle on IBM Z database monitored by Instana including its version, SID, and more.
 
-26. **Click the "Open Dashboard" button for the OracleDB.**
+28. **Click the "Open Dashboard" button for the OracleDB.**
 
     ![infrastructure-oracledb2](images/infrastructure-oracledb2.png)
 
@@ -193,63 +187,43 @@ Instana is an enterprise observability solution that offers application performa
 
     There are many IBM Z technologies supported by Instana, including z/OS. See the list of supported technologies [here](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies), [here](https://www.ibm.com/docs/en/iooz?topic=installing-configuring-z-apm-connect-components), and [here](https://www.ibm.com/docs/en/iooz?topic=integrating-omegamon)
 
-27. **Click the Analytics option in the left side menu.**
+29. **Click the Analytics option in the left side menu.**
 
     Instana analytics are integrated into each of the panels you've looked at so far, but you can also directly access them from the menu.
 
-    ![instana-menu-analytics](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-analytics.png)
-
     By default, you're taken to a built-in dashboard for analytics related to Application calls. You can filter by using the left side options, or by creating filters at the top.
 
-28. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
+30. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
 
-    ![instana-analytics-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-1.png)
+    ![instana-analytics-1](images/instana-analytics-1.png)
 
-    The source of some of the payment errors is starting to become apparent.
+    The primary source of errors is starting to become apparent.
 
-29. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
-
-    ![instana-menu-events](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-events.png)
-
-    ![instana-analytics-2-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-2.png)
+31. **Click the Events option in the left side menu. Click the Incidents tab if you aren't automatically taken there.**
 
     Instana can parse all of the requests, calls, traces, and other information into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus, a generic webhook, or one of many more supported technologies.
 
     Right now you're looking at Incidents that Instana has identified during the timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
-30. **Navigate back to the Events page and select the Issues tab.**
+32. **Select the Issues tab.**
 
-    ![instana-events-1](https://raw.githubusercontent.com/mmondics/media/main/images/instana-events-1.png)
+    ![instana-events-2](images/instana-events-2.png)
 
-    An issue is an event that is triggered if something out of the ordinary happens. You can think of Incidents as Issues that Instana has correlated with each other to form a cohesive event. Let's take a look at a single Issue.
+    An issue is an event that is triggered if something out of the ordinary happens. You can think of Incidents as Issues that Instana has correlated with each other to form a cohesive event.
 
-31. **Navigate back to the Events page and select the Changes tab.**
-
-    ![instana-events-3](https://raw.githubusercontent.com/mmondics/media/main/images/instana-events-3.png)
-
-    A Change is an Event where Instana recognizes a change in configuration or status of a component it is monitoring, such as a deployment, pod, node, or server. Changes can be correlated with Issues under the umbrella of an Incident.
-
-    This is the end of the navigation portion of this demonstration, so next you will start to put this knowledge to use. You now have a general sense of the capabilities Instana offers and how each is tied to one another through AI-driven algorithms and rules.
-
-### Using Instana to Identify an Issue
+### Using Instana to Identify a Problem
 
 As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, you will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
 
-32. **Click the Events option in the left side menu. Click on Incidents if you aren't automatically taken there.**
+33. **Back on the Incidents tab, click one of the Incidents titled "Erroneous call rate is too high".**
 
-    ![instana-menu-events](https://raw.githubusercontent.com/mmondics/media/main/images/instana-menu-events.png)
-
-    Instana has identified Incidents to look into.
-
-33. **Click one of the Incidents titled "Erroneous call rate is too high".**
-
-    ![instana-analytics-2](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-2.png)
+    ![instana-events-1](images/instana-events-1.png)
 
     The incident page shows a dynamic graph of all associated issues, events, and correlates it with other incidents to provide a comprehensive overview of the situation regarding service and event impact.
 
 34. **Click to expand the triggering event.**
 
-    ![instana-analytics-3](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-3.png)
+    ![instana-events-3](images/instana-events-3.png)
 
     Instana automatically displays a relevant dynamic graph. In this case, it is the erroneous call rate for the payment service. Instana also provides a link to the analysis page for these calls.
 
@@ -257,19 +231,19 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     Now you're back on the Analysis page you looked at previously, but with the correct filters automatically applied. You can see that the `POST /pay/{id}` endpoint has 100% erroneous calls. Click to expand that dropdown.
 
-    ![instana-analytics-4](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-4.png)
+    ![instana-analytics-1](images/instana-analytics-1.png)
 
     Notice how the same information about the erroneous calls for `POST /pay/partner-57` is displayed as it was previously, but Instana did all of the filtering. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided links to the specific calls that failed.
 
 36. **Click one of the "POST /pay/partner-57" links.**
 
-    ![instana-analytics-5](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-5.png)
+    ![instana-analytics-2](images/instana-analytics-2.png)
 
     On the call page, you see how many instances of the erroneous call there are, a trace of the call and at which point the error occurred, the status code and error messages received, and more. From reading through the information on this page, it's apparent that the source of the error is the `payment` service in Kubernetes. The related endpoints and infrastructure such as the MongoDB and the `user` service look healthy.
 
 37. **Click the "payment" link under "Service Endpoint List".**
 
-    ![instana-analytics-6](https://raw.githubusercontent.com/mmondics/media/main/images/instana-analytics-6.png)
+    ![instana-analytics-3](images/instana-analytics-3.png)
 
     Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point you would want to look at the Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.
 
@@ -293,7 +267,7 @@ Turbonomic enables environments to achieve the following conflicting goals at th
 
 You configure managed environments as [Turbonomic targets](https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets). Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.
 
-[Source and more information](https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-product-overview)
+[Source and more information](https://www.ibm.com/docs/en/tarm/8.11.5?topic=documentation-product-overview)
 
 ### Navigating the Turbonomic Dashboard
 
@@ -335,32 +309,6 @@ You configure managed environments as [Turbonomic targets](https://www.ibm.com/d
 
     You now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, etc. You are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.
 
-#### Plan
-
-42. **In the left side menu, select the Plan option.**
-
-    Turbonomic Plans allow you to run "what if" scenarios that explore the potential impact that actions would have on your target environments. For example, if you added a new compute node to the OpenShift on IBM Z cluster, changed the memory and CPU resources for certain Robot Shop pods, and moved certain pods from one node to another, how would that impact your overall resource consumption? What would the impact be to cost? Would it help you meet your SLOs?
-
-43. **Click the New Plan button.**
-
-    Turbonomic automatically recognized that you have a container cluster (OpenShift) as a target, so it offers the pre-built "Optimize Container Cluster" plan.
-
-44. **Click the "Optimize Container Cluster" option.**
-
-45. **Select the Kubernetes-<cluster_name> option, then click the "Next: Optimization Settings" at the bottom of the page.**
-
-    `<cluster_name>` will depend on the name of your target OpenShift cluster.
-
-    ![turbo-plan-options](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-plan-options.png)
-
-    You're given three default options for how to optimize the OpenShift on IBM Z cluster.
-
-46. **Select the "Full Optimization" option and then Run Plan.**
-
-    After the plan runs, you see the summary of the impact that the plan actions would have on the cluster. You can scroll through this page to see details about the individual actions and before-and-after scenarios for different cluster metrics.
-
-    Next, you'll learn about what kinds of actions Turbonomic can generate against an OpenShift on IBM Z cluster.
-
 ### Turbonomic Actions
 
 #### What are Actions?
@@ -373,25 +321,37 @@ After you deploy your targets, Turbonomic starts to perform analysis as part of 
 
 For OpenShift on IBM Z, Turbonomic can generate the following actions:
 
-- Vertically Scale Containers - resize container spec sizes
-
+<details>
+  <summary>Vertically Scale Containers - resize container spec sizes (click to expand)</summary>
+  
     If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is also important - if a container is overprovisioned - it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
 
-- Horizontally Scale Containers - Scale up the number of pods for a microservice
+</details>
 
+<details>
+  <summary>Horizontally Scale Containers - Scale up the number of pods for a microservice (click to expand)</summary>
+  
     If there is a Service Level Objective (SLO) configured for a containerized application, Turbonomic can scale the number of pods up or down in order to meet the demand at any given moment.
 
     An APM solution such as Instana is required for this action type. Turbonomic needs metric data from the APM about response time and transactions speeds in order to enforce SLOs.
 
-- Pod Moves - move a pod from one node to another
-    
+</details>
+
+<details>
+  <summary>Pod Moves - move a pod from one node to another (click to expand)</summary>
+  
     Turbonomic continuously moves pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
 
-- Cluster Scaling - Provisioning or Suspending OpenShift Nodes
-
+</details>
+    
+<details>
+  <summary>Cluster Scaling - Provisioning or Suspending OpenShift Nodes (click to expand)</summary>
+  
     Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes) and performance (avoiding node congestion).
 
     For OpenShift on IBM Z, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM Z. Therefore, if a node provision/suspension action is generated for an IBM Z cluster, administrators will need to perform that action themselves with manual methods and then Turbonomic will see that change.
+
+</details>
 
 #### Manually Executing Actions
 
@@ -549,9 +509,9 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     **Policies** are rules that contain condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
-65. **For example, find the Policy named `Robot Shop Erroneous Calls`, and click it. In the new page that opens, click the "Specification" tab.**
+65. **For example, find the Policy named `Robot Shop Erroneous Calls promote alert to incident`, and click it. In the new page that opens, click the "Specification" tab.**
 
-    This policy looks for alerts that match the tags `Value of:alert.summary` contains `Erroneous call rate is too high`. An alert matching this tag will be sent from Instana when Instana determines there has been a significant increase in the rate of erroneous calls to the Robot Shop application.
+    This policy looks for alerts that match the tags `Value of:alert.summary` contains `POST /pay/{id} - Erroneous call rate is too high`. An alert matching this tag will be sent from Instana when Instana determines there has been a significant increase in the rate of erroneous calls to the Robot Shop application.
 
     The policy also states what should happen when the policy finds a matching alert. In this case, it will promote the alert to an incident that will notify specific users responsible for fixing the issue, or potentially automatically run a runbook made up of one or more actions that have been defined in CP4AIOps.
 
@@ -569,7 +529,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 68. **For example, click the `Fix load deployment environment variable` action and then click the "Content" tab of the new window that pops up.**
 
-    ![policy-erroneous](images/policy-erroneous.png)
+    ![action-erroneous](images/action-erroneous.png)
 
     This action enables CP4AIOps to `ssh` to a target server and run the proper `oc` commands to solve the issue.
 
@@ -617,16 +577,15 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     This *runbook* is made up of three separate *actions*. Each action is a bash command issued through an SSH connection. It is not required that all commands be of the same type. For example, one step could be a bash command while the second could be an Ansible playbook or an API call.
 
-    - First, the runbook will log into the OpenShift cluster from an Ubuntu server via an SSH connection. 
-    - Second, it will remediate the error. The remediation for this error is to edit one of the Postgresql deployment's environment variables to the correct database name of `my_data`, rather than `my_data-error`.
-    - Third, it will print the environment variable so you can check that is set properly.
+    - First, the runbook will log into the OpenShift cluster from an Ubuntu server via an SSH connection.
+    - Second, it will check if the `POSTGRESQL_DATABASE` environment variable is properly set.
+    - Third, it will remediate the error. The remediation for this error is to edit the Postgresql deployment's environment variable to the correct database name of `my_data`, rather than `my_data-error`.
+    - Finally, it will check the environment variable again to confirm that it was properly changed.
 
-74. **Start the runbook by entering the variables for your `user`, `openshift username`, `openshift password`, and `openshift project`.**
+74. **Start the runbook by entering the variables for your `openshift username` and `openshift password`.**
 
-    - user: `userNN` (where `NN` is your user number)
     - openshift username: `userNN` (where `NN` is your user number, same as `user`)
     - openshift password: your OpenShift password found in the [access.md](access.md) file
-    - openshift project: `userNN-project`
 
 75. **After populating the variables, click *Start Runbook* at the bottom of the page.**
 
@@ -636,7 +595,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![runbook-complete](images/runbook-complete.png)
 
-    If the output of step 3 includes the return `POSTGRESQL_DATABASE=my_data`, the application issue should be fixed.
+    If the output of step 4 includes the return `POSTGRESQL_DATABASE=my_data`, the application issue should be fixed.
 
     You can give the runbook a 1-5 star rating, leave a comment, and mark that it worked. This will provide feedback to the automation engineers and AI algorithms so that runbooks can continue to improve.
 
@@ -648,13 +607,13 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![app-working2](images/app-working2.png)
 
-    As you interact with the application, you will be able to see the resulting calls and traces in the `userNN-project` Instana application perspective. You should also see that 200 status calls 
+    As you interact with the application, you will be able to see the resulting calls and traces in the `userNN-project` Instana application perspective. You should also see that 200 status calls have returned.
 
     ![instana-working](images/instana-working.png)
 
     ![instana-working2](images/instana-working2.png)
 
-    You can either manually mark your incident as *resolved*, or you can let CP4AIOps identify that the error has been fixed and it will close the incident automatically.
+    In CP4AIOps, you can either manually mark your incident as *resolved*, or you can let CP4AIOps identify that the error has been fixed and it will close the incident automatically.
 
 #### AI Model Management
 
@@ -693,4 +652,5 @@ We encourage you to look through the references below and reach out to this [tut
 - [IBM Cloud Pak for AIOps Documentation](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops)
 
 - [Instana Supported Technologies](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies)
-- [IBM AIOps YouTube Series](https://www.youtube.com/c/IBMSupportTV/search)
+- [Turbonomic Integrations](https://www.ibm.com/products/turbonomic/integrations)
+- [IBM Cloud Pak for AIOps Integrations](https://www.ibm.com/docs/en/cloud-paks/cloud-pak-aiops/4.4.1?topic=integrations-integration-types)
