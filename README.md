@@ -477,7 +477,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
     
     The concept of reducing the number of IT events and alerts that your operations staff must evaluate, speeding recovery time and reducing employee fatigue.
 
-    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation for repeating incidents.    <details>
+    In the image above, over 300,000 events were narrowed down to 10,000 alerts, which were further narrowed down to 431 incidents. These incidents are what IT Operations staff needs to evaluate and remediate either through manual processes, or by building automation for repeating incidents.
 
     </details>
 
@@ -585,7 +585,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![runbook-new](images/runbook-new.png)
 
-    This *runbook* is made up of three separate *actions*. Each action is a bash command issued through an SSH connection. It is not required that all commands be of the same type. For example, one step could be a bash command while the second could be an Ansible playbook or an API call.
+    This *runbook* is made up of four separate *actions*. Each action is a bash command issued through an SSH connection. It is not required that all commands be of the same type. For example, one step could be a bash command while the second could be an Ansible playbook or an API call.
 
     - First, the runbook will log into the OpenShift cluster from an Ubuntu server via an SSH connection.
     - Second, it will check if the `POSTGRESQL_DATABASE` environment variable is properly set.
