@@ -340,7 +340,7 @@ For OpenShift on IBM Z, Turbonomic can generate the following actions:
 <details>
   <summary>Pod Moves - move a pod from one node to another (click to expand)</summary>
   
-    Turbonomic continuously moves pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
+Turbonomic continuously moves pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
 
 </details>
     
