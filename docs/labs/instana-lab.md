@@ -81,49 +81,49 @@ Instana is an enterprise observability solution that offers application performa
 
 ### Navigating the Instana Dashboard
 
-9. **In a web browser, navigate to your Instana server.** You can find this address on the [Enviroment Access Page](../access.md).
+10. **In a web browser, navigate to your Instana server.** You can find this address on the [Enviroment Access Page](../access.md).
 
-10. **Log in with your Instana credentials.**
+11. **Log in with your Instana credentials.**
 
     When you first log into Instana, you will be taken to the Home Page. This is a customizable summary page that shows the key metrics for any component of your environment in the timeframe specified in the top right of the screen.
 
     ![instana-timeframe](instana-timeframe.png)
 
-11. **Set the time frame to Last Hour and click the Live button.**
+12. **Set the time frame to Last Hour and click the Live button.**
 
     You are now seeing metrics for the environment over the previous hour, and it is updating in real time with up to 1 second granularity and no sampling.
 
     The next thing to notice is the menu on the left side of the page. If you hover over the left side panel, you will see a menu of links that will let you dive into different sections of the Instana dashboard, rather than seeing every option.
 
-12. **Click the left side panel so the menu appears.**
+13. **Click the left side panel so the menu appears.**
 
     ![instana-menu](instana-menu.png)
 
     Next, you will go through each section in the menu.
 
-13. **Click the Websites & Mobile Apps option in the left-side menu.**
+14. **Click the Websites & Mobile Apps option in the left-side menu.**
 
     You can see that Instana is monitoring a website named `Robot Shop Website`. This is the set of webpages associated with the Robot Shop sample application that is deployed on OpenShift on IBM Z. Instana supports [website monitoring](https://www.ibm.com/docs/en/instana-observability/current?topic=instana-monitoring-websites) by analyzing browser request times and route loading times. It allows detailed insights into the web browsing experience of users, and deep visibility into application call paths. The Instana website monitoring solution works by using a lightweight JavaScript agent, which is embedded into the monitored website.
 
-14. **Click the Robot Shop Website hyperlink.**
+15. **Click the Robot Shop Website hyperlink.**
 
     ![instana-website-metrics](instana-website-metrics.png)
 
     With website monitoring, there numerous filters and tabs with more information.
 
-15. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
+16. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
     ![instana-website-metrics-2](instana-website-metrics-2.png)
 
     In the next section, you will dig into how the application resources on OpenShift on IBM Z are running.
 
-16. **Click the Applications option in the left side menu.**
+17. **Click the Applications option in the left side menu.**
 
     This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the `Robot Shop Microservices Application`.
 
     You may find it easier to use the search bar to the top right (under the timeframe selection).
 
-17. **Click the Robot Shop Microservices Application hyperlink.**
+18. **Click the Robot Shop Microservices Application hyperlink.**
 
     An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Microservices application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`.
 
@@ -131,7 +131,7 @@ Instana is an enterprise observability solution that offers application performa
 
     As with the Websites & Mobile Applications section, the Application perspective has various tabs that contain different information. When it comes to microservices, one of the most helpful tabs in the Application perspective is the Dependency graph.
 
-18. **Click the Dependencies tab.**
+19. **Click the Dependencies tab.**
 
     ![instana-dependencies](instana-dependencies.png)
 
@@ -139,15 +139,15 @@ Instana is an enterprise observability solution that offers application performa
 
     There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag, and options to configure the Application perspective.
 
-19. **Click through each of the tabs.**
+20. **Click through each of the tabs.**
 
     If you pay attention while clicking through these tabs, you will notice that the payments service has an unusually high number of erroneous calls, and you could dig into the specific calls to start debugging these errors.
 
     Next, you'll take a look at Instana's Kubernetes monitoring capabilities.
 
-20. **Click the Platforms -> Kubernetes option in the left side menu.**
+21. **Click the Platforms -> Kubernetes option in the left side menu.**
 
-21. **Click the atsocpd1 (cluster) hyperlink.**
+22. **Click the atsocpd1 (cluster) hyperlink.**
 
     ![instana-openshift](instana-openshift.png)
 
@@ -167,19 +167,19 @@ Instana is an enterprise observability solution that offers application performa
 
     In the next section, you will look at infrastructure metrics. In our case, the metrics related to a Linux server with an Oracle Database installed on it.
 
-26. **Click the Infrastructure option in the left side menu.**
+25. **Click the Infrastructure option in the left side menu.**
 
     ![instana-infrastructure](instana-infrastructure.png)
 
     The Infrastructure map provides an overview of all monitored systems. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system.
 
-27. **In the Infrastructure search bar, enter `oracledb` and select the resulting pillar.**
+26. **In the Infrastructure search bar, enter `oracledb` and select the resulting pillar.**
 
     ![infrastructure-oracledb](infrastructure-oracledb.png)
 
     You can now see information about the Oracle on IBM Z database monitored by Instana including its version, SID, and more.
 
-28. **Click the "Open Dashboard" button for the OracleDB.**
+27. **Click the "Open Dashboard" button for the OracleDB.**
 
     ![infrastructure-oracledb2](infrastructure-oracledb2.png)
 
@@ -187,25 +187,25 @@ Instana is an enterprise observability solution that offers application performa
 
     There are many IBM Z technologies supported by Instana, including z/OS. See the list of supported technologies [here](https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies), [here](https://www.ibm.com/docs/en/iooz?topic=installing-configuring-z-apm-connect-components), and [here](https://www.ibm.com/docs/en/iooz?topic=integrating-omegamon)
 
-29. **Click the Analytics option in the left side menu.**
+28. **Click the Analytics option in the left side menu.**
 
     Instana analytics are integrated into each of the panels you've looked at so far, but you can also directly access them from the menu.
 
     By default, you're taken to a built-in dashboard for analytics related to Application calls. You can filter by using the left side options, or by creating filters at the top.
 
-30. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
+29. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
 
     ![instana-analytics-1](instana-analytics-1.png)
 
     The primary source of errors is starting to become apparent.
 
-31. **Click the Events option in the left side menu. Click the Incidents tab if you aren't automatically taken there.**
+30. **Click the Events option in the left side menu. Click the Incidents tab if you aren't automatically taken there.**
 
     Instana can parse all of the requests, calls, traces, and other information into a stream of events and then classify and group them. Instana includes built-in events, predefined health signatures based on integrated algorithms which help you to understand the health of your monitored system in real-time. If a built-in event is not relevant for the monitored system, it can be disabled. Conversely, you can create a custom event in Instana if it does not already exist. These events can then be sent as an alert to a channel of your choice, such as email, Slack, AIOps, Splunk, PagerDuty, Prometheus, a generic webhook, or one of many more supported technologies.
 
     Right now you're looking at Incidents that Instana has identified during the timeframe. Incidents are created when a key performance indicator such as load, latency, or error rate changes over a certain threshold.
 
-32. **Select the Issues tab.**
+31. **Select the Issues tab.**
 
     ![instana-events-2](instana-events-2.png)
 
@@ -215,19 +215,19 @@ Instana is an enterprise observability solution that offers application performa
 
 As you looked through the various sections of the Instana dashboard, a few errors kept popping up. In this section, you will use Instana to pinpoint the root cause of the errors and fix them. When debugging with Instana, a good place to start is Events.
 
-33. **Back on the Incidents tab, click one of the Incidents titled "Erroneous call rate is too high".**
+32. **Back on the Incidents tab, click one of the Incidents titled "Erroneous call rate is too high".**
 
     ![instana-events-1](instana-events-1.png)
 
     The incident page shows a dynamic graph of all associated issues, events, and correlates it with other incidents to provide a comprehensive overview of the situation regarding service and event impact.
 
-34. **Click to expand the triggering event.**
+33. **Click to expand the triggering event.**
 
     ![instana-events-3](instana-events-3.png)
 
     Instana automatically displays a relevant dynamic graph. In this case, it is the erroneous call rate for the payment service. Instana also provides a link to the analysis page for these calls.
 
-35. **Click the "Analyze Calls" button.**
+34. **Click the "Analyze Calls" button.**
 
     Now you're back on the Analysis page you looked at previously, but with the correct filters automatically applied. You can see that the `POST /pay/{id}` endpoint has 100% erroneous calls. Click to expand that dropdown.
 
@@ -235,13 +235,13 @@ As you looked through the various sections of the Instana dashboard, a few error
 
     Notice how the same information about the erroneous calls for `POST /pay/partner-57` is displayed as it was previously, but Instana did all of the filtering. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided links to the specific calls that failed.
 
-36. **Click one of the "POST /pay/partner-57" links.**
+35. **Click one of the "POST /pay/partner-57" links.**
 
     ![instana-analytics-2](instana-analytics-2.png)
 
     On the call page, you see how many instances of the erroneous call there are, a trace of the call and at which point the error occurred, the status code and error messages received, and more. From reading through the information on this page, it's apparent that the source of the error is the `payment` service in Kubernetes. The related endpoints and infrastructure such as the MongoDB and the `user` service look healthy.
 
-37. **Click the "payment" link under "Service Endpoint List".**
+36. **Click the "payment" link under "Service Endpoint List".**
 
     ![instana-analytics-3](instana-analytics-3.png)
 

@@ -21,7 +21,7 @@ You configure managed environments as [Turbonomic targets](https://www.ibm.com/d
 
 #### Homepage
 
-38. **Navigate to the Turbonomic platform home page.** You can find the console link and your credentials on the [Environment Access Page](../access.md) file.
+1. **Navigate to the Turbonomic platform home page.** You can find the console link and your credentials on the [Environment Access Page](../access.md) file.
 
     Because you are logged in as a user with "Advisor" credentials, you can see everything that Turbonomic is managing, but you cannot take actions against the target environments or modify the Turbonomic server itself. You could set up more users either locally on the Turbonomic server or with an authentication such as LDAP. These new users can have their access scoped to certain environments, applications, or specific entities on the Turbonomic server so people can only access what they need to.
 
@@ -41,17 +41,17 @@ You configure managed environments as [Turbonomic targets](https://www.ibm.com/d
 
 #### Search
 
-39. **In the left side menu, select the Search option.** 
+2. **In the left side menu, select the Search option.**
 
     On the search page, you can filter down to specific types of entities that Turbonomic has identified. For example, if you look at Namespaces, it will return all the namespaces, or projects in OpenShift nomenclature, in the target cluster.
 
-40. **Select the Namespaces option in the list.**
+3.  **Select the Namespaces option in the list.**
 
     ![turbo-search-namespaces](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces.png)
 
     Next you will dig into the namespace that contains the Robot Shop sample application.
 
-41. **Select the `robot-shop` namespace.**
+4.  **Select the `robot-shop` namespace.**
 
     ![turbo-search-namespaces-2](https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces-2.png)
 
@@ -105,7 +105,7 @@ For OpenShift on IBM Z, Turbonomic will only *recommend* actions related to clus
 
 As you saw throughout the tour of the Turbonomic platform, there pending actions related to some sample applications running on the IBM Z cluster.
 
-47. **In the OpenShift console, navigate to your `userNN-project`, click the icon for the NodeJS application, click the Actions dropdown, and then select Edit Resource Limits.**
+5. **In the OpenShift console, navigate to your `userNN-project`, click the icon for the NodeJS application, click the Actions dropdown, and then select Edit Resource Limits.**
 
     ![usernn-resource-limits](usernn-resource-limits.png)
 
@@ -115,23 +115,23 @@ As you saw throughout the tour of the Turbonomic platform, there pending actions
 
     The defaults for the NodeJS application are intentionally suboptimal in order to generate recommended actions in Turbonomic.
 
-48. **In the Turbonomic console, log OUT of your `userNN` username using the button in the bottom-left corner of the menu.**
+6.  **In the Turbonomic console, log OUT of your `userNN` username using the button in the bottom-left corner of the menu.**
     
-49. **Log back in to Turbonomic with the new username: `userNN-actions` and the same password as before.**
+7.  **Log back in to Turbonomic with the new username: `userNN-actions` and the same password as before.**
 
     This username has permissions to execute actions against a sample application in the `userNN-project` namespace. 
 
     Because this username is scoped to only the `userNN-project` namespace, that is all you can see.
 
-50. **From the home page, click the userNN-project Business Application.**
+8.  **From the home page, click the userNN-project Business Application.**
 
-51. **Click the Pending Actions just to the right of the supply chain chart.**
+9.  **Click the Pending Actions just to the right of the supply chain chart.**
 
     ![turbo-scaling-actions](turbo-scaling-actions.png)
 
     The action(s) here are related to the microservices in the userNN-project. You should have actions related to CPU and/or memory resizing for the NodeJS frontend application and/or the Postgres backend database.
 
-52. **Click the details button to far right of the `nodejs-postgres-example` action to drop down more details.**
+10. **Click the details button to far right of the `nodejs-postgres-example` action to drop down more details.**
 
     ![turbo-scaling-actions-2](turbo-scaling-actions-2.png)
 
@@ -141,13 +141,13 @@ As you saw throughout the tour of the Turbonomic platform, there pending actions
 
     Because this is a manual action (rather than Recommended) you are provided with a button in the user interface to directly execute the action and make the proposed changes. Because you are logged in with credentials scoped to this namespace, you can execute the action. If you were logged in with your `userNN` advisor credential, you would not be able to execute the action.
 
-53. **Click the green Execute Action button.**
+11. **Click the green Execute Action button.**
 
     Turbonomic will apply the recommended changes to the NodeJS application running on OpenShift. You can see the executed action in the `userNN-project` business application "All actions" panel.
 
     ![executed-actions](executed-actions.png)
 
-54. **In the OpenShift console, refresh the page and navigate back to the `nodejs-postgres-example` resource limits to see the new values.**
+12. **In the OpenShift console, refresh the page and navigate back to the `nodejs-postgres-example` resource limits to see the new values.**
 
     ![resource-limits-after](resource-limits-after.png)
 
