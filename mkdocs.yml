@@ -68,8 +68,3 @@ markdown_extensions:
   - attr_list
   - toc:
       permalink: true
-
-extra:
-  analytics:
-    provider: google
-    property: G-G88GP3FB3N
