@@ -14,7 +14,7 @@
         <link rel="prev" href="../../aiops_z_03-20-24.pdf">
       
       
-        <link rel="next" href="../turbonomic-lab/">
+        <link rel="next" href="../cp4aiops-lab/">
       
       
       <link rel="icon" href="../../images/CP4AIOps-logo.svg">
@@ -461,9 +461,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#navigating-the-instana-dashboard" class="md-nav__link">
+  <a href="#navigating-the-instana-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      Navigating the Instana Dashboard
+      Navigating the Instana Platform
     </span>
   </a>
   
@@ -505,27 +505,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../turbonomic-lab/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Turbonomic
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -661,9 +640,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#navigating-the-instana-dashboard" class="md-nav__link">
+  <a href="#navigating-the-instana-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      Navigating the Instana Dashboard
+      Navigating the Instana Platform
     </span>
   </a>
   
@@ -720,7 +699,9 @@
 
 
 <h1 id="aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
-<p>In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
+<!-- In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure. -->
+
+<p>In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
 <h2 id="environment-overview">Environment Overview<a class="headerlink" href="#environment-overview" title="Permanent link">&para;</a></h2>
 <p><img alt="aiops-arch" src="../../images/aiops-arch-AIOps-workshop.drawio.png" /></p>
 <h2 id="connecting-to-the-lab-environment">Connecting to the Lab Environment<a class="headerlink" href="#connecting-to-the-lab-environment" title="Permanent link">&para;</a></h2>
@@ -766,12 +747,12 @@
 <p>In the OpenShift cluster, <strong>navigate to the <code>instana-agent</code> project then click the circular icon on the Topology page that is labeled <code>instana-agent</code>.</strong></p>
 <p><img alt="instana-agent-daemonset" src="../../images/instana-agent-daemonset.png" /></p>
 <p>This is the Instana agent that is collecting all the information about the containerized applications running on OpenShift and sending that information to the Instana server.</p>
-<p>The agent is deployed as a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a>, which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the compute node it runs on.</p>
+<p>The agent is deployed as a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a>, which is a Kubernetes object that ensures one copy of the pod runs on each compute node in the cluster. Each individual Instana agent pod is responsible for the data and metrics collection for the application running on one of the compute nodes.</p>
 </li>
 <li>
 <p><strong>Click the other circular icon on the Topology page that is labeled <code>k8sensor</code>.</strong></p>
 <p><img alt="k8sensor-deployment" src="../../images/k8sensor-deployment.png" /></p>
-<p>The <code>k8sensor</code> pods are responsible for gathering information about the OpenShift cluster itself and all of the Kubernetes objects in includes - pods, namespaces, routes, etc., and sending that information to the Instana server. </p>
+<p>The <code>k8sensor</code> pods are responsible for gathering information about the OpenShift cluster itself and all of the Kubernetes objects it includes - pods, namespaces, routes, etc., and sending that information to the Instana server. </p>
 </li>
 <li>
 <p><strong>Click the <code>view logs</code> hyperlink next to one of the <code>k8sensor</code> pods in the right-side menu.</strong></p>
@@ -782,7 +763,7 @@
 <p>In the next section, you will take a look at the other side of the OpenShift Instana agent - the Instana server that is receiving the data.</p>
 </li>
 </ol>
-<h3 id="navigating-the-instana-dashboard">Navigating the Instana Dashboard<a class="headerlink" href="#navigating-the-instana-dashboard" title="Permanent link">&para;</a></h3>
+<h3 id="navigating-the-instana-platform">Navigating the Instana Platform<a class="headerlink" href="#navigating-the-instana-platform" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><strong>In a web browser, navigate to your Instana server.</strong> You can find this address on the <a href="../../access/">Enviroment Access Page</a>.</p>
@@ -794,7 +775,7 @@
 </li>
 <li>
 <p><strong>Set the time frame to Last Hour and click the Live button.</strong></p>
-<p>You are now seeing metrics for the environment over the previous hour, and it is updating in real time with up to 1 second granularity and no sampling.</p>
+<p>You are now seeing metrics for the environment over the previous hour, and it is updating in real time with up to 1 second granularity. Instana captures 100% of application calls and traces with no sampling, ensuring you never miss any critical data or insights into your application's performance.</p>
 <p>The next thing to notice is the menu on the left side of the page. If you hover over the left side panel, you will see a menu of links that will let you dive into different sections of the Instana dashboard, rather than seeing every option.</p>
 </li>
 <li>
@@ -809,12 +790,12 @@
 <li>
 <p><strong>Click the Robot Shop Website hyperlink.</strong></p>
 <p><img alt="instana-website-metrics" src="../../images/instana-website-metrics.png" /></p>
-<p>With website monitoring, there numerous filters and tabs with more information.</p>
+<p>With website monitoring, there are numerous filters and tabs with more information.</p>
 </li>
 <li>
 <p><strong>Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.</strong></p>
 <p><img alt="instana-website-metrics-2" src="../../images/instana-website-metrics-2.png" /></p>
-<p>In the next section, you will dig into how the application resources on OpenShift on IBM Z are running.</p>
+<p>In the next section, you'll explore the application metrics for the Robot Shop resources running on OpenShift.</p>
 </li>
 <li>
 <p><strong>Click the Applications option in the left side menu.</strong></p>
@@ -831,6 +812,7 @@
 <p><strong>Click the Dependencies tab.</strong></p>
 <p><img alt="instana-dependencies" src="../../images/instana-dependencies.png" /></p>
 <p>The dependency graph offers a visualization of each service in the Application perspective, which services interact with each other, and visual representations of errors, high latency, or erroneous calls.</p>
+<p><img alt="robot-shop-dependencies" src="../../images/robot-shop-dependencies.png" /></p>
 <p>There are more tabs in the Application perspective related to each individual service, error and log messages, the infrastructure stack related to the tag, and options to configure the Application perspective.</p>
 </li>
 <li>
@@ -845,7 +827,7 @@
 <p><strong>Click the atsocpd1 (cluster) hyperlink.</strong></p>
 <p><img alt="instana-openshift" src="../../images/instana-openshift.png" /></p>
 <p>OpenShift clusters are monitored by simply deploying a containerized Instana agent onto the cluster. Once deployed, the agent will report detailed data about the cluster and the resources deployed on it. Instana automatically discovers and monitors clusters, CronJobs, Nodes, Namespaces, Deployments, DaemonSets, StatefulSets, Services, and Pods.</p>
-<p>The Summary page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Pods" show potential hotspots which you might want to have a look at.</p>
+<p>The Summary page shows the most relevant information for the cluster as a whole. The CPU, Memory, and Pod usage information are shown. The other sections, such as "Top Nodes" and "Top Deployments" show potential hotspots which you might want to have a look at.</p>
 </li>
 <li>
 <p><strong>Click the Nodes tab.</strong></p>
@@ -855,6 +837,41 @@
 <p><strong>Click the Namespace tab, then search for <code>robot-shop</code> and select it.</strong></p>
 <p><img alt="instana-ocp-ns" src="../../images/instana-ocp-ns.png" /></p>
 <p>In the <code>robot-shop</code> namespace page, you can see details for all of the Kubernetes resources that are deployed in the <code>robot-shop</code> namespace, including deployments, services, pods, and the relevant metrics for each object.</p>
+</li>
+<li>
+<p><strong>Click the Platforms -&gt; IBM Z HMC option in the left side menu.</strong></p>
+<p><img alt="instana-zhmc-1" src="../../images/instana-zhmc-1.png" /></p>
+<p>Instana supports monitoring IBM Z and LinuxONE hardware metrics and messages via the <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=technologies-monitoring-z-hmc">IBM Z Hardware Management Console</a> (HMC). </p>
+<p>In the Instana console (and in the screenshot above), you should see two separate HMCs. HSYSHMA is managing a single DPM-mode IBM Z machine, while WSCHMC is managing three classic/Prism-mode IBM Z machines.</p>
+</li>
+<li>
+<p><strong>Click the hyperlink for WSCHMC</strong></p>
+<p><img alt="instana-zhmc-2" src="../../images/instana-zhmc-2.png" /></p>
+<p>This page shows you high level information about the IBM Z or LinuxONE machines themselves, including number of partitions, adapters, IP addresses, Machine Type Models and Machine Serial numbers.</p>
+<details class="question">
+<summary>Pop Quiz - Which system is a z14, which is a z15, and which is a z16?</summary>
+<ul>
+<li>QSYS: <strong>z14</strong> (machine type 3906)</li>
+<li>FSYS: <strong>z15</strong> (machine type 8561)</li>
+<li>KSYS: <strong>z16</strong> (machine type 3931)</li>
+</ul>
+</details>
+<p>You may notice that there are only a small number of partitions and adapters listed for each system. This is due to the fact that Instana only displays the objects (LPARs, adapters, channels, etc) that a specific zHMC userid has access to. If you want to add include or remove visibility to certain objects in Instana, you do so by managing the zHMC userid just as system administrators already do.</p>
+</li>
+<li>
+<p><strong>Click the hyperlink for KSYS</strong></p>
+<p><img alt="instana-zhmc-3" src="../../images/instana-zhmc-3.png" /></p>
+<p>You can now see the overall system utilization as well as that of individual processors. </p>
+</li>
+<li>
+<p><strong>Navigate to the "Environmental And Power" tab</strong></p>
+<p><img alt="instana-zhmc-4" src="../../images/instana-zhmc-4.png" /></p>
+<p>Instana provides the ability to monitor your environmental and power metrics, including Temperature and Power Consumption. Many clients migrate workloads from distributed/x86 platforms to IBM Z in order to reduce power consumption and thus their carbon footprint. With the metrics on this page, you can measure the impact that these migrations have.</p>
+</li>
+<li>
+<p><strong>Navigate to the "Partition" tab and expnd one the KOSP3A option.</strong></p>
+<p><img alt="instana-zhmc-5" src="../../images/instana-zhmc-5.png" /></p>
+<p>KOSP3A and KOSP3B are the names of the Logical Partitions (LPARs) where the OpenShift on IBM Z cluster is running. With this page, you can monitor the power consumption and processor usage for specific LPARs. This is useful for organizations who would like to see which applications of environments most contribute to power consumption. </p>
 <p>In the next section, you will look at infrastructure metrics. In our case, the metrics related to a Linux server with an Oracle Database installed on it.</p>
 </li>
 <li>
@@ -863,7 +880,7 @@
 <p>The Infrastructure map provides an overview of all monitored systems. Within each group are pillars comprised of opaque blocks. Each pillar as a whole represents one agent running on the respective system. Each block within a pillar represents the software components running on that system.</p>
 </li>
 <li>
-<p><strong>In the Infrastructure search bar, enter <code>oracledb</code> and select the resulting pillar.</strong></p>
+<p><strong>In the Infrastructure search bar, enter <code>oracledb</code>.</strong> Two pillars will be returned, representing two different Oracle Databases running on Linux on IBM Z. <strong>Select the pillar for OracleDB @acmeair.</strong></p>
 <p><img alt="infrastructure-oracledb" src="../../images/infrastructure-oracledb.png" /></p>
 <p>You can now see information about the Oracle on IBM Z database monitored by Instana including its version, SID, and more.</p>
 </li>
@@ -871,7 +888,7 @@
 <p><strong>Click the "Open Dashboard" button for the OracleDB.</strong></p>
 <p><img alt="infrastructure-oracledb2" src="../../images/infrastructure-oracledb2.png" /></p>
 <p>Now you see metrics specific to Oracle that a database administrator might be interested in.</p>
-<p>There are many IBM Z technologies supported by Instana, including z/OS. See the list of supported technologies <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies">here</a>, <a href="https://www.ibm.com/docs/en/iooz?topic=installing-configuring-z-apm-connect-components">here</a>, and <a href="https://www.ibm.com/docs/en/iooz?topic=integrating-omegamon">here</a></p>
+<p>There are many IBM Z technologies supported by Instana, including z/OS. See the list of supported technologies <a href="https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies">here</a>, <a href="https://www.ibm.com/docs/en/iooz/1.2.x?topic=installing-configuring-z-apm-connect-components">here</a>, and <a href="https://www.ibm.com/docs/en/iooz/1.2.x?topic=integrating-omegamon">here</a></p>
 </li>
 <li>
 <p><strong>Click the Analytics option in the left side menu.</strong></p>
@@ -903,13 +920,13 @@
 <p>The incident page shows a dynamic graph of all associated issues, events, and correlates it with other incidents to provide a comprehensive overview of the situation regarding service and event impact.</p>
 </li>
 <li>
-<p><strong>Click to expand the triggering event.</strong></p>
+<p><strong>Click the button to open the triggering event.</strong></p>
 <p><img alt="instana-events-3" src="../../images/instana-events-3.png" /></p>
 <p>Instana automatically displays a relevant dynamic graph. In this case, it is the erroneous call rate for the payment service. Instana also provides a link to the analysis page for these calls.</p>
 </li>
 <li>
 <p><strong>Click the "Analyze Calls" button.</strong></p>
-<p>Now you're back on the Analysis page you looked at previously, but with the correct filters automatically applied. You can see that the <code>POST /pay/{id}</code> endpoint has 100% erroneous calls. Click to expand that dropdown.</p>
+<p>Now you're back on the Analysis page you looked at previously, but with some filters automatically applied. You can see that the <code>POST /pay/{id}</code> endpoint has 100% erroneous calls. Click to expand that dropdown.</p>
 <p><img alt="instana-analytics-1" src="../../images/instana-analytics-1.png" /></p>
 <p>Notice how the same information about the erroneous calls for <code>POST /pay/partner-57</code> is displayed as it was previously, but Instana did all of the filtering. Because of the 100% error rate, it's clear that this endpoint is having an issue. Instana also provided links to the specific calls that failed.</p>
 </li>
@@ -921,7 +938,7 @@
 <li>
 <p><strong>Click the "payment" link under "Service Endpoint List".</strong></p>
 <p><img alt="instana-analytics-3" src="../../images/instana-analytics-3.png" /></p>
-<p>Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point you would want to look at the Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.</p>
+<p>Again you can confirm that the payment service in OpenShift is the cause of these Incidents. At this point, a site reliability engineer or application owner would want to look at the Kubernetes YAML definitions and the python code that was containerized and is running this microservice. For the sake of this demonstration, the error is caused by an intentional bug built into the load generator which is attempting to access a payment endpoint that does not exist.</p>
 </li>
 </ol>
 <h3 id="instana-wrap-up">Instana Wrap-up<a class="headerlink" href="#instana-wrap-up" title="Permanent link">&para;</a></h3>
