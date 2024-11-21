@@ -5,7 +5,7 @@
 
 In the following section, you will be using IBM Cloud Pak for AIOps to solve an issue in the NodeJS and Postgresql sample application running in the `userNN-project` OpenShift namespace. In this section, you will introduce the error so you can solve it later.
 
-1. **In the OpenShift console under the developer perspective, navigate to your `userNN-project` namespace topology, click the Postgresql icon, then click the `postgresql` deployment hyperlink.**
+1. **In the OpenShift console under the developer perspective, navigate to your `userNN-project` namespace topology, click the Postgresql icon, then click the `postgresql-userNN` deployment hyperlink.**
 
     ![ocp-postgresql](ocp-postgresql.png)
 
@@ -39,6 +39,10 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 5.  **In the dropdown for `Log in with`, make sure you have `OpenShift Authentication` selected, then select the `ldap-ats-wscdmz-wfwsldapcl01` option, and log in with your OpenShift credentials (i.e. `userNN`).** Do not select the `kube:admin` option.
 
+    You may be prompted to authorize access to a service account in the `cp4aiops` project. Select **Allow selected permissions** if prompted.
+
+    While navigating the CP4AIOps platform, you might be prompted to take a tour of certain features. Select "Maybe Later" - you can come back to these tours later if you wish by clicking the "Tours" button in the top-right of the page.
+
     ![cp4waiops-homepage](cp4waiops-homepage.png)
 
     When you first open CP4AIOps, you are taken to the homepage that displays the most important information that you have access to. Depending on your credentials, different "widgets" will appear for you to see and act on.
@@ -71,35 +75,44 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     Next, you will take a look at where all of these events are coming from.
 
-#### Data and Tool Connections
+#### Integrations
 
-7. **From the left-side menu, navigate to Data and Tool Connections.**
+1. **From the left-side menu, navigate to Define -> Integrations.**
 
-    ![data-tool-connections](data-tool-connections.png)
+    ![integrations](integrations.png)
 
     - All the data, events, and metrics you see in CP4AIOps are coming from the Instana server you explored earlier in this tutorial. 
     - Logs from select OpenShift applications are being forwarded to an [ELK server](https://www.elastic.co/elastic-stack) which is then ingested by CP4AIOps.
     - Slack is used for ChatOps to notify operations teams about incidents and ongoing remediation work.
 
-    There are also two connections that you do not have visibility into - one for SSH connections, and one to an [Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible) server. These are both used to take remediation actions against target environments.
+    There are also two outbound connections - one for SSH connections, and one to an [Ansible Automation Platform](https://www.redhat.com/en/technologies/management/ansible) server. These are both used to take remediation actions against target environments.
+
+    *Note: don't worry if the SSH and Ansible connections indicate an error. This seems to be a visual bug due to your userNN permissions.*
 
 #### Resource Management
 
-8. **From the left-side menu, navigate to Resource Management.**
-
-    ![resource-management](resource-management.png)
-
-    Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives.
-
-9.  **Click the link for the Robot Shop Microservices Application.**
+8. **From the left-side menu, navigate to Operate -> Resource Management.**
 
     ![resource-management-2](resource-management-2.png)
 
+    <!-- Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives. -->
+
+    You will see that CP4AIOps integrated the Instana Application Perspectives.
+
+9.  **Click the link for the robot-shop application.**
+
+    ![resource-management](resource-management.png)
+
+
     You now have a scoped view of just the resources associated with the Robot Shop Microservices Application - all of the Kubernetes objects such as pods, services, and routes, but also the individual application components within the containers such as `.jar` files and even the API calls made to each endpoint. 
+
+    You can zoom in on the topology to better see the individual application components and relationships.
+
+    ![resource-management-3](resource-management-3.png)
 
 #### Automations
 
-10. **From the left-side menu, navigate to Automations**. If there are any filters applied, you can clear them by clicking the filter button and unchecking any that are applied.
+10. **From the left-side menu, navigate to Operate -> Automations**. If there are any filters applied, you can clear them by clicking the filter button and unchecking any that are applied.
 
     ![automations-policies](automations-policies.png)
 
@@ -107,7 +120,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     **Policies** are rules that contain condition and action sets. They can be triggered to automatically promote events to alerts, reduce noise by grouping alerts into an incident, and assign runbooks to remediate alerts.
 
-11. **For example, find the Policy named `Robot Shop Erroneous Calls promote alert to incident`, and click it. In the new page that opens, click the "Specification" tab.**
+11. **For example, find the Policy named `robot shop promote alert to incident`, and click it. In the new page that opens, click the "Specification" tab.**
 
     This policy looks for alerts that match the tags `Value of:alert.summary` contains `POST /pay/{id} - Erroneous call rate is too high`. An alert matching this tag will be sent from Instana when Instana determines there has been a significant increase in the rate of erroneous calls to the Robot Shop application.
 
@@ -137,7 +150,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 #### Incidents and Alerts
 
-15. **In the left-side menu, navigate to "Incidents".**
+15. **In the left-side menu, navigate to Operate -> "Incidents".**
 
     ![incident-new](incidents.png)
     
@@ -149,7 +162,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ***Please be careful to select your correct incident. There is nothing stopping you from accidentally selecting another user's incident and closing it in the coming steps.***
 
-    ![erroneous-story](incident-new.png)
+    ![incident-view](incident-view.png)
 
     The incident contains many pieces of information that can be used to more quickly remediate issues.
 
@@ -169,7 +182,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     Cloud Pak for AIOps has identified this error as an *incident*, and has provided a runbook to fix it.
 
-18. **Back in the CP4AIOps incident in the bottom of the page, click the three dots associated with the `Fix userNN postgresql (ssh)` runbook, then select `Run`.**
+18. **Back in the CP4AIOps incident at the bottom of the page, click the Run button associated with the `Fix userNN postgresql (ssh)` runbook.**
 
     ![runbook-new](runbook-new.png)
 
@@ -180,10 +193,12 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
     - Third, it will remediate the error. The remediation for this error is to edit the Postgresql deployment's environment variable to the correct database name of `my_data`, rather than `my_data-error`.
     - Finally, it will check the environment variable again to confirm that it was properly changed.
 
-19. **Start the runbook by entering the variables for your `openshift username` and `openshift password`.**
+19. **Start the runbook by entering the variables for `user`, `ocp_username`, `ocp_password`, and `ocp_project`.**
 
-    - openshift username: `userNN` (where `NN` is your user number, same as `user`)
-    - openshift password: your OpenShift password found on the [Environment Access](../access.md) page
+    - user: `userNN` (where `NN` is your user number, same as `ocp_username`)
+    - ocp_username: `userNN` (where `NN` is your user number, same as `user`)
+    - ocp_password: your OpenShift password found on the [Environment Access](../access.md) page
+    - ocp_project: `userNN-project`
 
 20. **After populating the variables, click *Start Runbook* at the bottom of the page.**
 
@@ -217,7 +232,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
 Throughout this tutorial, you have been interacting with alerts, incidents, and policies that have been generated or influenced by AI algorithms that are running and training in CP4AIOps This section will show you the AI models that come pre-loaded with CP4AIOps and the benefits they provide.
 
-23. **From the left-side menu, navigate to "AI Model Management".**
+23. **From the left-side menu, navigate to Operate ->  "AI Model Management".**
 
     ![ai-model-management](ai-model-management.png)
 
@@ -235,7 +250,9 @@ Throughout this tutorial, you have been interacting with alerts, incidents, and 
 
 In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage IBM Z applications and infrastructure.
 
-With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.
+<!-- With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects. -->
+
+With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 

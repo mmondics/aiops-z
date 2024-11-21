@@ -13,12 +13,12 @@
 * <a href="aiops_z_03-20-24.pdf" target="_blank">Presentation</a>
 
 ## Labs
-It is recommended that you complete the Instana lab first then move on to the Turbonomic and/or IBM Cloud Pak for AIOps labs.
+It is recommended that you complete the Instana lab first then move on to the <!--Turbonomic and/or --> IBM Cloud Pak for AIOps labs.
 
 Each lab can be completed independently from one another, but some context will be lost if you do not complete the Instana lab first.
 
 * [Instana Lab](instana-lab.md)
-* [Turbonomic Lab](turbonomic-lab.md)
+<!-- * [Turbonomic Lab](turbonomic-lab.md) -->
 * [IBM Cloud Pak for AIOps Lab](cp4aiops-lab.md)
 
 ## Workshop Environment Architecture

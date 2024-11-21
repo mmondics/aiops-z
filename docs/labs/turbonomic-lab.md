@@ -3,9 +3,9 @@
 
 ### Overview of Turbonomic Application Resource Management 
 
-Turbonomic is IBM's Application Resource Management (ARM) solution for cloud and on-premises environments.
+Turbonomic is IBM's Application Resource Management (ARM) solution for both  cloud and on-premises environments.
 
-Application Resource Management platforms continuously analyze applications' resource needs and generate fully automatable actions to ensure applications always get what they need to perform.
+Application Resource Management platforms continuously analyze applications' resource needs and generate fully automatable actions to ensure applications always get the resources (CPU, memory, etc.) they need to perform.
 
 Turbonomic enables environments to achieve the following conflicting goals at the same time:
 

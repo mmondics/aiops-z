@@ -10,7 +10,7 @@ nav:
     - Presentation: aiops_z_03-20-24.pdf
     - Labs: 
       - Instana: 'labs/instana-lab.md'
-      - Turbonomic: 'labs/turbonomic-lab.md'
+      # - Turbonomic: 'labs/turbonomic-lab.md'
       - IBM Cloud Pak for AIOps: 'labs/cp4aiops-lab.md'
 
 theme: 
@@ -39,7 +39,10 @@ plugins:
 #      toc_depth: 6
 #      strict: true
   - search
-  - htmlproofer
+  - htmlproofer:
+      ignore_urls:
+        - mailto:*
+        - https://unit0-wsc.lcsins01.dmz
   - autolinks
   - print-site:
       add_to_navigation: true
