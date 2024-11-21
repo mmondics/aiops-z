@@ -188,7 +188,7 @@ Instana is an enterprise observability solution that offers application performa
         - FSYS: **z15** (machine type 8561)
         - KSYS: **z16** (machine type 3931)
 
-    You may notice that there are only a small number of partitions and adapters listed for each system. This is due to the fact that Instana only displays the objects (LPARs, adapters, channels, etc) that a specific zHMC userid has access to. If you want to add include or remove visibility to certain objects in Instana, you do so by managing the zHMC userid just as system administrators already do.
+    You may notice that there are only a small number of partitions and adapters listed for each system. This is due to the fact that Instana only displays the objects (LPARs, adapters, channels, etc) that a specific zHMC userid has access to. If you want to add or remove visibility to certain objects in Instana, you do so by managing the zHMC userid just as system administrators already do.
 
 27. **Click the hyperlink for KSYS**
 
@@ -202,11 +202,11 @@ Instana is an enterprise observability solution that offers application performa
 
     Instana provides the ability to monitor your environmental and power metrics, including Temperature and Power Consumption. Many clients migrate workloads from distributed/x86 platforms to IBM Z in order to reduce power consumption and thus their carbon footprint. With the metrics on this page, you can measure the impact that these migrations have.
 
-29. **Navigate to the "Partition" tab and expnd one the KOSP3A option.**
+29. **Navigate to the "Partition" tab and expand one the KOSP3A option.**
 
     ![instana-zhmc-5](instana-zhmc-5.png)
 
-    KOSP3A and KOSP3B are the names of the Logical Partitions (LPARs) where the OpenShift on IBM Z cluster is running. With this page, you can monitor the power consumption and processor usage for specific LPARs. This is useful for organizations who would like to see which applications of environments most contribute to power consumption. 
+    KOSP3A and KOSP3B are the names of the Logical Partitions (LPARs) where the OpenShift on IBM Z cluster is running. With this page, you can monitor the power consumption and processor usage for specific LPARs. This is useful for organizations who would like to see which applications or environments most contribute to power consumption. 
 
     In the next section, you will look at infrastructure metrics. In our case, the metrics related to a Linux server with an Oracle Database installed on it.
 
