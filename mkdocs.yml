@@ -7,7 +7,7 @@ nav:
     - Home: 'index.md'
     - Environment Access: 'access.md'
     - Lab Architecture: 'workshop-architecture.md'
-    - Presentation: aiops_z_03-20-24.pdf
+    - Presentation: aiops-z_11-21-24.pdf
     - Labs: 
       - Instana: 'labs/instana-lab.md'
       # - Turbonomic: 'labs/turbonomic-lab.md'
