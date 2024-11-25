@@ -113,21 +113,19 @@ Instana is an enterprise observability solution that offers application performa
 
     With website monitoring, there are numerous filters and tabs with more information.
 
-16. **Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
-
-    ![instana-website-metrics-2](instana-website-metrics-2.png)
+16. **You can Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.**
 
     In the next section, you'll explore the application metrics for the Robot Shop resources running on OpenShift.
 
 17. **Click the Applications option in the left side menu.**
 
-    This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the `Robot Shop Microservices Application`.
+    This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the *robot-shop* application.
 
     You may find it easier to use the search bar to the top right (under the timeframe selection).
 
-18. **Click the Robot Shop Microservices Application hyperlink.**
+18. **Click the robot-shop application hyperlink.**
 
-    An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Microservices application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`.
+    An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the robot-shop application perspective encompasses all services and endpoints that meet the tag `kubernetes-namespace=robot-shop`.
 
     Alongside the Robot Shop application running in OpenShift, there is a container running a Python application that generates load to each microservice. The metrics you see now in the application perspective are coming from that load generator. At the top of the page, you can see the total number of calls, the number of erroneous calls, and the mean latency for each call over the past hour.
 
@@ -236,7 +234,7 @@ Instana is an enterprise observability solution that offers application performa
 
     By default, you're taken to a built-in dashboard for analytics related to Application calls. You can filter by using the left side options, or by creating filters at the top.
 
-34. **Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.**
+34. **Expand the left side options and select Only Erroneous and the robot-shop application.**
 
     ![instana-analytics-1](instana-analytics-1.png)
 
