@@ -26,6 +26,7 @@ theme:
     - search.highlight
     - navigation.instant
     - navigation.instant.progress
+    - navigation.footer
   favicon: images/CP4AIOps-logo.svg
   logo: images/CP4AIOps-logo.svg
 
@@ -39,10 +40,10 @@ plugins:
 #      toc_depth: 6
 #      strict: true
   - search
-  - htmlproofer:
-      ignore_urls:
-        - mailto:*
-        - https://unit0-wsc.lcsins01.dmz
+  # - htmlproofer:
+  #     ignore_urls:
+  #       - mailto:*
+  #       - https://unit0-wsc.lcsins01.dmz
   - autolinks
   - print-site:
       add_to_navigation: true
