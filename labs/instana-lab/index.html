@@ -793,18 +793,17 @@
 <p>With website monitoring, there are numerous filters and tabs with more information.</p>
 </li>
 <li>
-<p><strong>Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.</strong></p>
-<p><img alt="instana-website-metrics-2" src="../../images/instana-website-metrics-2.png" /></p>
+<p><strong>You can Navigate through the various tabs to show more data - Speed, Resources, HTTP requests, and Pages.</strong></p>
 <p>In the next section, you'll explore the application metrics for the Robot Shop resources running on OpenShift.</p>
 </li>
 <li>
 <p><strong>Click the Applications option in the left side menu.</strong></p>
-<p>This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the <code>Robot Shop Microservices Application</code>.</p>
+<p>This Instana instance has many applications configured. We will be exploring a few of them during this lab, primarily the <em>robot-shop</em> application.</p>
 <p>You may find it easier to use the search bar to the top right (under the timeframe selection).</p>
 </li>
 <li>
-<p><strong>Click the Robot Shop Microservices Application hyperlink.</strong></p>
-<p>An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the Robot Shop Microservices application perspective encompasses all services and endpoints that meet the tag <code>kubernetes-namespace=robot-shop</code>.</p>
+<p><strong>Click the robot-shop application hyperlink.</strong></p>
+<p>An application perspective represents a set of services and endpoints that are defined by a shared context and is declared using tags. For example, in this tutorial, the robot-shop application perspective encompasses all services and endpoints that meet the tag <code>kubernetes-namespace=robot-shop</code>.</p>
 <p>Alongside the Robot Shop application running in OpenShift, there is a container running a Python application that generates load to each microservice. The metrics you see now in the application perspective are coming from that load generator. At the top of the page, you can see the total number of calls, the number of erroneous calls, and the mean latency for each call over the past hour.</p>
 <p>As with the Websites &amp; Mobile Applications section, the Application perspective has various tabs that contain different information. When it comes to microservices, one of the most helpful tabs in the Application perspective is the Dependency graph.</p>
 </li>
@@ -896,7 +895,7 @@
 <p>By default, you're taken to a built-in dashboard for analytics related to Application calls. You can filter by using the left side options, or by creating filters at the top.</p>
 </li>
 <li>
-<p><strong>Expand the left side options and select Only Erroneous and the Robot Shop Microservices application.</strong></p>
+<p><strong>Expand the left side options and select Only Erroneous and the robot-shop application.</strong></p>
 <p><img alt="instana-analytics-1" src="../../images/instana-analytics-1.png" /></p>
 <p>The primary source of errors is starting to become apparent.</p>
 </li>
@@ -973,6 +972,46 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../aiops-z_11-21-24.pdf" class="md-footer__link md-footer__link--prev" aria-label="Previous: Presentation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Presentation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cp4aiops-lab/" class="md-footer__link md-footer__link--next" aria-label="Next: IBM Cloud Pak for AIOps">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                IBM Cloud Pak for AIOps
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1001,7 +1040,7 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["search.suggest", "search.highlight", "navigation.instant", "navigation.instant.progress", "navigation.footer"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
