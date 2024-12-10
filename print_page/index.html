@@ -381,6 +381,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../labs/turbonomic-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turbonomic
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../labs/cp4aiops-lab/" class="md-nav__link">
         
   
@@ -504,9 +525,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#labs-turbonomic-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Turbonomic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#labs-cp4aiops-lab" class="md-nav__link">
     <span class="md-ellipsis">
-      6. IBM Cloud Pak for AIOps
+      7. IBM Cloud Pak for AIOps
     </span>
   </a>
   
@@ -605,9 +635,18 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#labs-turbonomic-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Turbonomic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#labs-cp4aiops-lab" class="md-nav__link">
     <span class="md-ellipsis">
-      6. IBM Cloud Pak for AIOps
+      7. IBM Cloud Pak for AIOps
     </span>
   </a>
   
@@ -670,13 +709,11 @@
 <li><a href="../aiops-z_11-21-24.pdf" target="_blank">Presentation</a></li>
 </ul>
 <h2 id="index-labs">Labs<a class="headerlink" href="#index-labs" title="Permanent link">&para;</a></h2>
-<p>It is recommended that you complete the Instana lab first then move on to the <!--Turbonomic and/or --> IBM Cloud Pak for AIOps labs.</p>
+<p>It is recommended that you complete the Instana lab first then move on to the Turbonomic and/or IBM Cloud Pak for AIOps labs.</p>
 <p>Each lab can be completed independently from one another, but some context will be lost if you do not complete the Instana lab first.</p>
 <ul>
 <li><a href="#labs-instana-lab">Instana Lab</a></li>
-</ul>
-<!-- * [Turbonomic Lab](labs/turbonomic-lab.md) -->
-<ul>
+<li><a href="#labs-turbonomic-lab">Turbonomic Lab</a></li>
 <li><a href="#labs-cp4aiops-lab">IBM Cloud Pak for AIOps Lab</a></li>
 </ul>
 <h2 id="index-workshop-environment-architecture">Workshop Environment Architecture<a class="headerlink" href="#index-workshop-environment-architecture" title="Permanent link">&para;</a></h2>
@@ -704,14 +741,12 @@
 <ul>
 <li>OpenShift Cluster URL: <a href="https://console-openshift-console.apps.atsocpd1.dmz/dashboards">https://console-openshift-console.apps.atsocpd1.dmz/dashboards</a></li>
 <li>Instana URL: <a href="https://unit0-wsc.lcsins01.dmz">https://unit0-wsc.lcsins01.dmz</a></li>
-</ul>
-<!-- - Turbonomic URL: <https://nginx-turbonomic-platform.apps.x2pn.dmz/app/> -->
-<ul>
+<li>Turbonomic URL: <a href="https://nginx-turbonomic-platform.apps.x2pn.dmz/app/">https://nginx-turbonomic-platform.apps.x2pn.dmz/app/</a></li>
 <li>IBM Cloud Pak for AIOps URL: <a href="https://cpd-cp4aiops.apps.x2pn.dmz/zen/#/homepage">https://cpd-cp4aiops.apps.x2pn.dmz/zen/#/homepage</a></li>
 </ul>
 <p>If you cannot access the webpage for any of the platforms above, check that the Cisco Secure Client VPN is logged in on the Virtual Machine. If it is no longer logged in, please let the lab administrator know.</p>
 <p>Please do not log off or reboot the Virtual Machine, as that will disconnect the VPN.</p>
-<h2 id="access-openshift-instana-and-cp4aiops-credentials">OpenShift, Instana, <!---Turbonomic, ---> and CP4AIOps credentials:<a class="headerlink" href="#access-openshift-instana-and-cp4aiops-credentials" title="Permanent link">&para;</a></h2>
+<h2 id="access-openshift-instana-turbonomic-and-cp4aiops-credentials">OpenShift, Instana, Turbonomic, and CP4AIOps credentials:<a class="headerlink" href="#access-openshift-instana-turbonomic-and-cp4aiops-credentials" title="Permanent link">&para;</a></h2>
 <p>Usernames and passwords are the same for all of the platforms used in this tutorial.</p>
 <table>
 <thead>
@@ -851,9 +886,9 @@
                             Labs <a class='headerlink' href='#section-labs' title='Permanent link'>↵</a>
                         </h1>
                         <section class="print-page" id="labs-instana-lab"><h1 id="labs-instana-lab-aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#labs-instana-lab-aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
-<!-- In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure. -->
+<p>In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
+<!-- In this tutorial, you will become familiar with two of IBM's strategic AIOps solutions - Instana and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure. -->
 
-<p>In this tutorial, you will become familiar with two of IBM's strategic AIOps solutions - Instana and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.</p>
 <h2 id="labs-instana-lab-environment-overview">Environment Overview<a class="headerlink" href="#labs-instana-lab-environment-overview" title="Permanent link">&para;</a></h2>
 <p><img alt="aiops-arch" src="../images/aiops-arch-AIOps-workshop.drawio.png" /></p>
 <h2 id="labs-instana-lab-connecting-to-the-lab-environment">Connecting to the Lab Environment<a class="headerlink" href="#labs-instana-lab-connecting-to-the-lab-environment" title="Permanent link">&para;</a></h2>
@@ -1099,6 +1134,144 @@
 <li><a href="https://www.ibm.com/products/instana">Instana Product Page</a></li>
 <li><a href="https://www.ibm.com/docs/en/instana-observability/current">Instana Documentation</a></li>
 <li><a href="https://www.ibm.com/docs/en/instana-observability/current?topic=configuring-monitoring-supported-technologies">Instana Supported Technologies</a></li>
+</ul></section><section class="print-page" id="labs-turbonomic-lab"><h1 id="labs-turbonomic-lab-aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#labs-turbonomic-lab-aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
+<h2 id="labs-turbonomic-lab-turbonomic">Turbonomic<a class="headerlink" href="#labs-turbonomic-lab-turbonomic" title="Permanent link">&para;</a></h2>
+<h3 id="labs-turbonomic-lab-overview-of-turbonomic-application-resource-management">Overview of Turbonomic Application Resource Management<a class="headerlink" href="#labs-turbonomic-lab-overview-of-turbonomic-application-resource-management" title="Permanent link">&para;</a></h3>
+<p>Turbonomic is IBM's Application Resource Management (ARM) solution for both  cloud and on-premises environments.</p>
+<p>Application Resource Management platforms continuously analyze applications' resource needs and generate fully automatable actions to ensure applications always get the resources (CPU, memory, etc.) they need to perform.</p>
+<p>Turbonomic enables environments to achieve the following conflicting goals at the same time:</p>
+<ul>
+<li>
+<p><em>Assured application performance</em>: Prevent bottlenecks, upsize containers/VMs, prioritize workload, and reduce storage latency.</p>
+</li>
+<li>
+<p><em>Efficient use of resources</em>: Consolidate workloads to reduce infrastructure usage to the minimum, downsize containers, prevent sprawl, and use the most economical cloud offerings.</p>
+</li>
+</ul>
+<p>You configure managed environments as <a href="https://www.ibm.com/docs/en/tarm/8.10.3?topic=overview-turbonomic-targets">Turbonomic targets</a>. Turbonomic discovers the entities (physical devices, virtual components and software components) that each target manages, and then performs analysis, anticipates risks to performance or efficiency, and recommends actions you can take to avoid problems before they occur.</p>
+<p><a href="https://www.ibm.com/docs/en/tarm/8.11.5?topic=documentation-product-overview">Source and more information</a></p>
+<h3 id="labs-turbonomic-lab-navigating-the-turbonomic-dashboard">Navigating the Turbonomic Dashboard<a class="headerlink" href="#labs-turbonomic-lab-navigating-the-turbonomic-dashboard" title="Permanent link">&para;</a></h3>
+<h4 id="labs-turbonomic-lab-homepage">Homepage<a class="headerlink" href="#labs-turbonomic-lab-homepage" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Navigate to the Turbonomic platform home page.</strong> You can find the console link and your credentials on the <a href="#access">Environment Access Page</a> file.</p>
+<p>Because you are logged in as a user with "Advisor" credentials, you can see everything that Turbonomic is managing, but you cannot take actions against the target environments or modify the Turbonomic server itself. You could set up more users either locally on the Turbonomic server or with an authentication such as LDAP. These new users can have their access scoped to certain environments, applications, or specific entities on the Turbonomic server so people can only access what they need to.</p>
+<p><img alt="turbo-supply-chain" src="../images/turbo-supply-chain.png" /></p>
+<p>The first thing to notice is the supply chain on the left side of the page. Turbonomic uses the concept of a supply chain made up of buyers and sellers all with the goal of meeting application resource demand. The supply chain shown on the homepage includes all the entities that Turbonomic identified based on deployment of the KubeTurbo operator on the OpenShift on IBM Z cluster. The relationships and interdependencies between each entity were automatically identified and provide an overview of how each object relates to one another. Because an OpenShift cluster is being monitored, you can see application and cluster infrastructure components were found including containers, namespaces, persistent volumes, and the single virtual machines running the OpenShift nodes. This is an interactable chart so you can click on any of the entity types to drill down directly from the homepage.</p>
+<p><img alt="turbo-business-applications" src="../images/turbo-business-applications.png" /></p>
+<p>On the right side of the page, you can see there is a "Business Application" listed with the name <code>Robot Shop Microservices Application</code>. A Business Application is a Turbonomic concept defined by a group of related objects of your choosing. In the case of this demonstration, Business Applications are imported from the Instana Application Perspectives, as well as all the related entities that Turbonomic correlated with them, such as the virtual machine the pods are running on, the namespace (project) they're running in, the persistent volumes where they store data, and the Kubernetes cluster itself. This is one example of the integration between Instana and Turbonomic.</p>
+<p>Instana working alongside Turbonomic brings other benefits as well, such as letting Turbonomic see the application response times and transaction speeds and then use that data to horizontally scale pod counts to meet defined Service-Level Objectives (SLOs). Without Instana or another Application Performance Monitoring (APM) solution in place, you would not have any visibility into application response times or metrics, and this Turbonomic functionality would be inaccessible.</p>
+<p><img alt="turbo-pending-actions-home" src="../images/turbo-pending-actions-home.png" /></p>
+<p>Near the middle of the page, you will see a section titled "Pending Actions". These are all the actions that Turbonomic is recommending you take to make sure applications get the resources they need without over-provisioning. You will learn more about actions later in this tutorial.</p>
+</li>
+</ol>
+<h4 id="labs-turbonomic-lab-search">Search<a class="headerlink" href="#labs-turbonomic-lab-search" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>In the left side menu, select the Search option.</strong></p>
+<p>On the search page, you can filter down to specific types of entities that Turbonomic has identified. For example, if you look at Namespaces, it will return all the namespaces, or projects in OpenShift nomenclature, in the target cluster.</p>
+</li>
+<li>
+<p><strong>Select the Namespaces option in the list.</strong></p>
+<p><img alt="turbo-search-namespaces" src="https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces.png" /></p>
+<p>Next you will dig into the namespace that contains the Robot Shop sample application.</p>
+</li>
+<li>
+<p><strong>Select the <code>robot-shop</code> namespace.</strong></p>
+<p><img alt="turbo-search-namespaces-2" src="https://raw.githubusercontent.com/mmondics/media/main/images/turbo-search-namespaces-2.png" /></p>
+<p>You now have a view that is scoped to only the components running in the robot-shop namespace, as well as any related components that those pods interact with, such as virtual machines, storage volumes, etc. You are provided all the actions against these components, the top services and workload controllers by CPU and memory for the robot-shop components, information about any quotas assigned to the project, and more. If you want to scope down an individual's access to a single application, only workloads in a specific datacenter, or a custom group of workloads and components you define, this is an example of what that could look like.</p>
+</li>
+</ol>
+<h3 id="labs-turbonomic-lab-turbonomic-actions">Turbonomic Actions<a class="headerlink" href="#labs-turbonomic-lab-turbonomic-actions" title="Permanent link">&para;</a></h3>
+<h4 id="labs-turbonomic-lab-what-are-actions">What are Actions?<a class="headerlink" href="#labs-turbonomic-lab-what-are-actions" title="Permanent link">&para;</a></h4>
+<p>After you deploy your targets, Turbonomic starts to perform analysis as part of its Application Resource Management process. This holistic analysis identifies problems in your environment and the actions you can take to resolve and avoid these problems. Turbonomic then generates a set of actions for that particular analysis and displays it in the Pending Actions charts.</p>
+<p><a href="https://www.ibm.com/docs/en/tarm/8.10.3?topic=started-turbonomic-actions">Source and more information</a></p>
+<h4 id="labs-turbonomic-lab-what-actions-are-available-for-openshift-on-ibm-z-targets">What Actions are Available for OpenShift on IBM Z Targets?<a class="headerlink" href="#labs-turbonomic-lab-what-actions-are-available-for-openshift-on-ibm-z-targets" title="Permanent link">&para;</a></h4>
+<p>For OpenShift on IBM Z, Turbonomic can generate the following actions:</p>
+<details>
+  <summary>Vertically Scale Containers - resize container spec sizes (click to expand)</summary>
+
+If a containerized application needs more CPU or memory to ensure it's running with desired performance, Turbonomic can scale up the container spec. In OpenShift terms, this means adjusting the resource requests and/or resource limits applied to the application pods. The reverse is also important - if a container is overprovisioned - it has too much CPU or memory assigned to it - these resources are going to waste. Overprovisioning is a common issue in the containerized world, and it leads to inefficient use of resources, lack of resources for other applications that need it, and wasted money.
+
+</details>
+
+<details>
+  <summary>Horizontally Scale Containers - Scale up the number of pods for a microservice (click to expand)</summary>
+
+If there is a Service Level Objective (SLO) configured for a containerized application, Turbonomic can scale the number of pods up or down in order to meet the demand at any given moment.
+
+An APM solution such as Instana is required for this action type. Turbonomic needs metric data from the APM about response time and transactions speeds in order to enforce SLOs.
+
+</details>
+
+<details>
+  <summary>Pod Moves - move a pod from one node to another (click to expand)</summary>
+
+Turbonomic continuously moves pods based on node resources available. The moves are performed in a way that keeps the application available throughout the move. Once executed, Turbonomic will start a new pod on the destination node -> ensure that it is running and ready -> deletes the original pod. This way, there is no perceived downtime to the application end user.
+
+</details>
+
+<details>
+  <summary>Cluster Scaling - Provisioning or Suspending OpenShift Nodes (click to expand)</summary>
+
+Turbonomic will also generate actions to create new nodes in the OpenShift cluster or suspend existing nodes based on its analysis of efficiency (consolidating workloads onto fewer nodes) and performance (avoiding node congestion).
+
+For OpenShift on IBM Z, Turbonomic will only *recommend* actions related to cluster scaling. Turbonomic relies on OpenShift machine autoscaling which is not supported on IBM Z. Therefore, if a node provision/suspension action is generated for an IBM Z cluster, administrators will need to perform that action themselves with manual methods and then Turbonomic will see that change.
+
+</details>
+
+<h4 id="labs-turbonomic-lab-manually-executing-actions">Manually Executing Actions<a class="headerlink" href="#labs-turbonomic-lab-manually-executing-actions" title="Permanent link">&para;</a></h4>
+<p>As you saw throughout the tour of the Turbonomic platform, there pending actions related to some sample applications running on the IBM Z cluster.</p>
+<ol>
+<li>
+<p><strong>In the OpenShift console, navigate to your <code>userNN-project</code>, click the icon for the NodeJS application, click the Actions dropdown, and then select Edit Resource Limits.</strong></p>
+<p><img alt="usernn-resource-limits" src="../images/usernn-resource-limits.png" /></p>
+<p>These are the default NodeJS application resources. <em>Requests</em> are the amount of CPU and memory a container is guaranteed to get. <em>Limits</em> are the maximum amount of resources a container can use before they are restricted.</p>
+<p><img alt="resource-limits-before" src="../images/resource-limits-before.png" /></p>
+<p>The defaults for the NodeJS application are intentionally suboptimal in order to generate recommended actions in Turbonomic.</p>
+</li>
+<li>
+<p><strong>In the Turbonomic console, log OUT of your <code>userNN</code> username using the button in the bottom-left corner of the menu.</strong></p>
+</li>
+<li>
+<p><strong>Log back in to Turbonomic with the new username: <code>userNN-actions</code> and the same password as before.</strong></p>
+<p>This username has permissions to execute actions against a sample application in the <code>userNN-project</code> namespace. </p>
+<p>Because this username is scoped to only the <code>userNN-project</code> namespace, that is all you can see.</p>
+</li>
+<li>
+<p><strong>From the home page, click the userNN-project Business Application.</strong></p>
+</li>
+<li>
+<p><strong>Click the Pending Actions just to the right of the supply chain chart.</strong></p>
+<p><img alt="turbo-scaling-actions" src="../images/turbo-scaling-actions.png" /></p>
+<p>The action(s) here are related to the microservices in the userNN-project. You should have actions related to CPU and/or memory resizing for the NodeJS frontend application and/or the Postgres backend database.</p>
+</li>
+<li>
+<p><strong>Click the details button to far right of the <code>nodejs-postgres-example</code> action to drop down more details.</strong></p>
+<p><img alt="turbo-scaling-actions-2" src="../images/turbo-scaling-actions-2.png" /></p>
+<p>Here you see more details about exactly what Turbonomic is recommending you do via the action. It includes resizing both CPU and memory limits for the pod, and you can see the result that Turbonomic expects in terms of CPU throttling and resource utilization as a percentage of CPU and memory limits.</p>
+<p><img alt="turbo-scaling-actions-3" src="../images/turbo-scaling-actions-3.png" /></p>
+<p>Because this is a manual action (rather than Recommended) you are provided with a button in the user interface to directly execute the action and make the proposed changes. Because you are logged in with credentials scoped to this namespace, you can execute the action. If you were logged in with your <code>userNN</code> advisor credential, you would not be able to execute the action.</p>
+</li>
+<li>
+<p><strong>Click the green Execute Action button.</strong></p>
+<p>Turbonomic will apply the recommended changes to the NodeJS application running on OpenShift. You can see the executed action in the <code>userNN-project</code> business application "All actions" panel.</p>
+<p><img alt="executed-actions" src="../images/executed-actions.png" /></p>
+</li>
+<li>
+<p><strong>In the OpenShift console, refresh the page and navigate back to the <code>nodejs-postgres-example</code> resource limits to see the new values.</strong></p>
+<p><img alt="resource-limits-after" src="../images/resource-limits-after.png" /></p>
+<p>Although this type of manual action with human review and execution is extremely helpful for reducing the amount of time and thought put into container resizing, the goal of AIOps solutions is to <em>automate</em> as many of these processes as possible. Turbonomic supports automatic execution of actions.</p>
+<p>For example, the Robot Shop application containers are resized on a daily basis. The schedule for automated actions can be determined by operations teams. As Turbonomic learns more about the application, its performance, and the impact of the actions it executes, it will adjust accordingly to ensure that each pod has enough CPU and memory to perform well, but not so much that the resources are going to waste.  </p>
+</li>
+</ol>
+<h3 id="labs-turbonomic-lab-turbonomic-wrap-up">Turbonomic Wrap-up<a class="headerlink" href="#labs-turbonomic-lab-turbonomic-wrap-up" title="Permanent link">&para;</a></h3>
+<p>In this section, you have seen some of the capabilities of Turbonomic Application Resource Management of an OpenShift on IBM Z cluster. Turbonomic has many more capabilities that were not covered in this demonstration, which you can read more about in the <a href="https://www.ibm.com/docs/en/tarm/8.10.3?topic=documentation-getting-started" target="_blank">Turbonomic Documentation</a> as well as in this <a href="https://developer.ibm.com/articles/understanding-application-resource-management-using-turbonomic/" target="_blank">IBM article</a>.</p>
+<h2 id="labs-turbonomic-lab-references">References<a class="headerlink" href="#labs-turbonomic-lab-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.ibm.com/products/turbonomic" target="_blank">Turbonomic Product Page</a></li>
+<li><a href="https://www.ibm.com/docs/en/tarm" target="_blank">Turbonomic Documentation</a></li>
+<li><a href="https://www.ibm.com/products/turbonomic/integrations" target="_blank">Turbonomic Integrations</a></li>
 </ul></section><section class="print-page" id="labs-cp4aiops-lab"><h1 id="labs-cp4aiops-lab-aiops-with-ibm-z-and-linuxone">AIOps with IBM Z and LinuxONE<a class="headerlink" href="#labs-cp4aiops-lab-aiops-with-ibm-z-and-linuxone" title="Permanent link">&para;</a></h1>
 <h2 id="labs-cp4aiops-lab-ibm-cloud-pak-for-aiops">IBM Cloud Pak for AIOps<a class="headerlink" href="#labs-cp4aiops-lab-ibm-cloud-pak-for-aiops" title="Permanent link">&para;</a></h2>
 <h3 id="labs-cp4aiops-lab-introduce-an-error-into-your-sample-application">Introduce an Error into your Sample Application<a class="headerlink" href="#labs-cp4aiops-lab-introduce-an-error-into-your-sample-application" title="Permanent link">&para;</a></h3>
@@ -1176,7 +1349,7 @@
 <li>
 <p><strong>From the left-side menu, navigate to Operate -&gt; Resource Management.</strong></p>
 <p><img alt="resource-management-2" src="../images/resource-management-2.png" /></p>
-<!-- Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives. -->
+<p>Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives.</p>
 <p>You will see that CP4AIOps integrated the Instana Application Perspectives.</p>
 </li>
 <li>
@@ -1304,9 +1477,9 @@
 </ol>
 <h2 id="labs-cp4aiops-lab-wrapping-up">Wrapping Up<a class="headerlink" href="#labs-cp4aiops-lab-wrapping-up" title="Permanent link">&para;</a></h2>
 <p>In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage IBM Z applications and infrastructure.</p>
-<!-- With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects. -->
+<p>With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.</p>
+<!-- With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects. -->
 
-<p>With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.</p>
 <p>We encourage you to look through the references below and reach out to this <a href="mailto:matt.mondics@ibm.com">tutorial author</a> if you would like to see or learn more.</p>
 <h2 id="labs-cp4aiops-lab-references">References<a class="headerlink" href="#labs-cp4aiops-lab-references" title="Permanent link">&para;</a></h2>
 <ul>

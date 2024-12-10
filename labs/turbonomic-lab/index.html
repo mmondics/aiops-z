@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://mmondics.github.io/aiops-z/labs/turbonomic-lab/">
       
       
+        <link rel="prev" href="../instana-lab/">
+      
+      
+        <link rel="next" href="../cp4aiops-lab/">
       
       
       <link rel="icon" href="../../images/CP4AIOps-logo.svg">
@@ -18,7 +22,7 @@
     
     
       
-        <title>AIOps with IBM Z and LinuxONE - AIOps with IBM Z and LinuxONE</title>
+        <title>Turbonomic - AIOps with IBM Z and LinuxONE</title>
       
     
     
@@ -121,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AIOps with IBM Z and LinuxONE
+              Turbonomic
             
           </span>
         </div>
@@ -316,17 +320,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -340,7 +346,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Labs
@@ -363,6 +369,184 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Turbonomic
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Turbonomic
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#turbonomic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Turbonomic
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turbonomic">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-turbonomic-application-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Turbonomic Application Resource Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigating-the-turbonomic-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigating the Turbonomic Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navigating the Turbonomic Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homepage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Homepage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turbonomic-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Turbonomic Actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turbonomic Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are Actions?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-actions-are-available-for-openshift-on-ibm-z-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Actions are Available for OpenShift on IBM Z Targets?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manually-executing-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manually Executing Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turbonomic-wrap-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Turbonomic Wrap-up
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -740,6 +924,44 @@ For OpenShift on IBM Z, Turbonomic will only *recommend* actions related to clus
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../instana-lab/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Instana">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Instana
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../cp4aiops-lab/" class="md-footer__link md-footer__link--next" aria-label="Next: IBM Cloud Pak for AIOps">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                IBM Cloud Pak for AIOps
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
