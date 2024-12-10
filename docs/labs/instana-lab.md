@@ -1,8 +1,8 @@
 # AIOps with IBM Z and LinuxONE
 
-<!-- In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure. -->
+In this tutorial, you will become familiar with three of IBM's strategic AIOps solutions - Instana, Turbonomic, and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
 
-In this tutorial, you will become familiar with two of IBM's strategic AIOps solutions - Instana and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure.
+<!-- In this tutorial, you will become familiar with two of IBM's strategic AIOps solutions - Instana and IBM Cloud Pak for AIOps - and the capabilities they have to monitor and manage IBM Z applications and infrastructure. -->
 
 ## Environment Overview
 

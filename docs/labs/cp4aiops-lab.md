@@ -95,7 +95,7 @@ IBM Cloud Pak for AIOps helps you **uncover hidden insights from multiple source
 
     ![resource-management-2](resource-management-2.png)
 
-    <!-- Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives. -->
+    Similar to Turbonomic, you will see that CP4AIOps integrated the Instana Application Perspectives.
 
     You will see that CP4AIOps integrated the Instana Application Perspectives.
 
@@ -250,9 +250,9 @@ Throughout this tutorial, you have been interacting with alerts, incidents, and 
 
 In this demonstration, you have seen some of the capabilities of IBM's AIOps portfolio and how it can observe and manage IBM Z applications and infrastructure.
 
-<!-- With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects. -->
+With Instana, Turbonomic, and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.
 
-With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects.
+<!-- With Instana and IBM Cloud Pak for AIOps, you can keep your applications up and running, meeting your SLAs, and when incidents do arise, you can remediate them quickly and get back to focusing on other projects. -->
 
 We encourage you to look through the references below and reach out to this [tutorial author](mailto:matt.mondics@ibm.com) if you would like to see or learn more.
 
