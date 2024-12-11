@@ -200,7 +200,7 @@ Instana is an enterprise observability solution that offers application performa
 
     Instana provides the ability to monitor your environmental and power metrics, including Temperature and Power Consumption. Many clients migrate workloads from distributed/x86 platforms to IBM Z in order to reduce power consumption and thus their carbon footprint. With the metrics on this page, you can measure the impact that these migrations have.
 
-29. **Navigate to the "Partition" tab and expand one the KOSP3A option.**
+29. **Navigate to the "Partition" tab and expand the KOSP3A option.**
 
     ![instana-zhmc-5](instana-zhmc-5.png)
 
