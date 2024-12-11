@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mmondics.github.io/aiops-z/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mmondics.github.io/aiops-z/access/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mmondics.github.io/aiops-z/workshop-architecture/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mmondics.github.io/aiops-z/labs/cp4aiops-lab/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mmondics.github.io/aiops-z/labs/instana-lab/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://mmondics.github.io/aiops-z/labs/turbonomic-lab/</loc>
-         <lastmod>2024-12-10</lastmod>
+         <lastmod>2024-12-11</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
